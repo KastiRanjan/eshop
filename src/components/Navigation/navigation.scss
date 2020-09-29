@@ -1,0 +1,145 @@
+//navigation styles
+.navigation {
+  z-index: 9999;
+  &__category {
+    width: 270px;
+  }
+  &__categoryMenuHeader {
+    padding: 15px;
+    text-transform: uppercase;
+    background: #f8694a;
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .category {
+    padding: 0px;
+    margin: 0px;
+    width: 270px;
+    background-color: #fff;
+    border-left: 1px solid #dadada;
+    border-right: 1px solid #dadada;
+
+    &__list {
+      position: relative;
+      border-bottom: 1px solid #dadada;
+      a {
+        display: block;
+        padding: 15px;
+        color: #30323a;
+        transition: 0.3s color;
+        text-transform: uppercase;
+      }
+    }
+    &__list:hover {
+      a {
+        color: tomato;
+      }
+    }
+  }
+  &__links {
+    padding: 0px;
+    margin: 0px;
+  }
+  &__item {
+    position: relative;
+
+    a {
+      display: block;
+      padding: 15px;
+      color: #fff;
+      text-transform: uppercase;
+    }
+  }
+}
+@include breakpoint-down(medium) {
+  .open {
+    transform: translateX(0%);
+  }
+  .close {
+    transform: translateX(-100%);
+  }
+  .shadow {
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 99;
+    width: 100% !important;
+    visibility: visible !important;
+  }
+  .navigation {
+    position: fixed;
+    visibility: hidden;
+    top: 0px;
+    left: 0px;
+    width: 270px;
+    height: 100vh;
+
+    .container {
+      flex-direction: column;
+      padding: 0px;
+      margin-left: 0px;
+      background-color: #fff;
+      width: 270px;
+      height: 100%;
+      // z-index: 99999;
+      transition: 0.5s all;
+    }
+    &__menu {
+      width: 270px;
+    }
+
+    &__categoryMenuHeader {
+      padding: 15px;
+    }
+
+    .category {
+      &__list {
+        position: relative;
+      }
+    }
+    &__menuHeader {
+      padding: 15px;
+      text-transform: uppercase;
+      background: #30323a;
+      color: #fff;
+      font-weight: 700;
+    }
+    &__links {
+      flex-direction: column;
+      border-left: 1px solid #dadada;
+      border-right: 1px solid #dadada;
+    }
+    &__item {
+      border-bottom: 1px solid #dadada;
+      a {
+        color: #30323a;
+      }
+    }
+  }
+}
+@include breakpoint-up(large) {
+  .navigation {
+    background-color: #30323a;
+
+    &__categoryMenuHeader {
+      position: relative;
+    }
+    .category {
+      position: absolute;
+    }
+    &__menuHeader {
+      padding: 15px;
+      text-transform: uppercase;
+      background: #30323a;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    &__item {
+      position: relative;
+
+      a {
+        color: #fff;
+      }
+    }
+  }
+}

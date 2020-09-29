@@ -1,0 +1,169 @@
+header {
+  //styles for top header
+  .topHeader {
+    padding: 5px 0px;
+    border-bottom: 1px solid #dadada;
+    .container {
+      flex-direction: column;
+      @include breakpoint-up(large) {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+
+    &__links {
+      margin: 0px;
+      padding: 0px;
+      margin: 0px;
+      padding: 0px;
+      li:nth-child(2) {
+        margin-left: 15px;
+      }
+      li:nth-child(3) {
+        margin-left: 15px;
+      }
+      li:nth-child(4) {
+        margin-left: 15px;
+      }
+      li:last-child {
+        margin-left: 15px;
+      }
+    }
+
+    &__item {
+      a {
+        color: #30323a;
+        text-transform: uppercase;
+        transition: 0.3s all;
+      }
+    }
+  }
+  ///styles for header
+  .header {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    @include breakpoint-up(large) {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .input {
+      height: 40px;
+      padding: 0px 15px;
+      border: none;
+      background-color: transparent;
+      box-shadow: 0px 0px 0px 1px #dadada inset, 0px 0px 0px 5px transparent;
+      transition: 0.3s all;
+    }
+    &__left {
+      @include breakpoint-down(small) {
+        flex-direction: column;
+      }
+    }
+    &__logo {
+      margin-right: 15px;
+    }
+    &__form {
+      position: relative;
+    }
+    &__searchBar {
+      display: inline-block;
+      padding: 15px 0px;
+      max-width: 400px;
+    }
+    &__searchInput {
+      padding-left: 150px !important;
+      padding-right: 45px !important;
+      // @include breakpoint-down(small) {
+      //   // padding-left: 125px !important;
+      //   // padding-right: 0px !important;
+      // }
+    }
+    &__searchCategories {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      width: 140px;
+    }
+    &__searchBtn {
+      position: absolute;
+      top: 0px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      background-color: transparent;
+      border: none;
+      @include breakpoint-down(small) {
+        right: 20px;
+      }
+    }
+
+    &__right {
+      @include breakpoint-down(medium) {
+        margin-top: 10px;
+      }
+    }
+    &__btns {
+      .icon-btn {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        padding: 0px;
+        border: none;
+        background-color: #fff;
+        border: 1px solid #dadada;
+      }
+    }
+    &__loginBtn {
+      a {
+        font-weight: normal !important;
+        color: #30323a;
+      }
+      .login:hover {
+        color: #f8694a;
+      }
+      .join:hover {
+        color: #f8694a;
+      }
+    }
+
+    &__loginBtn,
+    &__priceTag {
+      position: absolute;
+      top: 20px;
+      left: 50px;
+    }
+    &__cartDropdown,
+    &__menuBtn {
+      margin-left: 10px;
+      position: relative;
+    }
+    &__iconBtn {
+      margin-right: 10px;
+    }
+    &__accountDropdown,
+    &__cartDropdown {
+      a {
+        text-transform: uppercase;
+        font-weight: 700;
+      }
+    }
+    &__badge {
+      position: absolute;
+      right: 75px;
+      top: -15px;
+      width: 18px;
+      height: 18px;
+      line-height: 18px;
+      text-align: center;
+      font-size: 10px;
+      background: #f8694a;
+      color: #fff;
+      border-radius: 50%;
+      z-index: 99;
+    }
+  }
+}

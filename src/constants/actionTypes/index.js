@@ -1,0 +1,23 @@
+export const OPEN_NAVIGATION = "OPEN_NAVIGATION";
+
+//product
+export const PRODUCT_LOADING = "PRODUCT_LOADING";
+export const PRODUCT_LOAD_SUCCESS = "PRODUCT_LOAD_SUCCESS";
+export const PRODUCT_LOAD_ERROR = "PRODUCT_LOAD_ERROR";
+
+//cart
+export const ADD_TO_BASKET = "ADD_TO_BASKET";
+export const REMOVE_FROM_BASKET = "REMOVE_FROM_BASKET";
+
+//login
+export const LOGIN_LOADING = "LOGIN_LOADING";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_FAILED = "LOGIN_FAILED";
+
+//logout
+export const LOGOUT = "LOGOUT";
+
+//register
+export const REGISTER_LOADING = "REGISTER_LOADING";
+export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
+export const REGISTER_FAILED = "REGISTER_FAILED";

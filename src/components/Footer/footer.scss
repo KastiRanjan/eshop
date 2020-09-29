@@ -1,0 +1,102 @@
+.footer-container {
+  background-color: #f6f7f8;
+  padding: 30px 0px;
+
+  .footer {
+    a {
+      text-transform: uppercase;
+      color: #30323a;
+    }
+    h3 {
+      text-transform: uppercase;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 30px;
+      color: #30323a;
+    }
+
+    @include breakpoint-up(large) {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+
+      grid-template-areas:
+        "logo links1 links2 cta"
+        "social links1 links2 cta"
+        "copyright copyright copyright copyright";
+    }
+
+    &__logo {
+      margin-bottom: 30px;
+      @include breakpoint-up(large) {
+        grid-area: logo;
+      }
+    }
+    &__social {
+      @include breakpoint-up(large) {
+        grid-area: social;
+      }
+      a {
+        margin-right: 15px;
+      }
+      p {
+        margin: 0 0 10px;
+        line-height: 1.42857143;
+      }
+    }
+    &__links {
+      display: flex;
+      flex-direction: column;
+      &.col1 {
+        @include breakpoint-up(large) {
+          grid-area: links1;
+        }
+      }
+      &.col2 {
+        @include breakpoint-up(large) {
+          grid-area: links2;
+        }
+      }
+      .a {
+        position: relative;
+        display: inline-block;
+      }
+    }
+    &__cta {
+      @include breakpoint-up(large) {
+        grid-area: cta;
+      }
+      input {
+        margin-bottom: 15px;
+        width: 100%;
+        height: 40px;
+        padding: 0px 15px;
+        border: none;
+        background-color: transparent;
+        box-shadow: 0px 0px 0px 1px #dadada inset, 0px 0px 0px 5px transparent;
+        transition: 0.3s all;
+      }
+
+      button {
+        color: #fff;
+        background-color: #f8694a;
+        display: inline-block;
+        padding: 10px 15px;
+        text-transform: uppercase;
+        border: none;
+        transition: 0.3s all;
+        font-weight: 700;
+      }
+    }
+    &__copyright {
+      display: grid;
+      text-align: center;
+
+      @include breakpoint-up(large) {
+        grid-area: copyright;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+}
