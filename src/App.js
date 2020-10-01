@@ -15,8 +15,6 @@ import Signup from "./components/Signup/Signup";
 import Category from "./components/Category/Category";
 
 function App() {
-  const { singleProductState } = useContext(GlobalContext);
-
   return (
     <BrowserRouter>
       <Header />

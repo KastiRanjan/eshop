@@ -19,11 +19,10 @@ const OurProduct = (props) => {
   }, [productDispatch]);
 
   const addToBasket = (product) => {
+    console.log(product);
     dispatch({
       type: "ADD_TO_BASKET",
-      payload: {
-        product,
-      },
+      payload: product,
     });
   };
 

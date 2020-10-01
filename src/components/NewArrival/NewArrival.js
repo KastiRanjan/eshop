@@ -22,9 +22,7 @@ const NewArrival = (props) => {
   const addToBasket = (product) => {
     dispatch({
       type: "ADD_TO_BASKET",
-      payload: {
-        product,
-      },
+      payload: product,
     });
   };
 

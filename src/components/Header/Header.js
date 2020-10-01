@@ -75,7 +75,7 @@ export default function Header() {
                   className="header__cartDropdown"
                   button={
                     <>
-                      <span className="header__badge"></span>
+                      <span className="header__badge">{cartState.cartItem.length}</span>
                       <button className="header__iconBtn icon-btn">
                         <FaShoppingCart />
                       </button>

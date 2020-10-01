@@ -70,6 +70,7 @@ export default function Product() {
             <Slider {...settings}>
               {newArrival != undefined &&
                 newArrival.map((product) => {
+                  P;
                   return (
                     <Card
                       key={product.id}

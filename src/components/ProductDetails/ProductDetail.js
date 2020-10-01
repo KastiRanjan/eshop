@@ -17,23 +17,13 @@ import singleProduct from "../../context/reducers/singleProduct";
 import Color from "./Color";
 import Size from "./Size";
 import StarRating from "../common/StarRating";
+import { Redirect, withRouter } from "react-router";
 
-export default function ProductDetail() {
+function ProductDetail() {
   const [tab, setTab] = useState("des");
   const { singleProductState } = useContext(GlobalContext);
-  const {
-    name,
-    price,
-    image,
-    colors,
-    productImages,
-    discount,
-    averageRating,
-    description,
-    productSizes,
-    unit,
-  } = singleProductState.singleProduct;
-  console.log(singleProductState);
+  const product = singleProductState.singleProduct;
+  console.log(product);
   const settings = {
     dots: false,
     className: "center product-view",
@@ -66,56 +56,60 @@ export default function ProductDetail() {
               </div>
             </Slider>
           </div>
-          <div className="productDetail__body">
-            <div className="productDetail__label">
-              <span>New</span>
-              <span className="sales">{discount}&#37;</span>
-            </div>
-            <h2 className="productDetail__productName">{name}</h2>
-            <h3 className="productdetail__productPrice">
-              Rs:{price} <del>${discount}</del>
-            </h3>
-            <div className="productDetail__productRating">
-              <StarRating rating={averageRating} />
-            </div>
-            <p>
-              <strong>Availability: </strong>
-              {"In Stock"}
-            </p>
-            <p>
-              <strong>Brand: </strong>
-              {"E-Shop"}
-            </p>
-            <p>{description}</p>
-            <div className="productDetail__option">
-              <Size sizes={productSizes} />
-              <Color colors={colors} />
-            </div>
-            <div className="productdetail__btns flex flex-jc-sb flex-ai-c">
-              <div className="btn-left flex flex-ai-c">
-                <div className="amount">
-                  Qty:
-                  <input type="number" className="input" style={{ width: "90px" }} />
-                </div>
+          {product !== undefined ? (
+            <div className="productDetail__body">
+              <div className="productDetail__label">
+                <span>New</span>
+                <span className="sales">{product.discount}&#37;</span>
+              </div>
+              <h2 className="productDetail__productName">{product.name}</h2>
+              <h3 className="productdetail__productPrice">
+                Rs:{product.price} <del>${product.discount}</del>
+              </h3>
+              <div className="productDetail__productRating">
+                <StarRating rating={product.averageRating} />
+              </div>
+              <p>
+                <strong>Availability: </strong>
+                {"In Stock"}
+              </p>
+              <p>
+                <strong>Brand: </strong>
+                {"E-Shop"}
+              </p>
+              <p>{product.description}</p>
+              <div className="productDetail__option">
+                <Size sizes={product.productSizes} />
+                <Color colors={product.colors} />
+              </div>
+              <div className="productdetail__btns flex flex-jc-sb flex-ai-c">
+                <div className="btn-left flex flex-ai-c">
+                  <div className="amount">
+                    Qty:
+                    <input type="number" className="input" style={{ width: "90px" }} />
+                  </div>
 
-                <button className="cart primary-btn">
-                  <FaShoppingCart />
-                  Add to cart
-                </button>
-              </div>
-              <div className="btn-right">
-                <button className="fav main-btn icon-btn">
-                  <FaHeart />
-                </button>
-                <button className="exchange main-btn icon-btn">
-                  <FaExchangeAlt />
-                </button>
-                <button className="share main-btn icon-btn">
-                  <FaShareAlt />
-                </button>
+                  <button className="cart primary-btn">
+                    <FaShoppingCart />
+                    Add to cart
+                  </button>
+                </div>
+                <div className="btn-right">
+                  <button className="fav main-btn icon-btn">
+                    <FaHeart />
+                  </button>
+                  <button className="exchange main-btn icon-btn">
+                    <FaExchangeAlt />
+                  </button>
+                  <button className="share main-btn icon-btn">
+                    <FaShareAlt />
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
+          ) : (
+            <Redirect to="/" />
+          )}
           <div className="productDetail__tab">
             <ul className="productDetail__tabHeader flex flex-ai-c">
               <li className="active">
@@ -137,7 +131,7 @@ export default function ProductDetail() {
     </div>
   );
 }
-
+export default withRouter(ProductDetail);
 const Description = () => {
   return (
     <p>

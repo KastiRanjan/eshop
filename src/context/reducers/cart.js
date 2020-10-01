@@ -1,13 +1,15 @@
 import { ADD_TO_BASKET, REMOVE_FROM_BASKET } from "../../constants/actionTypes";
-// import cartInitialState from "../initialstates/cartInitialState";
+
 const cart = (state, { payload, type }) => {
+  console.log(state);
   switch (type) {
     case ADD_TO_BASKET:
-      return { ...state, basket: [...state.basket, payload] };
-
+      console.log(payload);
+      return { ...state, cartItem: [payload, ...state.cartItem] };
+      break;
     case REMOVE_FROM_BASKET:
       return { state };
-
+      break;
     default:
       return state;
   }

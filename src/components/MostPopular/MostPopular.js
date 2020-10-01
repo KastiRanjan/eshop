@@ -7,12 +7,9 @@ import { GlobalContext } from "../../context/Provider";
 import getProduct from "../../context/actions/product/getProduct";
 import { withRouter } from "react-router";
 const MostPopular = (props) => {
-  const {
-    cartDispatch: dispatch,
-    productState,
-    productDispatch,
-    singleProductDispatch,
-  } = useContext(GlobalContext);
+  const { cartDispatch, productState, productDispatch, singleProductDispatch } = useContext(
+    GlobalContext
+  );
   const mostPopular = productState.products.mostPopular;
   console.log(mostPopular);
   useEffect(() => {
@@ -20,12 +17,11 @@ const MostPopular = (props) => {
   }, [productDispatch]);
 
   const addToBasket = (product) => {
-    dispatch({
+    cartDispatch({
       type: "ADD_TO_BASKET",
-      payload: {
-        product,
-      },
+      payload: product,
     });
+    // props.history.push(`/product/${product.id}`);
   };
 
   const getSingleProduct = (product) => {
