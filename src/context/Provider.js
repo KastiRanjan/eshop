@@ -14,10 +14,11 @@ export const GlobalProvider = ({ children }) => {
   const [navigationState, navigationDispatch] = useReducer(navigation, navigationInitialState);
   const [cartState, cartDispatch] = useReducer(cart, cartInitialState);
   const [productState, productDispatch] = useReducer(product, productInitialState);
-  const [singleProductState, singleProductDispatch] = useReducer(singleProduct, [], () => {
-    const localdata = localStorage.getItem("singleProduct");
-    return localdata ? JSON.parse(localdata) : [];
-  });
+  const [singleProductState, singleProductDispatch] = useReducer(
+    singleProduct,
+    [],
+    singleProductInitialState
+  );
 
   useEffect(() => {
     localStorage.setItem("singleProduct", JSON.stringify(singleProductState));
