@@ -12,7 +12,13 @@ const products = (state, { payload, type }) => {
       return { ...state, loading: true };
       break;
     case PRODUCT_LOAD_SUCCESS:
-      return { ...state, loading: false, products: payload };
+      return {
+        ...state,
+        loading: false,
+        products: payload.products,
+        categories: payload.categories,
+        offers: payload.offers,
+      };
       break;
     case PRODUCT_LOAD_ERROR:
       return { ...state, loading: false, error: payload };

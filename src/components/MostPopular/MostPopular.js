@@ -1,20 +1,21 @@
 import React, { useEffect, useContext } from "react";
 import Slider from "react-slick";
 import banner from "../../img/banner14.jpg";
-import Card from "../Card/Card";
+import Card from "../common/Card/Card";
 import { FaExchangeAlt, FaHeart, FaSearchPlus, FaShoppingCart } from "react-icons/fa";
 import { GlobalContext } from "../../context/Provider";
 import getProduct from "../../context/actions/product/getProduct";
 import { Redirect, withRouter } from "react-router";
-const NewArrival = (props) => {
+import Axios from "axios";
+const MostPopular = (props) => {
   const {
     cartDispatch: dispatch,
     productState,
     productDispatch,
     singleProductDispatch,
   } = useContext(GlobalContext);
-  const newArrival = productState.products;
-
+  const mostPopular = productState.products.mostPopular;
+  console.log(mostPopular);
   useEffect(() => {
     getProduct()(productDispatch);
   }, [productDispatch]);
@@ -68,7 +69,7 @@ const NewArrival = (props) => {
       {/* <Modal /> */}
       <div className="container ">
         <div className="product__title">
-          <h2 className="title">New Arrivals</h2>
+          <h2 className="title">Most Popular</h2>
         </div>
         <div className="product__grid">
           <div className="product__item">
@@ -76,8 +77,8 @@ const NewArrival = (props) => {
           </div>
           <div className="product__item">
             <Slider {...settings}>
-              {newArrival !== [] &&
-                newArrival.map((product) => {
+              {mostPopular !== undefined &&
+                mostPopular.map((product) => {
                   return (
                     <Card
                       key={product.id}
@@ -122,4 +123,4 @@ const NewArrival = (props) => {
   );
 };
 
-export default withRouter(NewArrival);
+export default withRouter(MostPopular);

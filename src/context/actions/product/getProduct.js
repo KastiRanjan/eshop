@@ -15,7 +15,7 @@ export default () => (dispatch) => {
     .then((res) => {
       dispatch({
         type: PRODUCT_LOAD_SUCCESS,
-        payload: res.data.data.products.newArrivals,
+        payload: res.data.data,
       });
     })
     .catch((err) =>

@@ -2,11 +2,6 @@
   img {
     width: 100%;
   }
-  @include breakpoint-up(large) {
-    margin-left: 270px;
-    max-width: 870px;
-    overflow: hidden;
-  }
 }
 .slick-next {
   right: 50px;

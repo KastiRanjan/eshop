@@ -14,13 +14,12 @@ export default function Navigation() {
       onClick={() => dispatch({ type: "OPEN_NAVIGATION" })}
     >
       <div className={open ? "container flex open" : "container flex close"}>
-        <div className="navigation__category">
+        {/* <div className="navigation__category">
           <div className="navigation__categoryMenuHeader flex flex-ai-c flex-jc-sb">
             <div className="navigation__categoryTitle">categories</div>
             <FaList />
           </div>
-          <CategoryList />
-        </div>
+        </div> */}
         <div className="navigation__menu">
           <div className="navigation__menuHeader flex flex-ai-c flex-jc-sb hide-for-desktop">
             <div className="navigation__menuTitle">{"Menu"}</div>
@@ -73,26 +72,3 @@ export default function Navigation() {
     </div>
   );
 }
-
-const CategoryList = () => {
-  return (
-    <ul className="category">
-      {CategoryItems.map((category, index) => (
-        <li className="category__list" key={index}>
-          <Link to={category.url}>{category.title}</Link>
-        </li>
-      ))}
-    </ul>
-  );
-};
-
-const CategoryItems = [
-  { title: "Women's Clothing", url: "women Clothes" },
-  { title: "Men's Clothing", url: "men Clothes" },
-  { title: "Phone and Accessories", url: "phone and accessories" },
-  { title: "Computer and Office", url: "Computers" },
-  { title: "Consumer electronic", url: "women Clothes" },
-  { title: "Jewellery & Watches", url: "Jewellery & watches" },
-  { title: "Bags and Shoes", url: "Bags and Shoes" },
-  { title: "View All", url: "view All" },
-];

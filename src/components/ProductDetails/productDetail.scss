@@ -1,0 +1,119 @@
+.productDetail {
+  padding: 30px 0px;
+  &__grid {
+    @include breakpoint-up(large) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      //   grid-template-rows: 20% 10% 70%;
+
+      grid-template-areas:
+        "mainView body"
+        "view body"
+        "tab tab";
+    }
+  }
+  &__mainView {
+    grid-area: mainView;
+    padding-right: 15px;
+  }
+  &__view {
+    grid-area: view;
+    padding-right: 15px;
+    .slick-slide {
+      padding: 10px;
+      opacity: 0.2;
+    }
+    .slick-current {
+      box-shadow: 0px 0px 0px 2px #f8694a inset;
+      opacity: 1;
+    }
+  }
+  &__body {
+    grid-area: body;
+    padding-left: 15px;
+  }
+  &__label > span {
+    position: relative;
+    display: inline-block;
+    padding: 5px 15px;
+    font-weight: 700;
+    color: #fff;
+    background-color: #30323a;
+    z-index: 22;
+  }
+  &__label {
+    .sales {
+      background-color: #f8694a;
+      margin-left: 5px;
+    }
+  }
+  &__productName {
+    margin-top: 15px;
+  }
+  &__option {
+    padding-top: 30px;
+    margin-bottom: 15px;
+    border-top: 1px solid #dadada;
+    margin-top: 15px;
+    text-transform: uppercase;
+  }
+  &__colorOption {
+    button {
+      border: none;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+    }
+  }
+  &__sizeOption {
+    margin-bottom: 15px;
+  }
+  &__tab {
+    grid-area: tab;
+    margin-top: 30px;
+  }
+  &__tabHeader {
+    border-bottom: 1px solid #dadada;
+    margin-bottom: 30px;
+    span {
+      display: block;
+      padding: 15px 0px;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #30323a;
+      cursor: pointer;
+    }
+    li:nth-child(2) {
+      margin-left: 30px;
+    }
+    li:last-child {
+      margin-left: 30px;
+    }
+    .active {
+      position: relative;
+      span {
+        color: #f8694a;
+      }
+    }
+    .active > span::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -1.5px;
+      height: 3px;
+      width: 30px;
+      background-color: #f8694a;
+    }
+  }
+
+  .review {
+    @include breakpoint-up(large) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .input {
+      width: 100%;
+    }
+  }
+}

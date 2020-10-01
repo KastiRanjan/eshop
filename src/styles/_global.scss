@@ -35,10 +35,32 @@ a:hover {
 li {
   list-style-type: none;
 }
-h2 {
+h2,
+h3 {
   line-height: 1.1;
+  color: #30323a;
+  margin: 0 0 10px;
+  font-weight: 700;
+  font-size: 30px;
 }
-
+h3 {
+  font-size: 24px;
+}
+del {
+  color: #f8694a;
+  font-size: 70%;
+}
+ul {
+  padding: 0px;
+}
+.input {
+  height: 40px;
+  padding: 0px 15px;
+  border: none;
+  background-color: transparent;
+  box-shadow: 0px 0px 0px 1px #dadada inset, 0px 0px 0px 5px transparent;
+  transition: 0.3s all;
+}
 .container {
   width: 750px;
   margin: auto;
@@ -136,4 +158,34 @@ h2 {
     opacity: 1;
     transform: translateX(-50%) translateY(0px);
   }
+}
+
+//button
+.main-btn {
+  color: #30323a;
+  background-color: #fff;
+  -webkit-box-shadow: 0px 0px 0px 1px #dadada inset, 0px 0px 0px 6px transparent;
+  box-shadow: 0px 0px 0px 1px #dadada inset, 0px 0px 0px 6px transparent;
+}
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  padding: 0px;
+  border: none;
+}
+.primary-btn {
+  color: #fff;
+  background-color: #f8694a;
+}
+
+.primary-btn {
+  display: inline-block;
+  padding: 10px 15px;
+  text-transform: uppercase;
+  font-weight: 700;
+  border: none;
+  -webkit-transition: 0.3s all;
+  transition: 0.3s all;
 }

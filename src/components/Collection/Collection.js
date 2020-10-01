@@ -5,14 +5,14 @@ import img1 from "..//../img/banner10.jpg";
 
 export default function Collection() {
   const { productState } = useContext(GlobalContext);
+  const categories = productState.categories;
+  console.log(categories);
 
-  // const categories = productState.products.categories;
-  // console.log(productState.data);
   return (
     <div className="collection">
       <div className="container  ">
         <div className="collection__grid">
-          {/* {categories != undefined &&
+          {categories !== [] &&
             categories.map((category, index) => {
               return (
                 <Link to="/" className="collection__item" key={index}>
@@ -24,7 +24,7 @@ export default function Collection() {
                   </div>
                 </Link>
               );
-            })} */}
+            })}
         </div>
       </div>
     </div>

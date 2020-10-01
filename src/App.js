@@ -10,11 +10,13 @@ import Home from "./components/Homepage/Home";
 import Cart from "./components/Cart/Cart";
 import ProductDetail from "./components/ProductDetails/ProductDetail";
 import { GlobalContext } from "./context/Provider";
+import Login from "./components/Login/Login";
+import Signup from "./components/Signup/Signup";
+import Category from "./components/Category/Category";
 
 function App() {
   const { singleProductState } = useContext(GlobalContext);
 
-  const id = singleProductState.singleProduct.id;
   return (
     <BrowserRouter>
       <Header />
@@ -22,7 +24,11 @@ function App() {
       <Route exact path="/" component={Home} />
       <Route path="/checkout" component={Checkout} />
       <Route path="/cart" component={Cart} />
-      <Route path={`/product/${id}`} component={ProductDetail} />
+      <Route path="/login" component={Login} />
+      <Route path="/signup" component={Signup} />
+      <Route path={`/product/:id`} component={ProductDetail} />
+      <Route path={`/category`} component={Category} />
+
       <Footer />
     </BrowserRouter>
   );
