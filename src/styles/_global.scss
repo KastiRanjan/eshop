@@ -35,17 +35,17 @@ a:hover {
 li {
   list-style-type: none;
 }
+h1,
 h2,
-h3 {
-  line-height: 1.1;
+h3,
+h4,
+h5,
+h6 {
   color: #30323a;
   margin: 0 0 10px;
   font-weight: 700;
-  font-size: 30px;
 }
-h3 {
-  font-size: 24px;
-}
+
 del {
   color: #f8694a;
   font-size: 70%;
@@ -189,3 +189,28 @@ ul {
   -webkit-transition: 0.3s all;
   transition: 0.3s all;
 }
+
+///title
+// .title {
+//   position: relative;
+//   margin-bottom: 15px;
+//   margin-top: 15px;
+//   border-bottom: 1px solid #dadada;
+//   h2 {
+//     display: inline-block;
+//     text-transform: uppercase;
+//     font-weight: 700;
+//   }
+//   h2 {
+//     font-size: 30px;
+//   }
+// }
+// .title:after {
+//   content: "";
+//   position: absolute;
+//   left: 0;
+//   bottom: -1.5px;
+//   height: 3px;
+//   width: 60px;
+//   background-color: #f8694a;
+// }

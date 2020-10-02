@@ -4,7 +4,8 @@ import {
   PRODUCT_LOAD_ERROR,
 } from "../../constants/actionTypes";
 
-const products = (state, { payload, type }) => {
+const allProduct = (state, { payload, type }) => {
+  console.log(payload);
   switch (type) {
     case PRODUCT_LOADING:
       return { ...state, loading: true };
@@ -13,9 +14,7 @@ const products = (state, { payload, type }) => {
       return {
         ...state,
         loading: false,
-        products: payload.products,
-        categories: payload.categories,
-        offers: payload.offers,
+        allProduct: payload,
       };
       break;
     case PRODUCT_LOAD_ERROR:
@@ -27,4 +26,4 @@ const products = (state, { payload, type }) => {
   }
 };
 
-export default products;
+export default allProduct;

@@ -1,36 +1,37 @@
-import React, { createContext, useEffect, useReducer } from "react";
+import React, { createContext, useEffect, useReducer, useState } from "react";
 // import cartInitialState from "./initialstates/cartInitialState";
 import navigationInitialState from "./initialstates/navigationInitialState";
 import cart from "./reducers/cart";
 import product from "./reducers/products";
-
 import navigation from "./reducers/navigation";
 import productInitialState from "./initialstates/productInitialState";
-import singleProductInitialState from "./initialstates/singleProductInitialState";
-import singleProduct from "./reducers/singleProduct";
+import cartInitialState from "./initialstates/cartInitialState";
+import allProduct from "./reducers/allProuct";
+import allProductInitialState from "./initialstates/allProductInitialState";
+import productDetail from "./reducers/productDetail";
+import productDetailInitialState from "./initialstates/productDetailInitialState";
+import searchProductInitialState from "./initialstates/searchProductInitialState";
+import searchProduct from "./reducers/searchProduct";
 
 export const GlobalContext = createContext();
 
-const initialState = {
-  cartItem: localStorage.getItem("cartItem") ? JSON.parse(localStorage.getItem("cartItem")) : [],
-};
-
 export const GlobalProvider = ({ children }) => {
   const [navigationState, navigationDispatch] = useReducer(navigation, navigationInitialState);
-  const [cartState, cartDispatch] = useReducer(cart, initialState);
+  const [cartState, cartDispatch] = useReducer(cart, cartInitialState);
+  const [allProductState, allProductDispatch] = useReducer(allProduct, allProductInitialState);
   const [productState, productDispatch] = useReducer(product, productInitialState);
-  const [singleProductState, singleProductDispatch] = useReducer(
-    singleProduct,
-    [],
-    singleProductInitialState
+  const [searchProductState, searchProductDispatch] = useReducer(
+    searchProduct,
+    searchProductInitialState
   );
+  const [productDetailState, productDetailDispatch] = useReducer(
+    productDetail,
+    productDetailInitialState
+  );
+
   useEffect(() => {
     localStorage.setItem("cartItem", JSON.stringify(cartState.cartItem));
   }, [cartState]);
-
-  useEffect(() => {
-    localStorage.setItem("singleProduct", JSON.stringify(singleProductState));
-  }, [singleProductState]);
 
   return (
     <GlobalContext.Provider
@@ -41,8 +42,12 @@ export const GlobalProvider = ({ children }) => {
         productDispatch,
         cartState,
         cartDispatch,
-        singleProductState,
-        singleProductDispatch,
+        productDetailState,
+        productDetailDispatch,
+        allProductState,
+        allProductDispatch,
+        searchProductState,
+        searchProductDispatch,
       }}
     >
       {children}

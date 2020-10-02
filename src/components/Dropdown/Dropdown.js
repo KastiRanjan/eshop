@@ -21,7 +21,7 @@ const Dropdown = ({ value, options, onChange, className, button, link }) => {
         </span>
       </a>
       {link}
-
+      {/* 
       <ul className={isActive ? "dropdown__menu open" : "dropdown__menu"}>
         {options.map((opt, index) => (
           <li className="dropdown__menuItem" key={index} onClick={(e) => handleChange(opt.short)}>
@@ -30,7 +30,7 @@ const Dropdown = ({ value, options, onChange, className, button, link }) => {
             </Link>
           </li>
         ))}
-      </ul>
+      </ul> */}
     </li>
   );
 };

@@ -4,8 +4,16 @@ import { Link } from "react-router-dom";
 import { GlobalContext } from "../../context/Provider";
 
 export default function Cart() {
-  const { cartState } = useContext(GlobalContext);
+  const { cartState, cartDispatch } = useContext(GlobalContext);
   console.log(cartState.cartItem);
+
+  // const removeCartItem = (id) => {
+  //   cartDispatch({
+  //     type: "REMOVE_FROM_BASKET",
+  //     payload: id,
+  //   });
+  // };
+
   return (
     <div className="cart">
       <div className="container ">
@@ -35,7 +43,7 @@ export default function Cart() {
 
                     <div className="cart__btns">
                       <Link to="/checkout">
-                        <button className="cart__checkout">
+                        <button className="cart__checkout primary-btn">
                           Checkout <FaArrowCircleRight />
                         </button>
                       </Link>

@@ -1,7 +1,13 @@
-.slider-wrapper {
+.slider {
   img {
     width: 100%;
   }
+  .container {
+    overflow: hidden;
+  }
+}
+.slick-slider {
+  width: 100%;
 }
 .slick-next {
   right: 50px;
