@@ -12,7 +12,7 @@ import getProductDetail from "../../../context/actions/product/getProductDetail"
 const OurProduct = (props) => {
   const { cartDispatch: dispatch, productState, productDetailDispatch } = useContext(GlobalContext);
   const ourProduct = productState.products.mostPopular;
-
+  const { error } = productState;
   const addToBasket = (product) => {
     console.log(product);
     dispatch({
@@ -104,6 +104,7 @@ const OurProduct = (props) => {
                   );
                 })}
             </Slider>
+            {error}
           </div>
         </div>
       </div>

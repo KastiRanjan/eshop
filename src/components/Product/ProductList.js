@@ -2,12 +2,11 @@ import React, { useContext, useEffect } from "react";
 import { FaExchangeAlt, FaHeart, FaSearchPlus, FaShoppingCart } from "react-icons/fa";
 import Card from "../common/Card/Card";
 
-export default function ProductList({ allProduct }) {
-  console.log(allProduct);
+export default function ProductList({ currentProducts }) {
   return (
     <>
-      {allProduct !== undefined &&
-        allProduct.map((product) => (
+      {currentProducts !== undefined &&
+        currentProducts.map((product) => (
           <Card
             key={product.id}
             name={product.name}

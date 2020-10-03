@@ -1,4 +1,5 @@
 .product {
+  padding: 30px 0px;
   &__grid {
     @include breakpoint-up(large) {
       display: grid;
@@ -11,10 +12,51 @@
       grid-template-rows: auto;
     }
   }
+  .list-header,
+  .list-bottom {
+    align-items: center;
+    text-transform: uppercase;
+    @include breakpoint-down(small) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .right {
+      .input {
+        width: 90px;
+      }
+    }
+  }
   .list-mid {
+    @include breakpoint-up(medium) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
     @include breakpoint-up(large) {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  &__store {
+    margin-top: 15px;
+    padding-top: 30px;
+    border-top: 1px solid #dadada;
+    margin-bottom: 15px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #dadada;
+  }
+  .pagination {
+    display: inline-flex;
+    margin-left: 15px;
+    li {
+      margin-right: 10px;
+      a {
+        color: #30323a;
+      }
+    }
+    .active {
+      a {
+        color: #f8694a;
+      }
     }
   }
 }

@@ -18,10 +18,11 @@ export default () => (dispatch) => {
         payload: res.data.data,
       });
     })
-    .catch((err) =>
+    .catch((err) => {
+      console.log(err.message);
       dispatch({
         type: PRODUCT_LOAD_ERROR,
-        payload: err,
-      })
-    );
+        payload: err.message,
+      });
+    });
 };

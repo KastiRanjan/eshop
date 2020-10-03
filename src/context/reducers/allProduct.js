@@ -16,6 +16,7 @@ const allProduct = (state, { payload, type }) => {
         allProduct: payload,
       };
       break;
+
     case PRODUCT_LOAD_ERROR:
       return { ...state, loading: false, error: payload };
       break;
