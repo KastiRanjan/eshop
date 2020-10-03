@@ -1,7 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Slider from "react-slick";
 import { GlobalContext } from "../../context/Provider";
-import MostPopular from "../MostPopular/MostPopular";
+
 import img1 from "../../img/thumb-product03.jpg";
 import img2 from "../../img/thumb-product01.jpg";
 import {
@@ -13,17 +13,24 @@ import {
   FaStar,
 } from "react-icons/fa";
 import { render } from "@testing-library/react";
-import singleProduct from "../../context/reducers/singleProduct";
 import Color from "./Color";
 import Size from "./Size";
 import StarRating from "../common/StarRating";
 import { Redirect, withRouter } from "react-router";
+import MostPopular from "../Homepage/MostPopular/MostPopular";
+import getProductDetail from "../../context/actions/product/getProductDetail";
 
-function ProductDetail() {
+function ProductDetail(props) {
   const [tab, setTab] = useState("des");
-  const { singleProductState } = useContext(GlobalContext);
-  const product = singleProductState.singleProduct;
-  console.log(product);
+  const { productDetailState, productDetailDispatch } = useContext(GlobalContext);
+  const { productDetail, loading, error } = productDetailState;
+
+  useEffect(() => {
+    console.log(props);
+    const id = props.match.params.id;
+    getProductDetail(id)(productDetailDispatch);
+  }, []);
+
   const settings = {
     dots: false,
     className: "center product-view",
@@ -56,18 +63,20 @@ function ProductDetail() {
               </div>
             </Slider>
           </div>
-          {product !== undefined ? (
+          {loading === true ? (
+            <h1>loading</h1>
+          ) : (
             <div className="productDetail__body">
               <div className="productDetail__label">
                 <span>New</span>
-                <span className="sales">{product.discount}&#37;</span>
+                <span className="sales">{productDetail.discount}&#37;</span>
               </div>
-              <h2 className="productDetail__productName">{product.name}</h2>
+              <h2 className="productDetail__productName">{productDetail.name}</h2>
               <h3 className="productdetail__productPrice">
-                Rs:{product.price} <del>${product.discount}</del>
+                Rs:{productDetail.price} <del>${productDetail.discount}</del>
               </h3>
               <div className="productDetail__productRating">
-                <StarRating rating={product.averageRating} />
+                <StarRating rating={productDetail.averageRating} />
               </div>
               <p>
                 <strong>Availability: </strong>
@@ -77,10 +86,10 @@ function ProductDetail() {
                 <strong>Brand: </strong>
                 {"E-Shop"}
               </p>
-              <p>{product.description}</p>
+              <p>{productDetail.description}</p>
               <div className="productDetail__option">
-                <Size sizes={product.productSizes} />
-                <Color colors={product.colors} />
+                <Size sizes={productDetail.productSizes} />
+                <Color colors={productDetail.colors} />
               </div>
               <div className="productdetail__btns flex flex-jc-sb flex-ai-c">
                 <div className="btn-left flex flex-ai-c">
@@ -107,8 +116,6 @@ function ProductDetail() {
                 </div>
               </div>
             </div>
-          ) : (
-            <Redirect to="/" />
           )}
           <div className="productDetail__tab">
             <ul className="productDetail__tabHeader flex flex-ai-c">

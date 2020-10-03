@@ -1,15 +1,15 @@
 header {
   //styles for top header
+  .container {
+    flex-direction: column;
+    @include breakpoint-up(large) {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
   .topHeader {
     padding: 5px 0px;
     border-bottom: 1px solid #dadada;
-    .container {
-      flex-direction: column;
-      @include breakpoint-up(large) {
-        flex-direction: row;
-        align-items: center;
-      }
-    }
 
     &__links {
       margin: 0px;
@@ -42,12 +42,6 @@ header {
   .header {
     padding-top: 15px;
     padding-bottom: 15px;
-    display: flex;
-    flex-direction: column;
-    @include breakpoint-up(large) {
-      flex-direction: row;
-      align-items: center;
-    }
 
     &__left {
       @include breakpoint-down(small) {

@@ -9,7 +9,7 @@ export default function TopHeader() {
   return (
     <div className="topHeader flex">
       <div className="container flex flex-jc-sb">
-        <div className="topHeader__left">bskfshk</div>
+        <div className="topHeader__left">Welcome to E-Shop</div>
         <div className="topHeader__right ">
           <ul className="topHeader__links  flex  ">
             <li className="topHeader__item">

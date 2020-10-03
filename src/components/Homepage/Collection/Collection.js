@@ -1,15 +1,15 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { GlobalContext } from "../../context/Provider";
-import img1 from "..//../img/banner10.jpg";
+import { GlobalContext } from "../../../context/Provider";
+
+import img1 from "../../../img/banner10.jpg";
 
 export default function Collection() {
   const { productState } = useContext(GlobalContext);
   const categories = productState.categories;
-  console.log(categories);
 
   return (
-    <div className="collection">
+    <div className="collection flex">
       <div className="container  ">
         <div className="collection__grid">
           {categories !== [] &&

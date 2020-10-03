@@ -1,50 +1,47 @@
 import React, { useEffect, useContext } from "react";
 import Slider from "react-slick";
-import banner from "../../img/banner14.jpg";
-import Card from "../common/Card/Card";
+
 import { FaExchangeAlt, FaHeart, FaSearchPlus, FaShoppingCart } from "react-icons/fa";
-import { GlobalContext } from "../../context/Provider";
-import getProduct from "../../context/actions/product/getProduct";
-import { withRouter } from "react-router";
-const MostPopular = (props) => {
-  const { cartDispatch, productState, productDispatch, singleProductDispatch } = useContext(
-    GlobalContext
-  );
-  const mostPopular = productState.products.mostPopular;
-  console.log(mostPopular);
-  useEffect(() => {
-    getProduct()(productDispatch);
-  }, [productDispatch]);
+
+import { Redirect, withRouter } from "react-router";
+import { GlobalContext } from "../../../context/Provider";
+import getProduct from "../../../context/actions/product/getProduct";
+import Card from "../../common/Card/Card";
+import getProductDetail from "../../../context/actions/product/getProductDetail";
+const NewArrival = (props) => {
+  const {
+    cartDispatch: dispatch,
+    productState,
+    productDispatch,
+    productDetailDispatch,
+  } = useContext(GlobalContext);
+  const newArrival = productState.products.newArrivals;
 
   const addToBasket = (product) => {
-    cartDispatch({
-      type: "ADD_TO_BASKET",
-      payload: product,
-    });
-    // props.history.push(`/product/${product.id}`);
+    // dispatch({
+    //   type: "ADD_TO_BASKET",
+    //   payload: product,
+    // });
   };
 
-  const getSingleProduct = (product) => {
-    singleProductDispatch({
-      type: "GET_SINGLE_PRODUCT",
-      payload: product,
-    });
-    props.history.push(`/product/${product.id}`);
+  const getSingleProduct = (id) => {
+    getProductDetail(id)(productDetailDispatch);
+    props.history.push(`/product/${id}`);
   };
 
   return (
-    <div className="mostPopular flex">
+    <div className="newArrival flex">
+      {/* <Modal /> */}
       <div className="container ">
-        <div className="product__title">
-          <h2 className="title">Most Popular</h2>
+        <div className="newArrival__title">
+          <h2 className="title">Latest Product</h2>
         </div>
-        <div className="mostPopular__grid">
-          {mostPopular !== undefined &&
-            mostPopular.map((product) => {
+        <div className="newArrival__grid">
+          {newArrival !== undefined &&
+            newArrival.map((product) => {
               return (
-                <div className="mostPopular__item">
+                <div className="newArrival__item" key={product.id}>
                   <Card
-                    key={product.id}
                     name={product.name}
                     img="https://colorlib.com/etc/e-shop/img/product06.jpg"
                     price={product.price}
@@ -54,7 +51,7 @@ const MostPopular = (props) => {
                       <>
                         <button
                           className="card__quickView flex flex-ai-c fex-jc-c"
-                          onClick={() => getSingleProduct(product)}
+                          onClick={() => getSingleProduct(product.id)}
                         >
                           <FaSearchPlus />
                           Quick View
@@ -85,4 +82,4 @@ const MostPopular = (props) => {
   );
 };
 
-export default withRouter(MostPopular);
+export default withRouter(NewArrival);

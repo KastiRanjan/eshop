@@ -20,7 +20,7 @@ body {
   color: #4a4e5a;
 }
 
-button:focus,
+// button:focus,
 input:focus,
 select:focus {
   outline: none;
@@ -188,4 +188,7 @@ ul {
   border: none;
   -webkit-transition: 0.3s all;
   transition: 0.3s all;
+}
+.primary-btn:hover {
+  background-color: #30323a;
 }

@@ -1,0 +1,72 @@
+import React, { useEffect, useContext } from "react";
+
+import { FaExchangeAlt, FaHeart, FaSearchPlus, FaShoppingCart } from "react-icons/fa";
+
+import { withRouter } from "react-router";
+import getProductDetail from "../../../context/actions/product/getProductDetail";
+import { GlobalContext } from "../../../context/Provider";
+import Card from "../../common/Card/Card";
+const MostPopular = ({ history }) => {
+  const { productState, productDetailDispatch } = useContext(GlobalContext);
+  const mostPopular = productState.products.mostPopular;
+  console.log(productState);
+
+  const getSingleProduct = (id) => {
+    console.log(id);
+    getProductDetail(id)(productDetailDispatch);
+    history.push(`/product/${id}`);
+  };
+  return (
+    <div className="mostPopular flex">
+      <div className="container ">
+        <div className="mostPopular__title">
+          <h2 className="title">Most Popular</h2>
+        </div>
+        <div className="mostPopular__grid">
+          {mostPopular !== undefined &&
+            mostPopular.map((product) => {
+              return (
+                <div className="mostPopular__item">
+                  <Card
+                    key={product.id}
+                    name={product.name}
+                    img="https://colorlib.com/etc/e-shop/img/product06.jpg"
+                    price={product.price}
+                    discount={product.discount}
+                    rating={product.averageRating}
+                    view={
+                      <>
+                        <button
+                          className="card__quickView flex flex-ai-c fex-jc-c"
+                          onClick={() => getSingleProduct(product.id)}
+                        >
+                          <FaSearchPlus />
+                          Quick View
+                        </button>
+                      </>
+                    }
+                    button={
+                      <>
+                        <button className="favou card__iconBtn">
+                          <FaHeart />
+                        </button>
+                        <button className="card__exchange card__iconBtn">
+                          <FaExchangeAlt />
+                        </button>
+                        <button className="card__addToCart">
+                          <FaShoppingCart />
+                          Add to Cart
+                        </button>
+                      </>
+                    }
+                  />
+                </div>
+              );
+            })}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default withRouter(MostPopular);

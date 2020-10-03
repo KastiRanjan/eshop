@@ -1,22 +1,17 @@
 import React, { useEffect, useContext } from "react";
 import Slider from "react-slick";
-import banner from "../../img/banner14.jpg";
-import Card from "../common/Card/Card";
+import banner from "../../../img/banner14.jpg";
+
 import { FaExchangeAlt, FaHeart, FaSearchPlus, FaShoppingCart } from "react-icons/fa";
-import { GlobalContext } from "../../context/Provider";
-import getProduct from "../../context/actions/product/getProduct";
+
 import { Redirect, withRouter } from "react-router";
+import { GlobalContext } from "../../../context/Provider";
+import Card from "../../common/Card/Card";
+import getProduct from "../../../context/actions/product/getProduct";
+import getProductDetail from "../../../context/actions/product/getProductDetail";
 const OurProduct = (props) => {
-  const {
-    cartDispatch: dispatch,
-    productState,
-    productDispatch,
-    singleProductDispatch,
-  } = useContext(GlobalContext);
+  const { cartDispatch: dispatch, productState, productDetailDispatch } = useContext(GlobalContext);
   const ourProduct = productState.products.mostPopular;
-  useEffect(() => {
-    getProduct()(productDispatch);
-  }, [productDispatch]);
 
   const addToBasket = (product) => {
     console.log(product);
@@ -27,10 +22,7 @@ const OurProduct = (props) => {
   };
 
   const getSingleProduct = (product) => {
-    singleProductDispatch({
-      type: "GET_SINGLE_PRODUCT",
-      payload: product,
-    });
+    getProductDetail(product.id)(productDetailDispatch);
     props.history.push(`/product/${product.id}`);
   };
   var settings = {
@@ -62,17 +54,16 @@ const OurProduct = (props) => {
     ],
   };
   return (
-    <div className="product flex">
-      {/* <Modal /> */}
+    <div className="ourProduct flex">
       <div className="container ">
-        <div className="product__title">
+        <div className="ourProduct__title">
           <h2 className="title">Our Product</h2>
         </div>
-        <div className="product__grid">
-          <div className="product__item">
+        <div className="ourProduct__grid">
+          <div className="ourProduct__item">
             <img src={banner} alt="" style={{ width: "100%" }} />
           </div>
-          <div className="product__item">
+          <div className="ourProduct__item">
             <Slider {...settings}>
               {ourProduct !== undefined &&
                 ourProduct.map((product) => {

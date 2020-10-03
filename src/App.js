@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 import "./styles/style.scss";
 import Header from "./components/Header/Header";
 import Navigation from "./components/Navigation/Navigation";
@@ -9,10 +9,10 @@ import Footer from "./components/Footer/Footer";
 import Home from "./components/Homepage/Home";
 import Cart from "./components/Cart/Cart";
 import ProductDetail from "./components/ProductDetails/ProductDetail";
-import { GlobalContext } from "./context/Provider";
 import Login from "./components/Login/Login";
 import Signup from "./components/Signup/Signup";
 import Category from "./components/Category/Category";
+import Product from "./components/Product/Product";
 
 function App() {
   return (
@@ -24,6 +24,7 @@ function App() {
       <Route path="/cart" component={Cart} />
       <Route path="/login" component={Login} />
       <Route path="/signup" component={Signup} />
+      <Route path="/products" component={Product} />
       <Route path={`/product/:id`} component={ProductDetail} />
       <Route path={`/category`} component={Category} />
 

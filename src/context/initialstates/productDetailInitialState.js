@@ -1,7 +1,5 @@
 export default {
-  products: [],
-  categories: [],
-  offers: [],
+  productDetail: [],
   loading: true,
   error: null,
 };
