@@ -4,6 +4,7 @@ import getAllProduct from "../../context/actions/product/getAllProduct";
 import { GlobalContext } from "../../context/Provider";
 import Pagination from "react-js-pagination";
 import { FaArrowDown, FaBars, FaThLarge } from "react-icons/fa";
+import filterProduct from "../../context/actions/product/filterProduct";
 
 export default function Product() {
   const {
@@ -12,21 +13,21 @@ export default function Product() {
     allProductDispatch,
     productFilterDispatch,
   } = useContext(GlobalContext);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [productPerPage, setProductPerpage] = useState(9);
-  console.log(allProductState.products);
-  const { products, loading } = allProductState;
-  console.log(productFilterState);
+
+  const { products, loading, brands, sizes } = allProductState;
+  const finalProduct = productFilterState.length == 0 ? products : productFilterState.products;
+  console.log(finalProduct);
   useEffect(() => {
     getAllProduct()(allProductDispatch);
   }, []);
+  console.log(productFilterState);
 
+  //pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productPerPage, setProductPerpage] = useState(9);
   const indexOfLastPost = currentPage * productPerPage;
   const indexOfFirstPost = indexOfLastPost - productPerPage;
-  const currentProducts =
-    productFilterState.products !== undefined
-      ? productFilterState.products.slice(indexOfFirstPost, indexOfLastPost)
-      : [];
+  const currentProducts = finalProduct.slice(indexOfFirstPost, indexOfLastPost);
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
@@ -35,25 +36,32 @@ export default function Product() {
     setProductPerpage(e.target.value);
   };
 
+  //filter and sort product
   const productSort = (e) => {
-    if (e.target.value === "position") {
-      productFilterDispatch({
-        type: "FILTER_BY_POSITION",
-        payload: allProductState,
-      });
-    } else if (e.target.value === "price") {
-      productFilterDispatch({
-        type: "FILTER_BY_PRICE",
-        payload: allProductState,
-      });
-    }
-    if (e.target.value === "rating") {
-      productFilterDispatch({
-        type: "FILTER_BY_RATING",
-        payload: allProductState,
-      });
-    }
+    filterProduct({ e, allProductState })(productFilterDispatch);
   };
+  const filterByBrand = (name) => {
+    productFilterDispatch({
+      type: "FILTER_BY_BRAND",
+      payload: { name: name, products: products },
+    });
+  };
+  const filterBySize = (name) => {
+    productFilterDispatch({
+      type: "FILTER_BY_SIZE",
+      payload: { name: name, products: products },
+    });
+  };
+  const filterByColor = (name) => {
+    productFilterDispatch({
+      type: "FILTER_BY_COLOR",
+      payload: { name: name, products: products },
+    });
+  };
+  const arry = products.map((product) => product.colors.map((color) => color.code));
+  const newArray = Array.prototype.concat(...arry);
+  let unique = [...new Set(newArray)];
+  console.log(unique);
 
   return (
     <div className="product flex">
@@ -68,12 +76,32 @@ export default function Product() {
             </div>
             <div className="aside">
               <h3 className="aside-title">filter by color</h3>
+              <ul className="flex">
+                {unique.map((color) => (
+                  <li style={{ marginRight: "5px" }} onClick={() => filterByColor(color)}>
+                    <div
+                      className="box"
+                      style={{ width: "20px", height: "20px", background: color }}
+                    ></div>
+                  </li>
+                ))}
+              </ul>
             </div>
             <div className="aside">
               <h3 className="aside-title">filter by size</h3>
+              <ul>
+                {sizes.map((size) => (
+                  <li onClick={() => filterBySize(size)}>{size.value}</li>
+                ))}
+              </ul>
             </div>
             <div className="aside">
               <h3 className="aside-title">filter by brand</h3>
+              <ul>
+                {brands.map((brand) => (
+                  <li onClick={() => filterByBrand(brand.name)}>{brand.name}</li>
+                ))}
+              </ul>
             </div>
             <div className="aside">
               <h3 className="aside-title">Top rated product</h3>

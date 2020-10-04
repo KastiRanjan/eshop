@@ -7,7 +7,7 @@ import Card from "../common/Card/Card";
 
 const ProductList = ({ currentProducts, history, loading }) => {
   const { productDetailDispatch } = useContext(GlobalContext);
-  console.log(loading);
+  console.log(currentProducts);
   const getSingleProduct = (id) => {
     getProductDetail(id)(productDetailDispatch);
     history.push(`/product/${id}`);
@@ -21,7 +21,9 @@ const ProductList = ({ currentProducts, history, loading }) => {
   }
   return (
     <>
-      {currentProducts !== [] &&
+      {currentProducts.length === 0 ? (
+        <h3 style={{ height: "200px" }}>No product</h3>
+      ) : (
         currentProducts.map((product) => (
           <Card
             key={product.id}
@@ -56,7 +58,8 @@ const ProductList = ({ currentProducts, history, loading }) => {
               </>
             }
           />
-        ))}
+        ))
+      )}
     </>
   );
 };
