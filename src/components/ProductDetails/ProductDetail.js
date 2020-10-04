@@ -3,31 +3,25 @@ import Slider from "react-slick";
 import { GlobalContext } from "../../context/Provider";
 import img1 from "../../img/thumb-product03.jpg";
 import img2 from "../../img/thumb-product01.jpg";
-import {
-  FaExchangeAlt,
-  FaHeart,
-  FaShareAlt,
-  FaShoppingBasket,
-  FaShoppingCart,
-  FaStar,
-} from "react-icons/fa";
+import { FaExchangeAlt, FaHeart, FaShareAlt, FaShoppingCart } from "react-icons/fa";
 import Color from "./Color";
 import Size from "./Size";
 import StarRating from "../common/StarRating";
-import { Redirect, withRouter } from "react-router";
+import { withRouter } from "react-router";
 import MostPopular from "../Homepage/MostPopular/MostPopular";
 import getProductDetail from "../../context/actions/product/getProductDetail";
 
 function ProductDetail(props) {
-  console.log(props);
-  const id = props.match.params.id;
   const [tab, setTab] = useState("des");
   const { productDetailState, productDetailDispatch } = useContext(GlobalContext);
-  const { loading, error, productDetail } = productDetailState;
+  const { productDetail, loading } = productDetailState;
 
   useEffect(() => {
+    console.log(props);
+    const id = props.match.params.id;
     getProductDetail(id)(productDetailDispatch);
   }, []);
+
   const settings = {
     dots: false,
     className: "center product-view",
@@ -61,7 +55,7 @@ function ProductDetail(props) {
             </Slider>
           </div>
           {loading === true ? (
-            <h1>Loading......</h1>
+            <h1>loading</h1>
           ) : (
             <div className="productDetail__body">
               <div className="productDetail__label">
@@ -149,11 +143,11 @@ const Description = () => {
 };
 
 const TabRender = (tab) => {
-  if (tab.tab == "des") {
+  if (tab.tab === "des") {
     return <Description />;
-  } else if (tab.tab == "det") {
+  } else if (tab.tab === "det") {
     return <Detail />;
-  } else if (tab.tab == "rev") {
+  } else if (tab.tab === "rev") {
     return <Review />;
   }
 };

@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { GlobalContext } from "../../../context/Provider";
+
 import img1 from "../../../img/banner10.jpg";
 
 export default function Collection() {

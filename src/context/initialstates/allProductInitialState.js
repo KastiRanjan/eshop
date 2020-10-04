@@ -1,5 +1,9 @@
 export default {
-  allProduct: [],
-  loading: false,
+  products: [],
+  brands: [],
+  offers: [],
+  sizes: [],
+  groceries: [],
+  loading: true,
   error: null,
 };

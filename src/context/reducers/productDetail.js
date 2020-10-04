@@ -9,11 +9,14 @@ const productDetail = (state, { payload, type }) => {
     case PRODUCTDETAIL_LOADING:
       return { ...state, loading: true };
     case GET_PRODUCTDETAIL_SUCCESS:
-      return { ...state, productDetail: payload, loading: false };
-      break;
+      return {
+        ...state,
+        loading: false,
+        productDetail: payload,
+      };
     case GET_PRODUCTDETAIL_ERROR:
-      return { ...state, error: payload, loading: false };
-      break;
+      return { ...state, loading: false, error: payload };
+
     default:
       return state;
   }

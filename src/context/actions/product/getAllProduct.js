@@ -11,7 +11,7 @@ export default () => (dispatch) => {
   axios
     .get("https://laxmipujapasal.tk/api/Products/GetAllProducts")
     .then((res) => {
-      console.log(res.data.data);
+      console.log(res);
       dispatch({
         type: PRODUCT_LOAD_SUCCESS,
         payload: res.data.data,

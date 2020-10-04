@@ -1,8 +1,8 @@
 import axios from "axios";
 import {
-  PRODUCTDETAIL_LOADING,
-  GET_PRODUCTDETAIL_SUCCESS,
   GET_PRODUCTDETAIL_ERROR,
+  GET_PRODUCTDETAIL_SUCCESS,
+  PRODUCTDETAIL_LOADING,
 } from "../../../constants/actionTypes";
 export default (id) => (dispatch) => {
   dispatch({
@@ -11,6 +11,7 @@ export default (id) => (dispatch) => {
   axios
     .get(`https://laxmipujapasal.tk/api/products/GetProductDetails?id=${id}`)
     .then((res) => {
+      console.log(res);
       dispatch({
         type: GET_PRODUCTDETAIL_SUCCESS,
         payload: res.data.data.productDetails,

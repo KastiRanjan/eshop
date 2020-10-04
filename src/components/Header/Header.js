@@ -6,14 +6,14 @@ import { Link } from "react-router-dom";
 import Dropdown from "../Dropdown/Dropdown";
 import { GlobalContext } from "../../context/Provider";
 import searchProduct from "../../context/actions/product/searchProduct";
+import { HeaderContext } from "../../context/HeaderProvider";
 
 export default function Header() {
   const [account, setAccount] = useState(undefined);
   const [cart, setCart] = useState(undefined);
   const [keyword, setKeyword] = useState("");
-  const { cartState, navigationDispatch: dispatch, searchProductDispatch } = useContext(
-    GlobalContext
-  );
+  const { cartState, searchProductDispatch } = useContext(GlobalContext);
+  const { navigationDispatch: dispatch } = useContext(HeaderContext);
   const handleSearch = (e) => {
     setKeyword(e.target.value);
   };
@@ -83,7 +83,7 @@ export default function Header() {
                 className="header__cartDropdown"
                 button={
                   <>
-                    <span className="header__badge">{cartState.cartItem.length}</span>
+                    <span className="header__badge">0</span>
                     <button className="header__iconBtn icon-btn">
                       <FaShoppingCart />
                     </button>

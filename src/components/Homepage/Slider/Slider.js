@@ -16,14 +16,28 @@ export default function Slider() {
     <div className="slider flex">
       <div className="container ">
         <Slide {...settings}>
-          <div>
+          <div className="banner">
             <img src={banner1} alt="" />
+            <div className="caption">
+              <h1>
+                HOT DEAL <br /> <span>50%</span>
+              </h1>
+              <button className="primary-btn">Shop Now</button>
+            </div>
           </div>
-          <div>
+          <div className="banner">
             <img src={banner2} alt="" />
+            <div className="caption">
+              <h1>HOT DEAL</h1>
+              <button className="primary-btn">Shop Now</button>
+            </div>
           </div>
-          <div>
+          <div className="banner">
             <img src={banner3} alt="" />
+            <div className="caption">
+              <h1>HOT DEAL</h1>
+              <button className="primary-btn">Shop Now</button>
+            </div>
           </div>
         </Slide>
       </div>

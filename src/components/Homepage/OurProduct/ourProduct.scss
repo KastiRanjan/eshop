@@ -1,5 +1,4 @@
 .ourProduct {
-  padding: 30px 0px;
   &__title {
     position: relative;
     margin-bottom: 15px;
@@ -10,6 +9,7 @@
       text-transform: uppercase;
       font-weight: 700;
     }
+
     h2 {
       font-size: 30px;
     }
@@ -25,16 +25,9 @@
   }
 
   &__grid {
-    display: grid;
-    grid-template-columns: 25% 74%;
-    padding: 10px 0px;
-    @include breakpoint-down(medium) {
-      grid-template-columns: 49% 49%;
+    @include breakpoint-up(large) {
+      display: grid;
+      grid-template-columns: 25% 75%;
     }
-    @include breakpoint-down(small) {
-      grid-template-columns: 100%;
-    }
-  }
-  &__item {
   }
 }

@@ -15,7 +15,7 @@ export default (keyword) => (dispatch) => {
       console.log(res);
       dispatch({
         type: SEARCHPRODUCT_SUCCESS,
-        payload: res.data,
+        payload: res.data.data.productDetails,
       });
     })
     .catch((err) =>

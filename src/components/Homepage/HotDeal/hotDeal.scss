@@ -1,10 +1,49 @@
 .hotDeal {
+  background: #f6f7f8;
+  padding: 30px 0px;
+
   &__grid {
     @include breakpoint-up(large) {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      //   grid-template-rows: repeat(2, 1fr);
-      //   grid-template-areas: "";
+      grid-template-columns: 64% 33%;
+      grid-template-rows: repeat(2, 1fr);
+      column-gap: 30px;
+      grid-template-areas:
+        "item1 item2"
+        "item1 item3";
     }
+    div:first-child {
+      grid-area: item1;
+    }
+    div:nth-child(2) {
+      grid-area: item2;
+    }
+    div:nth-child(3) {
+      grid-area: item3;
+    }
+  }
+  &__item {
+    position: relative;
+
+    .caption {
+      position: absolute;
+      top: 20px;
+      text-align: center;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      h2 {
+        color: #fff;
+        // font-size: 46px;
+        text-transform: uppercase;
+        span {
+          font-weight: 400;
+        }
+      }
+    }
+  }
+
+  img {
+    width: 100%;
   }
 }

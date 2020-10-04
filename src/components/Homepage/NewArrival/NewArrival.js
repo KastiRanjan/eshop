@@ -1,47 +1,39 @@
-import React, { useEffect, useContext } from "react";
+import React, { useContext } from "react";
+
 import { FaExchangeAlt, FaHeart, FaSearchPlus, FaShoppingCart } from "react-icons/fa";
-import { Redirect, withRouter } from "react-router";
-import getProduct from "../../../context/actions/product/getProduct";
-import getProductDetail from "../../../context/actions/product/getProductDetail";
+
+import { withRouter } from "react-router";
 import { GlobalContext } from "../../../context/Provider";
 import Card from "../../common/Card/Card";
-const NewArrival = ({ history }) => {
-  const {
-    cartDispatch: dispatch,
-    productState,
-    productDispatch,
-    productDetailDispatch,
-  } = useContext(GlobalContext);
+import getProductDetail from "../../../context/actions/product/getProductDetail";
+const NewArrival = (props) => {
+  const { productState, productDetailDispatch } = useContext(GlobalContext);
   const newArrival = productState.products.newArrivals;
 
-  useEffect(() => {
-    getProduct()(productDispatch);
-  }, [productDispatch]);
-
   const addToBasket = (product) => {
-    dispatch({
-      type: "ADD_TO_BASKET",
-      payload: product,
-    });
+    // dispatch({
+    //   type: "ADD_TO_BASKET",
+    //   payload: product,
+    // });
   };
 
-  const getSingleProduct = (product) => {
-    const id = product.id;
+  const getSingleProduct = (id) => {
     getProductDetail(id)(productDetailDispatch);
-    history.push(`/product/${id}`);
+    props.history.push(`/product/${id}`);
   };
 
   return (
-    <div className="latestProduct">
+    <div className="newArrival flex">
+      {/* <Modal /> */}
       <div className="container ">
-        <div className="latestProduct__title ">
+        <div className="newArrival__title">
           <h2 className="title">Latest Product</h2>
         </div>
-        <div className="latestProduct__grid">
+        <div className="newArrival__grid">
           {newArrival !== undefined &&
             newArrival.map((product) => {
               return (
-                <div className="latestProduct__item" key={product.id}>
+                <div className="newArrival__item" key={product.id}>
                   <Card
                     name={product.name}
                     img="https://colorlib.com/etc/e-shop/img/product06.jpg"
@@ -52,7 +44,7 @@ const NewArrival = ({ history }) => {
                       <>
                         <button
                           className="card__quickView flex flex-ai-c fex-jc-c"
-                          onClick={() => getSingleProduct(product)}
+                          onClick={() => getSingleProduct(product.id)}
                         >
                           <FaSearchPlus />
                           Quick View

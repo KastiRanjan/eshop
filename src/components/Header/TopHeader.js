@@ -9,7 +9,7 @@ export default function TopHeader() {
   return (
     <div className="topHeader flex">
       <div className="container flex flex-jc-sb">
-        <div className="topHeader__left">Welcome to e-shop!</div>
+        <div className="topHeader__left">Welcome to E-Shop</div>
         <div className="topHeader__right ">
           <ul className="topHeader__links  flex  ">
             <li className="topHeader__item">
@@ -21,7 +21,7 @@ export default function TopHeader() {
             <li className="topHeader__item">
               <Link to="/">FAQ</Link>
             </li>
-            {/* <Dropdown
+            <Dropdown
               value={language}
               onChange={(v) => setLanguage(v)}
               className="topHeader__item"
@@ -40,7 +40,7 @@ export default function TopHeader() {
                 { name: "USD ($)", short: "USD" },
                 { name: "EUR (E)", short: "EUR" },
               ]}
-            /> */}
+            />
           </ul>
         </div>
       </div>

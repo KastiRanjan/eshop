@@ -1,38 +1,24 @@
-import React, { useEffect, useContext } from "react";
+import React, { useContext } from "react";
+
 import { FaExchangeAlt, FaHeart, FaSearchPlus, FaShoppingCart } from "react-icons/fa";
-import getProduct from "../../../context/actions/product/getProduct";
+
 import { withRouter } from "react-router";
+import getProductDetail from "../../../context/actions/product/getProductDetail";
 import { GlobalContext } from "../../../context/Provider";
 import Card from "../../common/Card/Card";
-import getProductDetail from "../../../context/actions/product/getProductDetail";
 const MostPopular = ({ history }) => {
-  const { cartDispatch, productState, productDispatch, productDetailDispatch } = useContext(
-    GlobalContext
-  );
-  const mostPopular = productState.products.mostPopular;
+  const { productState, productDetailDispatch } = useContext(GlobalContext);
+  const mostPopular = productState.products == [] ? [] : productState.products.mostPopular;
 
-  useEffect(() => {
-    getProduct()(productDispatch);
-  }, [productDispatch]);
-
-  const addToBasket = (product) => {
-    cartDispatch({
-      type: "ADD_TO_BASKET",
-      payload: product,
-    });
-    // props.history.push(`/product/${product.id}`);
-  };
-
-  const getSingleProduct = (product) => {
-    const id = product.id;
+  const getSingleProduct = (id) => {
+    console.log(id);
     getProductDetail(id)(productDetailDispatch);
     history.push(`/product/${id}`);
   };
-
   return (
     <div className="mostPopular flex">
       <div className="container ">
-        <div className="mostPopular__title ">
+        <div className="mostPopular__title">
           <h2 className="title">Most Popular</h2>
         </div>
         <div className="mostPopular__grid">
@@ -41,6 +27,7 @@ const MostPopular = ({ history }) => {
               return (
                 <div className="mostPopular__item" key={product.id}>
                   <Card
+                    key={product.id}
                     name={product.name}
                     img="https://colorlib.com/etc/e-shop/img/product06.jpg"
                     price={product.price}
@@ -50,7 +37,7 @@ const MostPopular = ({ history }) => {
                       <>
                         <button
                           className="card__quickView flex flex-ai-c fex-jc-c"
-                          onClick={() => getSingleProduct(product)}
+                          onClick={() => getSingleProduct(product.id)}
                         >
                           <FaSearchPlus />
                           Quick View
@@ -65,7 +52,7 @@ const MostPopular = ({ history }) => {
                         <button className="card__exchange card__iconBtn">
                           <FaExchangeAlt />
                         </button>
-                        <button className="card__addToCart" onClick={() => addToBasket(product)}>
+                        <button className="card__addToCart">
                           <FaShoppingCart />
                           Add to Cart
                         </button>
