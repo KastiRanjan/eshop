@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useContext } from "react";
 
 import { FaExchangeAlt, FaHeart, FaSearchPlus, FaShoppingCart } from "react-icons/fa";
 
@@ -8,8 +8,7 @@ import { GlobalContext } from "../../../context/Provider";
 import Card from "../../common/Card/Card";
 const MostPopular = ({ history }) => {
   const { productState, productDetailDispatch } = useContext(GlobalContext);
-  const mostPopular = productState.products.mostPopular;
-  console.log(productState);
+  const mostPopular = productState.products == [] ? [] : productState.products.mostPopular;
 
   const getSingleProduct = (id) => {
     console.log(id);
@@ -26,7 +25,7 @@ const MostPopular = ({ history }) => {
           {mostPopular !== undefined &&
             mostPopular.map((product) => {
               return (
-                <div className="mostPopular__item">
+                <div className="mostPopular__item" key={product.id}>
                   <Card
                     key={product.id}
                     name={product.name}

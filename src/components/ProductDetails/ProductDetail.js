@@ -1,29 +1,20 @@
 import React, { useContext, useEffect, useState } from "react";
 import Slider from "react-slick";
 import { GlobalContext } from "../../context/Provider";
-
 import img1 from "../../img/thumb-product03.jpg";
 import img2 from "../../img/thumb-product01.jpg";
-import {
-  FaExchangeAlt,
-  FaHeart,
-  FaShareAlt,
-  FaShoppingBasket,
-  FaShoppingCart,
-  FaStar,
-} from "react-icons/fa";
-import { render } from "@testing-library/react";
+import { FaExchangeAlt, FaHeart, FaShareAlt, FaShoppingCart } from "react-icons/fa";
 import Color from "./Color";
 import Size from "./Size";
 import StarRating from "../common/StarRating";
-import { Redirect, withRouter } from "react-router";
+import { withRouter } from "react-router";
 import MostPopular from "../Homepage/MostPopular/MostPopular";
 import getProductDetail from "../../context/actions/product/getProductDetail";
 
 function ProductDetail(props) {
   const [tab, setTab] = useState("des");
   const { productDetailState, productDetailDispatch } = useContext(GlobalContext);
-  const { productDetail, loading, error } = productDetailState;
+  const { productDetail, loading } = productDetailState;
 
   useEffect(() => {
     console.log(props);
@@ -152,11 +143,11 @@ const Description = () => {
 };
 
 const TabRender = (tab) => {
-  if (tab.tab == "des") {
+  if (tab.tab === "des") {
     return <Description />;
-  } else if (tab.tab == "det") {
+  } else if (tab.tab === "det") {
     return <Detail />;
-  } else if (tab.tab == "rev") {
+  } else if (tab.tab === "rev") {
     return <Review />;
   }
 };

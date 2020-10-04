@@ -1,11 +1,27 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { FaExchangeAlt, FaHeart, FaSearchPlus, FaShoppingCart } from "react-icons/fa";
+import { withRouter } from "react-router";
+import getProductDetail from "../../context/actions/product/getProductDetail";
+import { GlobalContext } from "../../context/Provider";
 import Card from "../common/Card/Card";
 
-export default function ProductList({ currentProducts }) {
+const ProductList = ({ currentProducts, history, loading }) => {
+  const { productDetailDispatch } = useContext(GlobalContext);
+  console.log(loading);
+  const getSingleProduct = (id) => {
+    getProductDetail(id)(productDetailDispatch);
+    history.push(`/product/${id}`);
+  };
+  let loadingProduct = [];
+  for (let i = 0; i < 9; i++) {
+    loadingProduct.push(<Card loading={true} key={i} />);
+  }
+  if (loading == true) {
+    return <>{loadingProduct}</>;
+  }
   return (
     <>
-      {currentProducts !== undefined &&
+      {currentProducts !== [] &&
         currentProducts.map((product) => (
           <Card
             key={product.id}
@@ -16,7 +32,10 @@ export default function ProductList({ currentProducts }) {
             rating={product.averageRating}
             view={
               <>
-                <button className="card__quickView flex flex-ai-c fex-jc-c">
+                <button
+                  className="card__quickView flex flex-ai-c fex-jc-c"
+                  onClick={() => getSingleProduct(product.id)}
+                >
                   <FaSearchPlus />
                   Quick View
                 </button>
@@ -40,4 +59,5 @@ export default function ProductList({ currentProducts }) {
         ))}
     </>
   );
-}
+};
+export default withRouter(ProductList);

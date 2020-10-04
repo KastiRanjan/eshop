@@ -1,18 +1,16 @@
-import React, { useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import Slider from "react-slick";
 import banner from "../../../img/banner14.jpg";
-
 import { FaExchangeAlt, FaHeart, FaSearchPlus, FaShoppingCart } from "react-icons/fa";
-
-import { Redirect, withRouter } from "react-router";
+import { withRouter } from "react-router";
 import { GlobalContext } from "../../../context/Provider";
 import Card from "../../common/Card/Card";
-import getProduct from "../../../context/actions/product/getProduct";
+
 import getProductDetail from "../../../context/actions/product/getProductDetail";
 const OurProduct = (props) => {
   const { cartDispatch: dispatch, productState, productDetailDispatch } = useContext(GlobalContext);
   const ourProduct = productState.products.mostPopular;
-  const { error } = productState;
+  // const { error } = productState;
   const addToBasket = (product) => {
     console.log(product);
     dispatch({
@@ -104,7 +102,6 @@ const OurProduct = (props) => {
                   );
                 })}
             </Slider>
-            {error}
           </div>
         </div>
       </div>

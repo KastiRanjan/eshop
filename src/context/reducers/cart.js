@@ -6,10 +6,10 @@ const cart = (state, { payload, type }) => {
     case ADD_TO_BASKET:
       console.log(payload);
       return { ...state, cartItem: [payload, ...state.cartItem] };
-      break;
+
     case REMOVE_FROM_BASKET:
       return { ...state, cartItem: state.cartItem.filter((product) => product.id !== payload) };
-      break;
+
     default:
       return state;
   }

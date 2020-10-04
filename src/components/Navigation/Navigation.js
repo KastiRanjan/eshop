@@ -1,13 +1,15 @@
 import React, { useContext, useState } from "react";
 import { FaList } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { GlobalContext } from "../../context/Provider";
+import { HeaderContext } from "../../context/HeaderProvider";
+
 import Dropdown from "../Dropdown/Dropdown";
 export default function Navigation() {
   const [account, setAccount] = useState(undefined);
   const [cart, setCart] = useState(undefined);
-  const { navigationState, navigationDispatch: dispatch } = useContext(GlobalContext);
+  const { navigationState, navigationDispatch: dispatch } = useContext(HeaderContext);
   const open = navigationState.openNavigation;
+
   return (
     <div
       className={open ? "navigation shadow " : "navigation flex"}
@@ -30,7 +32,7 @@ export default function Navigation() {
               <Link to="/">Home</Link>
             </li>
             <li className="navigation__item">
-              <Link to="/shop">Shop</Link>
+              <Link to="/products">Shop</Link>
             </li>
             <Dropdown
               value="Women"
