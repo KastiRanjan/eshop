@@ -9,6 +9,7 @@ import Card from "../../common/Card/Card";
 import getProductDetail from "../../../context/actions/product/getProductDetail";
 const OurProduct = (props) => {
   const { cartDispatch: dispatch, productState, productDetailDispatch } = useContext(GlobalContext);
+  const { loading } = productState;
   const ourProduct = productState.products.mostPopular;
   // const { error } = productState;
   const addToBasket = (product) => {
@@ -23,6 +24,7 @@ const OurProduct = (props) => {
     getProductDetail(product.id)(productDetailDispatch);
     props.history.push(`/product/${product.id}`);
   };
+
   var settings = {
     dots: true,
     infinite: true,
