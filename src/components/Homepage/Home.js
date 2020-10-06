@@ -1,5 +1,5 @@
-import React, { useContext, useEffect } from "react";
-import getProduct from "../../context/actions/product/getProduct";
+import React, { useContext } from "react";
+
 import { GlobalContext } from "../../context/Provider";
 import Collection from "./Collection/Collection";
 import HotDeal from "./HotDeal/HotDeal";
@@ -9,10 +9,17 @@ import OurProuct from "./OurProduct/OurProuct";
 import Slider from "./Slider/Slider";
 
 export default function Home() {
-  const { productDispatch } = useContext(GlobalContext);
-  useEffect(() => {
-    getProduct()(productDispatch);
-  }, [productDispatch]);
+  const { productState, productDispatch } = useContext(GlobalContext);
+
+  const { error } = productState;
+
+  // if (error !== null) {
+  //   return (
+  //     <div>
+  //       <h1 style={{ textAlign: "center" }}>{error}</h1>
+  //     </div>
+  //   );
+  // }
   return (
     <div>
       <Slider />

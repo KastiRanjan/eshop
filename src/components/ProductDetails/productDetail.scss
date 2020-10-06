@@ -4,8 +4,7 @@
     @include breakpoint-up(large) {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: repeat(3, 1fr);
-      //   grid-template-rows: 20% 10% 70%;
+      grid-template-rows: auto;
 
       grid-template-areas:
         "mainView body"
@@ -16,6 +15,9 @@
   &__mainView {
     grid-area: mainView;
     padding-right: 15px;
+    .slick-slide img:hover {
+      transform: scale(3.1);
+    }
   }
   &__view {
     grid-area: view;
@@ -46,6 +48,11 @@
     .sales {
       background-color: #f8694a;
       margin-left: 5px;
+    }
+  }
+  &__btns {
+    @include breakpoint-down(small) {
+      flex-direction: column;
     }
   }
   &__productName {
@@ -115,5 +122,26 @@
     .input {
       width: 100%;
     }
+  }
+  .slick-btn {
+    width: 40px;
+    height: 40px;
+    display: block;
+    background: #30323a;
+    position: absolute;
+    top: 50%;
+  }
+
+  .slick-btn-left {
+    transform: translate(-50%, -50%);
+    left: 42px;
+    z-index: 1;
+  }
+  .slick-btn-left::before {
+    content: "←";
+  }
+  .slick-btn-right {
+    transform: translate(-50%, -50%);
+    right: 8px;
   }
 }

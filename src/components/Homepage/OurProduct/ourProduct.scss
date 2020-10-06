@@ -27,7 +27,8 @@
   &__grid {
     @include breakpoint-up(large) {
       display: grid;
-      grid-template-columns: 25% 75%;
+      grid-template-columns: 23% 74%;
+      column-gap: 30px;
     }
   }
 }

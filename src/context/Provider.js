@@ -26,7 +26,6 @@ export const GlobalProvider = ({ children }) => {
     productDetail,
     productDetailInitialState
   );
-  console.log(productFilterState);
   const [searchProductState, searchProductDispatch] = useReducer(
     searchProduct,
     searchProductInitialState

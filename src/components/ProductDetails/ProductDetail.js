@@ -1,8 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import Slider from "react-slick";
 import { GlobalContext } from "../../context/Provider";
-import img1 from "../../img/thumb-product03.jpg";
-import img2 from "../../img/thumb-product01.jpg";
+import img4 from "../../img/main-product04.jpg";
+import img3 from "../../img/main-product03.jpg";
+import img2 from "../../img/main-product02.jpg";
+import img1 from "../../img/thumb-product01.jpg";
 import { FaExchangeAlt, FaHeart, FaShareAlt, FaShoppingCart } from "react-icons/fa";
 import Color from "./Color";
 import Size from "./Size";
@@ -22,21 +24,67 @@ function ProductDetail(props) {
     getProductDetail(id)(productDetailDispatch);
   }, []);
 
+  const PrevArrow = () => {
+    return (
+      <div
+        className="slick-btn-left"
+
+        // onClick={onClick}
+      />
+    );
+  };
+
+  const NextArrow = () => {
+    return (
+      <div
+        className="slick-btn"
+
+        // onClick={onClick}
+      />
+    );
+  };
+
   const settings = {
     dots: false,
     className: "center product-view",
     centerMode: true,
     infinite: true,
-    centerPadding: "60px",
+    centerPadding: "50px",
     slidesToShow: 3,
+    focusOnSelect: true,
+    speed: 500,
+    // nextArrow: <NextArrow />,
+    // prevArrow: <PrevArrow />,
+  };
+  const setting = {
+    dots: false,
+    fade: true,
+    className: "center product-view",
+    infinite: true,
+    centerPadding: "50px",
+    slidesToShow: 1,
+    focusOnSelect: true,
     speed: 500,
   };
   return (
-    <div className="productDetail">
+    <div className="productDetail flex">
       <div className="container">
         <div className="productDetail__grid">
           <div className="productDetail__mainView">
-            <img src={img1} alt="" />
+            <Slider {...setting} style={{ width: "570px" }}>
+              <div className="img1" style={{ width: "152px" }}>
+                <img src={img1} alt="" style={{ width: "100%" }} />
+              </div>
+              <div className="img1" style={{ width: "152px" }}>
+                <img src={img2} alt="" style={{ width: "100%" }} />
+              </div>
+              <div className="img1" style={{ width: "152px" }}>
+                <img src={img3} alt="" style={{ width: "100%" }} />
+              </div>
+              <div className="img1" style={{ width: "152px" }}>
+                <img src={img4} alt="" style={{ width: "100%" }} />
+              </div>
+            </Slider>
           </div>
           <div className="productDetail__view ">
             <Slider {...settings} style={{ width: "570px" }}>
@@ -79,16 +127,15 @@ function ProductDetail(props) {
               </p>
               <p>{productDetail.description}</p>
               <div className="productDetail__option">
-                <Size sizes={productDetail.productSizes} />
-                <Color colors={productDetail.colors} />
+                {/* <Size sizes={productDetail.productSizes} /> */}
+                {/* <Color colors={productDetail.colors} /> */}
               </div>
-              <div className="productdetail__btns flex flex-jc-sb flex-ai-c">
+              <div className="productDetail__btns flex flex-jc-sb ">
                 <div className="btn-left flex flex-ai-c">
                   <div className="amount">
-                    Qty:
-                    <input type="number" className="input" style={{ width: "90px" }} />
+                    QTY: <input type="number" className="input" style={{ width: "90px" }} />
                   </div>
-
+                  &nbsp;
                   <button className="cart primary-btn">
                     <FaShoppingCart />
                     Add to cart
@@ -98,12 +145,15 @@ function ProductDetail(props) {
                   <button className="fav main-btn icon-btn">
                     <FaHeart />
                   </button>
+                  &nbsp;
                   <button className="exchange main-btn icon-btn">
                     <FaExchangeAlt />
                   </button>
+                  &nbsp;
                   <button className="share main-btn icon-btn">
                     <FaShareAlt />
                   </button>
+                  &nbsp;
                 </div>
               </div>
             </div>
