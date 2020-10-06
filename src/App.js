@@ -9,6 +9,7 @@ import { routes } from "./routes";
 import { HeaderProvider } from "./context/HeaderProvider";
 import { GlobalContext } from "./context/Provider";
 import getProduct from "./context/actions/product/getProduct";
+import ScrollToTop from "./ScrollToTop";
 
 function App() {
   const { productState, productDispatch } = useContext(GlobalContext);
@@ -20,6 +21,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <HeaderProvider>
         <Header />
         <Navigation />

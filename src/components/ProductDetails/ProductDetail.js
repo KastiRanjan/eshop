@@ -12,39 +12,35 @@ import StarRating from "../common/StarRating";
 import { withRouter } from "react-router";
 import MostPopular from "../Homepage/MostPopular/MostPopular";
 import getProductDetail from "../../context/actions/product/getProductDetail";
+import Skeleton from "../Skeleton";
 
 function ProductDetail(props) {
   const [tab, setTab] = useState("des");
   const { productDetailState, productDetailDispatch } = useContext(GlobalContext);
   const { productDetail, loading } = productDetailState;
+  console.log(productDetailState);
+  console.log(productDetail);
 
+  const color = productDetail.length == 0 ? [] : productDetail.colors;
+  const sizes = productDetail.length == 0 ? [] : productDetail.productSizes;
+  const productImage = productDetail == 0 ? [] : productDetail.productImages;
   useEffect(() => {
     console.log(props);
     const id = props.match.params.id;
     getProductDetail(id)(productDetailDispatch);
   }, []);
+  //slidernav
+  const [nav1, setNav1] = useState(null);
+  const [nav2, setNav2] = useState(null);
+  let slider1 = [],
+    slider2 = [];
 
-  const PrevArrow = () => {
-    return (
-      <div
-        className="slick-btn-left"
+  useEffect(() => {
+    setNav1(slider1);
+    setNav2(slider2);
+  }, [slider1, slider2]);
 
-        // onClick={onClick}
-      />
-    );
-  };
-
-  const NextArrow = () => {
-    return (
-      <div
-        className="slick-btn"
-
-        // onClick={onClick}
-      />
-    );
-  };
-
-  const settings = {
+  const setting1 = {
     dots: false,
     className: "center product-view",
     centerMode: true,
@@ -53,13 +49,11 @@ function ProductDetail(props) {
     slidesToShow: 3,
     focusOnSelect: true,
     speed: 500,
-    // nextArrow: <NextArrow />,
-    // prevArrow: <PrevArrow />,
   };
-  const setting = {
+  const setting2 = {
     dots: false,
     fade: true,
-    className: "center product-view",
+    className: "center product-main-view",
     infinite: true,
     centerPadding: "50px",
     slidesToShow: 1,
@@ -71,24 +65,46 @@ function ProductDetail(props) {
       <div className="container">
         <div className="productDetail__grid">
           <div className="productDetail__mainView">
-            <Slider {...setting} style={{ width: "570px" }}>
-              <div className="img1" style={{ width: "152px" }}>
-                <img src={img1} alt="" style={{ width: "100%" }} />
-              </div>
-              <div className="img1" style={{ width: "152px" }}>
-                <img src={img2} alt="" style={{ width: "100%" }} />
-              </div>
-              <div className="img1" style={{ width: "152px" }}>
-                <img src={img3} alt="" style={{ width: "100%" }} />
-              </div>
-              <div className="img1" style={{ width: "152px" }}>
-                <img src={img4} alt="" style={{ width: "100%" }} />
-              </div>
+            <Slider
+              {...setting2}
+              style={{ width: "570px" }}
+              asNavFor={nav2}
+              ref={(slider) => {
+                slider1 = slider;
+              }}
+            >
+              {productImage.map((image) => {
+                const imageURL = `https://laxmipujapasal.tk/Products/${image.image}`;
+                return (
+                  <div className="" style={{ width: "554px" }}>
+                    <img
+                      src={imageURL}
+                      alt=""
+                      style={{ width: "100%", height: "555px", objectFit: "contain" }}
+                    />
+                  </div>
+                );
+              })}
             </Slider>
           </div>
           <div className="productDetail__view ">
-            <Slider {...settings} style={{ width: "570px" }}>
-              <div className="img1" style={{ width: "152px" }}>
+            <Slider
+              {...setting1}
+              style={{ width: "570px" }}
+              asNavFor={nav1}
+              ref={(slider) => {
+                slider2 = slider;
+              }}
+            >
+              {productImage.map((image) => {
+                const imageURL = `https://laxmipujapasal.tk/Products/${image.image}`;
+                return (
+                  <div className="" style={{ width: "152px" }}>
+                    <img src={imageURL} alt="" style={{ width: "100%", objectFit: "contain" }} />
+                  </div>
+                );
+              })}
+              {/* <div className="img1" style={{ width: "152px" }}>
                 <img src={img1} alt="" style={{ width: "100%" }} />
               </div>
               <div className="img1" style={{ width: "152px" }}>
@@ -99,11 +115,11 @@ function ProductDetail(props) {
               </div>
               <div className="img1" style={{ width: "152px" }}>
                 <img src={img1} alt="" style={{ width: "100%" }} />
-              </div>
+              </div> */}
             </Slider>
           </div>
           {loading === true ? (
-            <h1>loading</h1>
+            <Skeleton />
           ) : (
             <div className="productDetail__body">
               <div className="productDetail__label">
@@ -127,8 +143,8 @@ function ProductDetail(props) {
               </p>
               <p>{productDetail.description}</p>
               <div className="productDetail__option">
-                {/* <Size sizes={productDetail.productSizes} /> */}
-                {/* <Color colors={productDetail.colors} /> */}
+                <Size sizes={sizes} />
+                <Color colors={color} />
               </div>
               <div className="productDetail__btns flex flex-jc-sb ">
                 <div className="btn-left flex flex-ai-c">
@@ -224,10 +240,23 @@ const Review = () => {
         </p>
       </div>
       <div className="review__form">
+        <h4 className="text-uppercase ">Write your review</h4>
         <form>
-          <input className="input" type="text" placeholder="Your Name" />
-          <input className="input" type="email" placeholder="Email Address" />
-          <textarea className="input" name="" id="" rows="6" placeholder="Your Review" />
+          <div className="form-group">
+            <input className="input" type="text" placeholder="Your Name" />
+          </div>
+
+          <div className="form-group">
+            <input className="input" type="email" placeholder="Email Address" />
+          </div>
+          <div className="form-group">
+            <textarea className="input" name="" id="" rows="6" placeholder="Your Review" />
+          </div>
+
+          <label htmlFor="">
+            YOUR RATING: <StarRating />
+          </label>
+          <div className="primary-btn">Submit</div>
         </form>
       </div>
     </div>

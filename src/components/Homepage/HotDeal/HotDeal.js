@@ -10,24 +10,29 @@ export default function HotDeal() {
 
   const newOffer = offers.concat(offer);
 
+  console.log(newOffer);
+
   return (
     <div className="hotDeal flex">
       <div className="container">
         <div className="hotDeal__grid">
           {newOffer !== [] &&
-            newOffer.map((offer) => (
-              <div className="hotDeal__item " key={offer.id}>
-                <img src={banner2} alt="" />
-                <div className="caption">
-                  <h2>
-                    {offer.name} <br />
-                    <span>up to {offer.discount} &#37; Off</span>
-                  </h2>
+            newOffer.map((offer) => {
+              const imageUrl = `https://laxmipujapasal.tk/Offers/${offer.imageUrl}`;
+              return (
+                <div className="hotDeal__item " key={offer.id}>
+                  <img src={imageUrl} alt="" />
+                  <div className="caption">
+                    <h2>
+                      {offer.name} <br />
+                      <span>up to {offer.discount} &#37; Off</span>
+                    </h2>
 
-                  <button className="primary-btn">shop now</button>
+                    <button className="primary-btn">shop now</button>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
         </div>
       </div>
     </div>

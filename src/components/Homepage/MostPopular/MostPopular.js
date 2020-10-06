@@ -24,12 +24,13 @@ const MostPopular = ({ history }) => {
         <div className="mostPopular__grid">
           {mostPopular !== undefined &&
             mostPopular.map((product) => {
+              const imageURL = `https://laxmipujapasal.tk/Products/${product.image}`;
               return (
                 <div className="mostPopular__item" key={product.id}>
                   <Card
                     key={product.id}
                     name={product.name}
-                    img="https://colorlib.com/etc/e-shop/img/product06.jpg"
+                    img={imageURL}
                     price={product.price}
                     discount={product.discount}
                     rating={product.averageRating}
@@ -49,9 +50,11 @@ const MostPopular = ({ history }) => {
                         <button className="favou card__iconBtn">
                           <FaHeart />
                         </button>
+                        &nbsp;
                         <button className="card__exchange card__iconBtn">
                           <FaExchangeAlt />
                         </button>
+                        &nbsp;
                         <button className="card__addToCart">
                           <FaShoppingCart />
                           Add to Cart

@@ -32,11 +32,12 @@ const NewArrival = (props) => {
         <div className="newArrival__grid">
           {newArrival !== undefined &&
             newArrival.map((product) => {
+              const imageURL = `https://laxmipujapasal.tk/Products/${product.image}`;
               return (
                 <div className="newArrival__item" key={product.id}>
                   <Card
                     name={product.name}
-                    img="https://colorlib.com/etc/e-shop/img/product06.jpg"
+                    img={imageURL}
                     price={product.price}
                     discount={product.discount}
                     rating={product.averageRating}
@@ -56,9 +57,11 @@ const NewArrival = (props) => {
                         <button className="favou card__iconBtn">
                           <FaHeart />
                         </button>
+                        &nbsp;
                         <button className="card__exchange card__iconBtn">
                           <FaExchangeAlt />
                         </button>
+                        &nbsp;
                         <button className="card__addToCart" onClick={() => addToBasket(product)}>
                           <FaShoppingCart />
                           Add to Cart

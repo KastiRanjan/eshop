@@ -61,17 +61,18 @@ const OurProduct = (props) => {
         </div>
         <div className="ourProduct__grid">
           <div className="ourProduct__item">
-            <img src={banner} alt="" style={{ width: "100%" }} />
+            <img src={banner} alt="" style={{ width: "100%", height: "300px" }} />
           </div>
           <div className="ourProduct__item">
             <Slider {...settings}>
               {ourProduct !== undefined &&
                 ourProduct.map((product) => {
+                  const imageURL = `https://laxmipujapasal.tk/Products/${product.image}`;
                   return (
                     <Card
                       key={product.id}
                       name={product.name}
-                      img="https://colorlib.com/etc/e-shop/img/product06.jpg"
+                      img={imageURL}
                       price={product.price}
                       discount={product.discount}
                       rating={product.averageRating}
@@ -91,9 +92,11 @@ const OurProduct = (props) => {
                           <button className="favou card__iconBtn">
                             <FaHeart />
                           </button>
+                          &nbsp;
                           <button className="card__exchange card__iconBtn">
                             <FaExchangeAlt />
                           </button>
+                          &nbsp;
                           <button className="card__addToCart" onClick={() => addToBasket(product)}>
                             <FaShoppingCart />
                             Add to Cart
