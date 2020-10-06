@@ -76,8 +76,12 @@ function ProductDetail(props) {
               {productImage.map((image) => {
                 const imageURL = `https://laxmipujapasal.tk/Products/${image.image}`;
                 return (
-                  <div className="img1" style={{ width: "152px" }}>
-                    <img src={imageURL} alt="" style={{ width: "100%" }} />
+                  <div className="" style={{ width: "554px" }}>
+                    <img
+                      src={imageURL}
+                      alt=""
+                      style={{ width: "100%", height: "555px", objectFit: "contain" }}
+                    />
                   </div>
                 );
               })}
@@ -92,7 +96,15 @@ function ProductDetail(props) {
                 slider2 = slider;
               }}
             >
-              <div className="img1" style={{ width: "152px" }}>
+              {productImage.map((image) => {
+                const imageURL = `https://laxmipujapasal.tk/Products/${image.image}`;
+                return (
+                  <div className="" style={{ width: "152px" }}>
+                    <img src={imageURL} alt="" style={{ width: "100%", objectFit: "contain" }} />
+                  </div>
+                );
+              })}
+              {/* <div className="img1" style={{ width: "152px" }}>
                 <img src={img1} alt="" style={{ width: "100%" }} />
               </div>
               <div className="img1" style={{ width: "152px" }}>
@@ -103,7 +115,7 @@ function ProductDetail(props) {
               </div>
               <div className="img1" style={{ width: "152px" }}>
                 <img src={img1} alt="" style={{ width: "100%" }} />
-              </div>
+              </div> */}
             </Slider>
           </div>
           {loading === true ? (

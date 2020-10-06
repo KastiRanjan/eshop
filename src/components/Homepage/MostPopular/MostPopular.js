@@ -50,9 +50,11 @@ const MostPopular = ({ history }) => {
                         <button className="favou card__iconBtn">
                           <FaHeart />
                         </button>
+                        &nbsp;
                         <button className="card__exchange card__iconBtn">
                           <FaExchangeAlt />
                         </button>
+                        &nbsp;
                         <button className="card__addToCart">
                           <FaShoppingCart />
                           Add to Cart

@@ -87,7 +87,10 @@ export default function Product() {
               <h3 className="aside-title">filter by color</h3>
               <ul className="flex">
                 {unique.map((color) => (
-                  <li style={{ marginRight: "5px" }} onClick={() => filterByColor(color)}>
+                  <li
+                    style={{ marginRight: "5px", cursor: "pointer" }}
+                    onClick={() => filterByColor(color)}
+                  >
                     <div
                       className="box"
                       style={{ width: "20px", height: "20px", background: color }}
@@ -100,7 +103,9 @@ export default function Product() {
               <h3 className="aside-title">filter by size</h3>
               <ul>
                 {sizes.map((size) => (
-                  <li onClick={() => filterBySize(size)}>{size.value}</li>
+                  <li style={{ cursor: "pointer" }} onClick={() => filterBySize(size)}>
+                    {size.value}
+                  </li>
                 ))}
               </ul>
             </div>
@@ -108,7 +113,9 @@ export default function Product() {
               <h3 className="aside-title">filter by brand</h3>
               <ul>
                 {brands.map((brand) => (
-                  <li onClick={() => filterByBrand(brand.name)}>{brand.name}</li>
+                  <li style={{ cursor: "pointer" }} onClick={() => filterByBrand(brand.name)}>
+                    {brand.name}
+                  </li>
                 ))}
               </ul>
             </div>
