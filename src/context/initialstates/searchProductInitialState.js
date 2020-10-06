@@ -1,5 +1,5 @@
 export default {
-  searchedProduct: {},
+  searchedProduct: [],
   loading: false,
   error: null,
 };

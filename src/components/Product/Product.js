@@ -14,7 +14,8 @@ export default function Product() {
     productFilterDispatch,
   } = useContext(GlobalContext);
 
-  const { products, loading, brands, sizes } = allProductState;
+  const { products, loading, brands, sizes, error } = allProductState;
+  console.log(error);
   const finalProduct = productFilterState.length == 0 ? products : productFilterState.products;
   console.log(finalProduct);
   useEffect(() => {
@@ -62,6 +63,14 @@ export default function Product() {
   const newArray = Array.prototype.concat(...arry);
   let unique = [...new Set(newArray)];
   console.log(unique);
+
+  // if (error) {
+  //   return (
+  //     <div>
+  //       <h1 style={{ textAlign: "center" }}>{error}</h1>
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="product flex">

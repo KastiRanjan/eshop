@@ -8,7 +8,7 @@ const Dropdown = ({ value, options, onChange, className, button, link }) => {
   const [isActive, setIsActive] = useDetectOutsideClick(dropdownRef, false);
 
   const handleChange = (selectedValue) => {
-    onChange(selectedValue);
+    selectedValue !== undefined && onChange(selectedValue);
     setIsActive(false);
   };
 
@@ -21,16 +21,16 @@ const Dropdown = ({ value, options, onChange, className, button, link }) => {
         </span>
       </a>
       {link}
-      {/* 
+
       <ul className={isActive ? "dropdown__menu open" : "dropdown__menu"}>
         {options.map((opt, index) => (
           <li className="dropdown__menuItem" key={index} onClick={(e) => handleChange(opt.short)}>
             <Link to={opt.url} className="dropdown__link">
-              {opt.name}
+              {opt.icon} {opt.name}
             </Link>
           </li>
         ))}
-      </ul> */}
+      </ul>
     </li>
   );
 };

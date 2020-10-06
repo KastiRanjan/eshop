@@ -1,5 +1,5 @@
 export default {
   productDetail: [],
-  loading: true,
+  loading: false,
   error: null,
 };

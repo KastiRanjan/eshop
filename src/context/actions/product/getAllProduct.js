@@ -20,7 +20,7 @@ export default () => (dispatch) => {
     .catch((err) =>
       dispatch({
         type: PRODUCT_LOAD_ERROR,
-        payload: err,
+        payload: err.message,
       })
     );
 };

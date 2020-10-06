@@ -1,5 +1,12 @@
 import React from "react";
-import { FaFacebookF, FaGooglePlus, FaInstagram, FaPinterest, FaTwitter } from "react-icons/fa";
+import {
+  FaAngleRight,
+  FaFacebookF,
+  FaGooglePlus,
+  FaInstagram,
+  FaPinterest,
+  FaTwitter,
+} from "react-icons/fa";
 import { Link } from "react-router-dom";
 import logo from "../../img/logo.png";
 
@@ -37,7 +44,9 @@ export default function Footer() {
           </div>
           <div className="footer__links col1">
             <h3>My Account</h3>
-            <Link to="/"> My Account</Link>
+            <Link to="/">
+              <FaAngleRight /> My Account
+            </Link>
             <Link to="/"> My Wishlist</Link>
             <Link to="/"> Compare</Link>
             <Link to="/"> Checkout</Link>

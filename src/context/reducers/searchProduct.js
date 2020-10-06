@@ -12,7 +12,7 @@ const searchProduct = (state, { payload, type }) => {
       return {
         ...state,
         loading: false,
-        searchedProduct: payload,
+        searchedProduct: payload.productDetails,
       };
     case SEARCHPRODUCT_ERROR:
       return { ...state, loading: false, error: payload };

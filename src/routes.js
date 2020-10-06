@@ -3,14 +3,11 @@ import Cart from "./components/Cart/Cart";
 import Checkout from "./components/Checkout/Checkout";
 import Home from "./components/Homepage/Home";
 import Login from "./components/Login/Login";
-import PagenotFound from "./components/PagenotFound";
+import PagenotFound from "./components/nomatch/PagenotFound";
 import Product from "./components/Product/Product";
 import ProductDetail from "./components/ProductDetails/ProductDetail";
+import SearchList from "./components/SearchList/SearchList";
 import Signup from "./components/Signup/Signup";
-
-// const Home = React.lazy(() => import("./components/Homepage/Home"));
-// const Cart = React.lazy(() => import("./components/Cart/Cart"));
-// const ProductDetail = React.lazy(() => import("./components/ProductDetails/ProductDetail"));
 
 export const routes = [
   {
@@ -38,6 +35,11 @@ export const routes = [
     path: "/products",
     exact: false,
     component: Product,
+  },
+  {
+    path: "/catalog/:query",
+    exact: false,
+    component: SearchList,
   },
 
   {

@@ -1,16 +1,25 @@
 import React, { useContext, useState } from "react";
 import TopHeader from "./TopHeader";
 import logo from "../../img/logo.png";
-import { FaSearch, FaBars, FaShoppingCart, FaRegUser } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import {
+  FaSearch,
+  FaBars,
+  FaShoppingCart,
+  FaRegUser,
+  FaLock,
+  FaUserAlt,
+  FaHeart,
+  FaExchangeAlt,
+  FaCheck,
+  FaUserPlus,
+} from "react-icons/fa";
+import { Link, withRouter } from "react-router-dom";
 import Dropdown from "../Dropdown/Dropdown";
 import { GlobalContext } from "../../context/Provider";
 import searchProduct from "../../context/actions/product/searchProduct";
 import { HeaderContext } from "../../context/HeaderProvider";
 
-export default function Header() {
-  const [account, setAccount] = useState(undefined);
-  const [cart, setCart] = useState(undefined);
+const Header = ({ history }) => {
   const [keyword, setKeyword] = useState("");
   const { cartState, searchProductDispatch } = useContext(GlobalContext);
   const { navigationDispatch: dispatch } = useContext(HeaderContext);
@@ -21,6 +30,7 @@ export default function Header() {
   const handleSubmit = (e) => {
     e.preventDefault();
     searchProduct(keyword)(searchProductDispatch);
+    history.push(`/catalog/${keyword}`);
   };
 
   return (
@@ -55,40 +65,17 @@ export default function Header() {
             <div className="header__btns flex">
               <Dropdown
                 value="My Account"
-                onChange={(v) => setAccount(v)}
                 options={accountOptions}
                 className="header__accountDropdown "
-                button={
-                  <button className="header__iconBtn icon-btn">
-                    <FaRegUser />
-                  </button>
-                }
-                link={
-                  <span className="header__loginBtn">
-                    <Link to="/login" className="login">
-                      Login
-                    </Link>
-                    /
-                    <Link to="/signup" className="join">
-                      Join
-                    </Link>
-                  </span>
-                }
+                button={accountButton()}
+                link={link1()}
               />
 
               <Dropdown
                 value="My Cart"
-                onChange={(v) => setCart(v)}
                 options={cartItems}
                 className="header__cartDropdown"
-                button={
-                  <>
-                    <span className="header__badge">0</span>
-                    <button className="header__iconBtn icon-btn">
-                      <FaShoppingCart />
-                    </button>
-                  </>
-                }
+                button={cartButton()}
                 link={<span className="header__priceTag">35.20$</span>}
               />
 
@@ -104,15 +91,64 @@ export default function Header() {
       </div>
     </header>
   );
-}
+};
+export default withRouter(Header);
+const accountButton = () => (
+  <button className="header__iconBtn icon-btn">
+    <FaRegUser />
+  </button>
+);
+const cartButton = () => (
+  <>
+    <span className="header__badge">0</span>
+    <button className="header__iconBtn icon-btn">
+      <FaShoppingCart />
+    </button>
+  </>
+);
+const link1 = () => (
+  <span className="header__loginBtn">
+    <Link to="/login" className="login">
+      Login
+    </Link>
+    /
+    <Link to="/signup" className="join">
+      Join
+    </Link>
+  </span>
+);
 
 const accountOptions = [
-  { name: "My Account", url: "/" },
-  { name: "My Wishlist", url: "/compare" },
-  { name: "Compare", url: "/compare" },
-  { name: "Checkout", url: "/checkout" },
-  { name: "Login", url: "/login" },
-  { name: "Create Account", url: "/join" },
+  {
+    name: "My Account",
+    url: "/",
+    icon: <FaUserAlt className="dropdown-icon" color="#f8694a" size="14" />,
+  },
+  {
+    name: "My Wishlist",
+    url: "/compare",
+    icon: <FaHeart className="dropdown-icon" color="#f8694a" size="14" />,
+  },
+  {
+    name: "Compare",
+    url: "/compare",
+    icon: <FaExchangeAlt className="dropdown-icon" color="#f8694a" size="14" />,
+  },
+  {
+    name: "Checkout",
+    url: "/checkout",
+    icon: <FaCheck className="dropdown-icon" color="#f8694a" size="14" />,
+  },
+  {
+    name: "Login",
+    url: "/login",
+    icon: <FaLock className="dropdown-icon" color="#f8694a" size="14" />,
+  },
+  {
+    name: "Create Account",
+    url: "/join",
+    icon: <FaUserPlus className="dropdown-icon" color="#f8694a" size="14" />,
+  },
 ];
 
 const cartItems = [

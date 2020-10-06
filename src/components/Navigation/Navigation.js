@@ -5,8 +5,6 @@ import { HeaderContext } from "../../context/HeaderProvider";
 
 import Dropdown from "../Dropdown/Dropdown";
 export default function Navigation() {
-  const [account, setAccount] = useState(undefined);
-  const [cart, setCart] = useState(undefined);
   const { navigationState, navigationDispatch: dispatch } = useContext(HeaderContext);
   const open = navigationState.openNavigation;
 
@@ -16,12 +14,6 @@ export default function Navigation() {
       onClick={() => dispatch({ type: "OPEN_NAVIGATION" })}
     >
       <div className={open ? "container flex open" : "container flex close"}>
-        {/* <div className="navigation__category">
-          <div className="navigation__categoryMenuHeader flex flex-ai-c flex-jc-sb">
-            <div className="navigation__categoryTitle">categories</div>
-            <FaList />
-          </div>
-        </div> */}
         <div className="navigation__menu">
           <div className="navigation__menuHeader flex flex-ai-c flex-jc-sb hide-for-desktop">
             <div className="navigation__menuTitle">{"Menu"}</div>
@@ -36,7 +28,6 @@ export default function Navigation() {
             </li>
             <Dropdown
               value="Women"
-              onChange={(v) => setAccount(v)}
               options={[
                 { name: "Home", url: "/" },
                 { name: "About", url: "/about" },
@@ -46,11 +37,10 @@ export default function Navigation() {
             />
             <Dropdown
               value="Men"
-              onChange={(v) => setCart(v)}
               options={[
                 { name: "Home", url: "/" },
                 { name: "About", url: "/about" },
-                { name: "Checkbbbbbbbbbbbbbbvvvvvvvvvvvvvvvvvhhhhhhhhhhout", url: "/checkout" },
+                { name: "Checvvvhhhhhhhhhhout", url: "/checkout" },
               ]}
               className="navigation__item navigation_pages"
             />
@@ -60,7 +50,6 @@ export default function Navigation() {
 
             <Dropdown
               value="Pages"
-              onChange={(v) => setAccount(v)}
               options={[
                 { name: "Home", url: "/" },
                 { name: "About", url: "/about" },

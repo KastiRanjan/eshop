@@ -130,6 +130,11 @@ header {
     &__iconBtn {
       margin-right: 10px;
     }
+    &__accountDropdown {
+      .dropdown-icon {
+        margin-right: 15px;
+      }
+    }
     &__accountDropdown,
     &__cartDropdown {
       a {
@@ -137,6 +142,7 @@ header {
         font-weight: 700;
       }
     }
+
     &__badge {
       position: absolute;
       right: 75px;

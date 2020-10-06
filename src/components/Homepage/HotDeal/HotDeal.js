@@ -9,7 +9,6 @@ export default function HotDeal() {
   const offers = productState.offers;
 
   const newOffer = offers.concat(offer);
-  console.log(newOffer);
 
   return (
     <div className="hotDeal flex">
