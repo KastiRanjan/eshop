@@ -18,6 +18,14 @@
     .slick-slide img:hover {
       transform: scale(3.1);
     }
+    .slick-arrow {
+      display: none !important;
+    }
+  }
+  &__mainView:hover {
+    .slick-arrow {
+      display: block !important;
+    }
   }
   &__view {
     grid-area: view;
@@ -119,29 +127,15 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
     }
-    .input {
-      width: 100%;
+    h4 {
+      font-size: 18px;
     }
-  }
-  .slick-btn {
-    width: 40px;
-    height: 40px;
-    display: block;
-    background: #30323a;
-    position: absolute;
-    top: 50%;
-  }
-
-  .slick-btn-left {
-    transform: translate(-50%, -50%);
-    left: 42px;
-    z-index: 1;
-  }
-  .slick-btn-left::before {
-    content: "←";
-  }
-  .slick-btn-right {
-    transform: translate(-50%, -50%);
-    right: 8px;
+    .form-group {
+      margin-bottom: 15px;
+    }
+    textarea.input {
+      height: 90px;
+      padding: 15px;
+    }
   }
 }
