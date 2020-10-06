@@ -26,13 +26,13 @@ const ProductList = ({ currentProducts, history, loading }) => {
         <h3 style={{ height: "200px" }}>No product</h3>
       ) : (
         currentProducts.map((product) => {
-          const image =
-            "https://laxmipujapasal.tk/api/category/637331462427447076dorlia damaru.jpg";
+          const imageURL = `https://laxmipujapasal.tk/Products/${product.image}`;
+
           return (
             <Card
               key={product.id}
               name={product.name}
-              img={image}
+              img={imageURL}
               price={product.price}
               discount={product.discount}
               rating={product.averageRating}
@@ -52,9 +52,11 @@ const ProductList = ({ currentProducts, history, loading }) => {
                   <button className="favou card__iconBtn">
                     <FaHeart />
                   </button>
+                  &nbsp;
                   <button className="card__exchange card__iconBtn">
                     <FaExchangeAlt />
                   </button>
+                  &nbsp;
                   <button className="card__addToCart">
                     <FaShoppingCart />
                     Add to Cart

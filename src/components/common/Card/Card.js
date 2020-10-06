@@ -23,7 +23,7 @@ export default function Card({ loading, img, price, view, oldPrice, rating, name
   }
   return (
     <div className="card" style={{ width: "100%" }}>
-      <div className="card__img">
+      <div className="card__img" style={{ height: "350px" }}>
         <div className="card__label">
           <span>new</span>
         </div>

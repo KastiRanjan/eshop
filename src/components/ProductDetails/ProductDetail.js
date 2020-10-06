@@ -12,6 +12,7 @@ import StarRating from "../common/StarRating";
 import { withRouter } from "react-router";
 import MostPopular from "../Homepage/MostPopular/MostPopular";
 import getProductDetail from "../../context/actions/product/getProductDetail";
+import Skeleton from "../Skeleton";
 
 function ProductDetail(props) {
   const [tab, setTab] = useState("des");
@@ -22,7 +23,7 @@ function ProductDetail(props) {
 
   const color = productDetail.length == 0 ? [] : productDetail.colors;
   const sizes = productDetail.length == 0 ? [] : productDetail.productSizes;
-  console.log(color);
+  const productImage = productDetail == 0 ? [] : productDetail.productImages;
   useEffect(() => {
     console.log(props);
     const id = props.match.params.id;
@@ -72,18 +73,14 @@ function ProductDetail(props) {
                 slider1 = slider;
               }}
             >
-              <div className="img1" style={{ width: "152px" }}>
-                <img src={img1} alt="" style={{ width: "100%" }} />
-              </div>
-              <div className="img1" style={{ width: "152px" }}>
-                <img src={img2} alt="" style={{ width: "100%" }} />
-              </div>
-              <div className="img1" style={{ width: "152px" }}>
-                <img src={img3} alt="" style={{ width: "100%" }} />
-              </div>
-              <div className="img1" style={{ width: "152px" }}>
-                <img src={img4} alt="" style={{ width: "100%" }} />
-              </div>
+              {productImage.map((image) => {
+                const imageURL = `https://laxmipujapasal.tk/Products/${image.image}`;
+                return (
+                  <div className="img1" style={{ width: "152px" }}>
+                    <img src={imageURL} alt="" style={{ width: "100%" }} />
+                  </div>
+                );
+              })}
             </Slider>
           </div>
           <div className="productDetail__view ">
@@ -110,7 +107,7 @@ function ProductDetail(props) {
             </Slider>
           </div>
           {loading === true ? (
-            <h1>loading</h1>
+            <Skeleton />
           ) : (
             <div className="productDetail__body">
               <div className="productDetail__label">

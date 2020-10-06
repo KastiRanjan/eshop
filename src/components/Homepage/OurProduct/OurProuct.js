@@ -67,11 +67,12 @@ const OurProduct = (props) => {
             <Slider {...settings}>
               {ourProduct !== undefined &&
                 ourProduct.map((product) => {
+                  const imageURL = `https://laxmipujapasal.tk/Products/${product.image}`;
                   return (
                     <Card
                       key={product.id}
                       name={product.name}
-                      img="https://colorlib.com/etc/e-shop/img/product06.jpg"
+                      img={imageURL}
                       price={product.price}
                       discount={product.discount}
                       rating={product.averageRating}
