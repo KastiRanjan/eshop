@@ -19,6 +19,17 @@
     .slick-arrow {
       display: none !important;
     }
+
+    .image-container {
+      width: 555px;
+      height: 555px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+      }
+    }
   }
   &__mainView:hover {
     .slick-arrow {

@@ -50,11 +50,6 @@ const Header = ({ history }) => {
                   placeholder="Enter your keyword"
                   onChange={(e) => handleSearch(e)}
                 />
-                <select className=" header__searchCategories input">
-                  <option value="0">All </option>
-                  <option value="1">Category 01</option>
-                  <option value="1">Category 02</option>
-                </select>
                 <button className="header__searchBtn">
                   <FaSearch />
                 </button>

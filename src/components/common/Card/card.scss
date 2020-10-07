@@ -1,97 +1,56 @@
 .card {
   transition: 0.3s all;
-  h3 {
-    color: #30323a;
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 1.1;
-  }
-  h2 {
-    margin: 0 0 10px;
-    font-weight: 700;
-    color: #30323a;
-  }
+
   &__img {
+    width: 100%;
     position: relative;
-  }
-  &__body {
     padding: 15px;
-  }
-  &__title {
-    font-size: 16px;
+    img {
+      width: 100%;
+      height: 250px;
+      object-fit: contain;
+      object-position: center;
+    }
   }
   &__label {
     position: absolute;
+    background-color: #000;
+    color: #fff;
     top: 0px;
     left: 0px;
     span {
       position: relative;
-      display: inline-block;
+      display: block;
       padding: 5px 15px;
       font-weight: 700;
-      color: #fff;
-      background-color: #30323a;
-      z-index: 22;
     }
-  }
-
-  &__btns {
-    margin-top: 20px;
-    opacity: 0;
-    visibility: hidden;
-  }
-  &__price {
-    margin: 0 0 10px;
-  }
-  &__iconBtn {
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    text-align: center;
-    color: #30323a;
-    background-color: #fff;
-    border: 1px solid #dadada;
-    transition: 0.3s all;
-  }
-  &__iconBtn:hover {
-    border: 1px solid #f8694a;
-  }
-  &__addToCart {
-    color: #fff;
-    background-color: #f8694a;
-    display: inline-block;
-    padding: 10px 15px;
-    text-transform: uppercase;
-    font-weight: 700;
-    border: none;
-    transition: 0.3s all;
-  }
-  &__addToCart:hover {
-    background-color: #30323a;
-  }
-  &__oldPrice {
-    font-size: 70%;
-    color: #f8694a;
   }
   &__quickView {
     position: absolute;
-    color: #30323a;
-    background-color: #fff;
-    display: inline-block;
-    padding: 10px 15px;
-    text-transform: uppercase;
-    font-weight: 700;
-    border: none;
-    transition: 0.3s all;
-    opacity: 0;
-    visibility: hidden;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    transition: 0.3s all;
+    opacity: 0;
+    visibility: hidden;
   }
   &__quickView:hover {
     color: #f8694a;
     box-shadow: 0px 0px 0px 1px #f8694a inset, 0px 0px 0px 0px #f8694a;
+  }
+  &__body {
+    padding: 15px;
+  }
+  &__des {
+  }
+  &__rating {
+  }
+  &__title {
+  }
+  &__btns {
+    margin-top: 20px;
+    opacity: 0;
+    visibility: hidden;
   }
 }
 .card:hover {

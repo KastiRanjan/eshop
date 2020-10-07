@@ -29,10 +29,10 @@ const OurProduct = (props) => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 3,
     initialSlide: 0,
-    arrows: false,
+    arrows: true,
     responsive: [
       {
         breakpoint: 1200,
@@ -44,7 +44,7 @@ const OurProduct = (props) => {
         },
       },
       {
-        breakpoint: 992,
+        breakpoint: 768,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 3,
@@ -60,54 +60,52 @@ const OurProduct = (props) => {
           <h2 className="title">Our Product</h2>
         </div>
         <div className="ourProduct__grid">
-          <div className="ourProduct__item">
-            <img src={banner} alt="" style={{ width: "100%", height: "300px" }} />
-          </div>
-          <div className="ourProduct__item">
-            <Slider {...settings}>
-              {ourProduct !== undefined &&
-                ourProduct.map((product) => {
-                  const imageURL = `https://laxmipujapasal.tk/Products/${product.image}`;
-                  return (
-                    <Card
-                      key={product.id}
-                      name={product.name}
-                      img={imageURL}
-                      price={product.price}
-                      discount={product.discount}
-                      rating={product.averageRating}
-                      view={
-                        <>
-                          <button
-                            className="card__quickView flex flex-ai-c fex-jc-c"
-                            onClick={() => getSingleProduct(product)}
-                          >
-                            <FaSearchPlus />
-                            Quick View
-                          </button>
-                        </>
-                      }
-                      button={
-                        <>
-                          <button className="favou card__iconBtn">
-                            <FaHeart />
-                          </button>
-                          &nbsp;
-                          <button className="card__exchange card__iconBtn">
-                            <FaExchangeAlt />
-                          </button>
-                          &nbsp;
-                          <button className="card__addToCart" onClick={() => addToBasket(product)}>
-                            <FaShoppingCart />
-                            Add to Cart
-                          </button>
-                        </>
-                      }
-                    />
-                  );
-                })}
-            </Slider>
-          </div>
+          <Slider {...settings}>
+            {ourProduct !== undefined &&
+              ourProduct.map((product) => {
+                const imageURL = `https://laxmipujapasal.tk/Products/${product.image}`;
+                return (
+                  <Card
+                    key={product.id}
+                    name={product.name}
+                    img={imageURL}
+                    price={product.price}
+                    discount={product.discount}
+                    rating={product.averageRating}
+                    view={
+                      <>
+                        <button
+                          className="card__quickView main-btn  flex flex-ai-c fex-jc-c"
+                          onClick={() => getSingleProduct(product)}
+                        >
+                          <FaSearchPlus />
+                          Quick View
+                        </button>
+                      </>
+                    }
+                    button={
+                      <>
+                        <button className="card__favourite main-btn icon-btn">
+                          <FaHeart />
+                        </button>
+                        &nbsp;
+                        <button className="card__exchange main-btn icon-btn">
+                          <FaExchangeAlt />
+                        </button>
+                        &nbsp;
+                        <button
+                          className="card__addToCart primary-btn"
+                          onClick={() => addToBasket(product)}
+                        >
+                          <FaShoppingCart />
+                          Add to Cart
+                        </button>
+                      </>
+                    }
+                  />
+                );
+              })}
+          </Slider>
         </div>
       </div>
     </div>

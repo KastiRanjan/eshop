@@ -168,6 +168,16 @@ ul {
   -webkit-box-shadow: 0px 0px 0px 1px #dadada inset, 0px 0px 0px 6px transparent;
   box-shadow: 0px 0px 0px 1px #dadada inset, 0px 0px 0px 6px transparent;
 }
+.main-btn,
+.primary-btn {
+  display: inline-block;
+  padding: 10px 15px;
+  text-transform: uppercase;
+  font-weight: 700;
+  border: none;
+  -webkit-transition: 0.3s all;
+  transition: 0.3s all;
+}
 .icon-btn {
   width: 40px;
   height: 40px;
@@ -181,15 +191,6 @@ ul {
   background-color: #f8694a;
 }
 
-.primary-btn {
-  display: inline-block;
-  padding: 10px 15px;
-  text-transform: uppercase;
-  font-weight: 700;
-  border: none;
-  -webkit-transition: 0.3s all;
-  transition: 0.3s all;
-}
 .primary-btn:hover {
   background-color: #30323a;
 }

@@ -27,28 +27,6 @@ export default function Navigation() {
               <Link to="/products">Shop</Link>
             </li>
             <Dropdown
-              value="Women"
-              options={[
-                { name: "Home", url: "/" },
-                { name: "About", url: "/about" },
-                { name: "Checkout", url: "/checkout" },
-              ]}
-              className="navigation__item navigation_pages"
-            />
-            <Dropdown
-              value="Men"
-              options={[
-                { name: "Home", url: "/" },
-                { name: "About", url: "/about" },
-                { name: "Checvvvhhhhhhhhhhout", url: "/checkout" },
-              ]}
-              className="navigation__item navigation_pages"
-            />
-            <li className="navigation__item">
-              <Link to="/sales">Sales</Link>
-            </li>
-
-            <Dropdown
               value="Pages"
               options={[
                 { name: "Home", url: "/" },

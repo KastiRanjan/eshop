@@ -39,7 +39,7 @@ const ProductList = ({ currentProducts, history, loading }) => {
               view={
                 <>
                   <button
-                    className="card__quickView flex flex-ai-c fex-jc-c"
+                    className="card__quickView main-btn flex flex-ai-c fex-jc-c"
                     onClick={() => getSingleProduct(product.id)}
                   >
                     <FaSearchPlus />
@@ -49,15 +49,15 @@ const ProductList = ({ currentProducts, history, loading }) => {
               }
               button={
                 <>
-                  <button className="favou card__iconBtn">
+                  <button className="favou main-btn icon-btn">
                     <FaHeart />
                   </button>
                   &nbsp;
-                  <button className="card__exchange card__iconBtn">
+                  <button className="card__exchange main-btn icon-btn">
                     <FaExchangeAlt />
                   </button>
                   &nbsp;
-                  <button className="card__addToCart">
+                  <button className="card__addToCart primary-btn">
                     <FaShoppingCart />
                     Add to Cart
                   </button>

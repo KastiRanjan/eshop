@@ -76,12 +76,8 @@ function ProductDetail(props) {
               {productImage.map((image) => {
                 const imageURL = `https://laxmipujapasal.tk/Products/${image.image}`;
                 return (
-                  <div className="" style={{ width: "554px" }}>
-                    <img
-                      src={imageURL}
-                      alt=""
-                      style={{ width: "100%", height: "555px", objectFit: "contain" }}
-                    />
+                  <div className="image-container">
+                    <img src={imageURL} alt="" />
                   </div>
                 );
               })}
@@ -104,18 +100,6 @@ function ProductDetail(props) {
                   </div>
                 );
               })}
-              {/* <div className="img1" style={{ width: "152px" }}>
-                <img src={img1} alt="" style={{ width: "100%" }} />
-              </div>
-              <div className="img1" style={{ width: "152px" }}>
-                <img src={img2} alt="" style={{ width: "100%" }} />
-              </div>
-              <div className="img1" style={{ width: "152px" }}>
-                <img src={img1} alt="" style={{ width: "100%" }} />
-              </div>
-              <div className="img1" style={{ width: "152px" }}>
-                <img src={img1} alt="" style={{ width: "100%" }} />
-              </div> */}
             </Slider>
           </div>
           {loading === true ? (

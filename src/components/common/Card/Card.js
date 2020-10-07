@@ -6,28 +6,18 @@ import StarRating from "../StarRating";
 export default function Card({ loading, img, price, view, oldPrice, rating, name, button }) {
   if (loading === true) {
     return (
-      <div className="card" style={{ width: "100%", height: "491" }}>
-        <div className="card__img" style={{ height: "300px" }}>
-          <Skeleton />
-        </div>
-        <div className="card__body" style={{ padding: "0px" }}>
-          <div className="card__des " style={{ height: "20px", padding: "0px" }}>
-            <Skeleton />
-          </div>
-          <div className="card__title" style={{ height: "20px", padding: "0px" }}>
-            <Skeleton />
-          </div>
-        </div>
+      <div className="card" style={{ width: "100%", height: "391px" }}>
+        <Skeleton />
       </div>
     );
   }
   return (
-    <div className="card" style={{ width: "100%" }}>
-      <div className="card__img" style={{ height: "250px" }}>
+    <div className="card">
+      <div className="card__img">
         <div className="card__label">
           <span>new</span>
         </div>
-        <img src={img} alt="" style={{ width: "100%", height: "100%" }} />
+        <img src={img} alt="" />
         {view}
       </div>
       <div className="card__body">

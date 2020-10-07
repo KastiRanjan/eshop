@@ -78,9 +78,6 @@ export default function Product() {
         <div className="product__grid">
           <div className="product__item aside">
             <div className="aside">
-              <h3 className="aside-title">ShopBy</h3>
-            </div>
-            <div className="aside">
               <h3 className="aside-title">filter by price</h3>
             </div>
             <div className="aside">
@@ -124,15 +121,6 @@ export default function Product() {
             </div>
           </div>
           <div className="product__item product__list">
-            <div className="list-header flex flex-jc-sb">
-              <StoreFilter
-                currentPage={currentPage}
-                currentProducts={currentProducts}
-                handlePageChange={handlePageChange}
-                itemPerPage={itemPerPage}
-                productSort={productSort}
-              />
-            </div>
             <div className="list-mid product__store ">
               <ProductList currentProducts={currentProducts} loading={loading} />
             </div>
@@ -160,30 +148,7 @@ const StoreFilter = ({
   productSort,
 }) => (
   <>
-    <div className="left flex flex-ai-c">
-      <div className="row-filter">
-        <a href="#">
-          <FaThLarge />
-        </a>
-        &nbsp;
-        <a href="#" class="active">
-          <FaBars />
-        </a>
-      </div>
-      &nbsp;
-      <div className="sort-filter">
-        <span>Sort By : </span>
-        <select class="input" onClick={productSort}>
-          <option value="position">Position</option>
-          <option value="price">Price</option>
-          <option value="rating">Rating</option>
-        </select>
-      </div>{" "}
-      &nbsp;
-      <button className="main-btn icon-btn">
-        <FaArrowDown />
-      </button>
-    </div>
+    <div className="left flex flex-ai-c"></div>
     <div className="right flex  flex-ai-c ">
       <div className="page-filter ">
         <span>Show : </span>
