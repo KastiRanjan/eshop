@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useReducer } from "react";
-import cart from "./reducers/cart";
+// import cart from "./reducers/cart";
 import product from "./reducers/products";
-import cartInitialState from "./initialstates/cartInitialState";
+// import cartInitialState from "./initialstates/cartInitialState";
 import allProductInitialState from "./initialstates/allProductInitialState";
 import allProduct from "./reducers/allProduct";
 import productInitialState from "./initialstates/productInitialState";
@@ -18,7 +18,7 @@ const initialState = {
 };
 
 export const GlobalProvider = ({ children }) => {
-  const [cartState, cartDispatch] = useReducer(cart, cartInitialState);
+  // const [cartState, cartDispatch] = useReducer(cart, cartInitialState);
   const [allProductState, allProductDispatch] = useReducer(allProduct, allProductInitialState);
   const [productState, productDispatch] = useReducer(product, productInitialState);
   const [productFilterState, productFilterDispatch] = useReducer(productFilter, []);
@@ -31,17 +31,13 @@ export const GlobalProvider = ({ children }) => {
     searchProductInitialState
   );
 
-  useEffect(() => {
-    localStorage.setItem("cartItem", JSON.stringify(cartState.cartItem));
-  }, [cartState]);
-
   return (
     <GlobalContext.Provider
       value={{
         productState,
         productDispatch,
-        cartState,
-        cartDispatch,
+        // cartState,
+        // cartDispatch,
         allProductState,
         allProductDispatch,
         productDetailState,

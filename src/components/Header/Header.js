@@ -40,7 +40,7 @@ const Header = ({ history }) => {
         <div className="container flex flex-jc-sb ">
           <div className="header__left flex ">
             <Link to="/" className="header__logo">
-              {/*<img src={logo} alt="" />*/}
+              <img src={logo} alt="" />
             </Link>
             <div className="header__searchBar">
               <form className="header__form" onSubmit={(e) => handleSubmit(e)}>
