@@ -1,0 +1,58 @@
+.checkout {
+  h4 {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 18px;
+  }
+  &__grid {
+    @include breakpoint-up(large) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      grid-template-areas:
+        "form shoping"
+        "form payment"
+        "review review";
+    }
+  }
+  &__form {
+    grid-area: form;
+  }
+  &__shopping {
+    grid-area: shopping;
+  }
+  &__payment {
+    grid-area: payment;
+  }
+  &__orderReview {
+    grid-area: review;
+    th {
+      padding: 15px 0px;
+      color: #30323a;
+      text-transform: uppercase;
+      border-bottom: 1px solid #dadada;
+    }
+  }
+  .text-center {
+    text-align: center;
+  }
+  .section-title {
+    position: relative;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    border-bottom: 1px solid #dadada;
+  }
+  .section-title:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1.5px;
+    height: 3px;
+    width: 60px;
+    background-color: #f8694a;
+  }
+  .title {
+    display: inline-block;
+    text-transform: uppercase;
+  }
+}
