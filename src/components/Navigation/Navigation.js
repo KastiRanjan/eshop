@@ -26,6 +26,9 @@ export default function Navigation() {
             <li className="navigation__item">
               <Link to="/products">Shop</Link>
             </li>
+            <li className="navigation__item">
+              <Link to="/categories">Categories</Link>
+            </li>
             <Dropdown
               value="Pages"
               options={[

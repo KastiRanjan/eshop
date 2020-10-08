@@ -1,5 +1,6 @@
 import React from "react";
 import Cart from "./components/Cart/Cart";
+import Category from "./components/Category/Category";
 import Checkout from "./components/Checkout/Checkout";
 import Home from "./components/Homepage/Home";
 import Login from "./components/Login/Login";
@@ -35,6 +36,11 @@ export const routes = [
     path: "/products",
     exact: false,
     component: Product,
+  },
+  {
+    path: "/categories",
+    exact: false,
+    component: Category,
   },
   {
     path: "/catalog/:query",

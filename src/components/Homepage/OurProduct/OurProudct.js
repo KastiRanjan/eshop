@@ -32,7 +32,7 @@ const OurProduct = (props) => {
     slidesToShow: 4,
     slidesToScroll: 3,
     initialSlide: 0,
-    arrows: true,
+    arrows: false,
     responsive: [
       {
         breakpoint: 1200,
@@ -59,7 +59,7 @@ const OurProduct = (props) => {
         <div className="ourProduct__title">
           <h2 className="title">Our Product</h2>
         </div>
-        <div className="ourProduct__grid">
+        <div className="ourProduct">
           <Slider {...settings}>
             {ourProduct !== undefined &&
               ourProduct.map((product) => {
