@@ -20,9 +20,10 @@ body {
   color: #4a4e5a;
 }
 
-// button:focus,
+button:focus,
 input:focus,
 select:focus {
+  outline: none;
   box-shadow: none;
 }
 
@@ -189,6 +190,8 @@ ul {
 .primary-btn {
   color: #fff;
   background-color: #f8694a;
+  display: flex;
+  align-items: center;
 }
 
 .primary-btn:hover {

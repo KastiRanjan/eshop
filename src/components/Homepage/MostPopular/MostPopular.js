@@ -41,7 +41,7 @@ const MostPopular = ({ history }) => {
                           onClick={() => getSingleProduct(product.id)}
                         >
                           <FaSearchPlus />
-                          Quick View
+                          &nbsp; Quick View
                         </button>
                       </>
                     }
@@ -57,7 +57,7 @@ const MostPopular = ({ history }) => {
                         &nbsp;
                         <button className="card__addToCart primary-btn">
                           <FaShoppingCart />
-                          Add to Cart
+                         &nbsp; Add to Cart
                         </button>
                       </>
                     }

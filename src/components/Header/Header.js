@@ -35,8 +35,7 @@ const Header = ({ history }) => {
 
   return (
     <header>
-      <TopHeader />
-      <div className="header flex">
+       <div className="header flex">
         <div className="container flex flex-jc-sb ">
           <div className="header__left flex ">
             <Link to="/" className="header__logo">

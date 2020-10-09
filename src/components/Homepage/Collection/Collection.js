@@ -21,9 +21,9 @@ export default function Collection() {
                   <div className="collection__image">
                     <img src={imageURL} alt="" />
                   </div>
-                  <div className="collection__title">
+                  {/* <div className="collection__title">
                     <h2>{category.name}</h2>
-                  </div>
+                  </div> */}
                 </Link>
               );
             })}

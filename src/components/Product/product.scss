@@ -14,31 +14,6 @@
     }
   }
 
-  .list-header,
-  .list-bottom {
-    align-items: center;
-    text-transform: uppercase;
-    @include breakpoint-down(small) {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-    .right {
-      .input {
-        width: 90px;
-      }
-    }
-  }
-  .list-mid {
-    @include breakpoint-up(medium) {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-    }
-    @include breakpoint-up(large) {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
-    }
-  }
   .row-filter {
     display: inline-block;
     vertical-align: top;
@@ -57,11 +32,7 @@
       background-color: #f8694a;
     }
   }
-  &__store {
-    margin-bottom: 15px;
-    padding-bottom: 30px;
-    border-bottom: 1px solid #dadada;
-  }
+
   .aside {
     margin-bottom: 30px;
     .aside-title {
@@ -82,6 +53,30 @@
       height: 3px;
       width: 60px;
       background-color: #f8694a;
+    }
+  }
+  &__empty {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+  }
+  &__store {
+    margin-bottom: 15px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #dadada;
+    @include breakpoint-up(medium) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include breakpoint-up(large) {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+  }
+  &__paginator {
+    .input {
+      width: 100px;
     }
   }
   .pagination {

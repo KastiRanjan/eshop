@@ -44,6 +44,7 @@ header {
     padding-bottom: 15px;
 
     &__left {
+      align-items: center;
       @include breakpoint-down(small) {
         flex-direction: column;
       }
@@ -61,14 +62,18 @@ header {
     &__searchBar {
       display: inline-block;
       padding: 15px 0px;
-      max-width: 400px;
       width: 100%;
+
       @include breakpoint-up(large) {
-        width: 400px;
+        width: 555px;
         margin-left: 100px;
       }
+
       .input {
         width: 100%;
+        background-color: #f5f5f5;
+        border-radius: 2px;
+        border: none !important;
       }
     }
 
@@ -78,8 +83,10 @@ header {
       right: 0px;
       width: 40px;
       height: 40px;
-      background-color: transparent;
+      color: #fff;
+      background-color: #f8694a;
       border: none;
+      border-radius: 0px 2px 2px 0px;
       @include breakpoint-down(small) {
         right: 20px;
       }

@@ -18,14 +18,14 @@ function ProductDetail(props) {
   const [tab, setTab] = useState("des");
   const { productDetailState, productDetailDispatch } = useContext(GlobalContext);
   const { productDetail, loading } = productDetailState;
-  console.log(productDetailState);
-  console.log(productDetail);
+  console.log(loading);
+ 
 
   const color = productDetail.length == 0 ? [] : productDetail.colors;
   const sizes = productDetail.length == 0 ? [] : productDetail.productSizes;
   const productImage = productDetail == 0 ? [] : productDetail.productImages;
   useEffect(() => {
-    console.log(props);
+ 
     const id = props.match.params.id;
     getProductDetail(id)(productDetailDispatch);
   }, []);
@@ -60,6 +60,52 @@ function ProductDetail(props) {
     focusOnSelect: true,
     speed: 500,
   };
+
+  if(loading===true){
+    return(
+      <div className="productDetail flex">
+      <div className="container">
+        <div className="productDetail__grid">
+          <div className="productDetail__mainView" style={{height:"355px"}}>
+        <img src="https://increasify.com.au/wp-content/uploads/2016/08/default-image.png" alt="" style={{width:"100%"}}/>
+          </div>
+          <div className="productDetail__view flex flex-jc-sb flex-ai-c " style={{marginTop:"10px"}}>
+            <div className="img"  style={{width:"80px",height:"80px"}}> <Skeleton/></div>
+            <div className="img"  style={{width:"80px",height:"80px"}}> <Skeleton/></div>
+            <div className="img"  style={{width:"80px",height:"80px"}}> <Skeleton/></div>
+            <div className="img"  style={{width:"80px",height:"80px"}}> <Skeleton/></div>
+            <div className="img"   style={{width:"80px",height:"80px"}}> <Skeleton/></div>
+           
+           
+           </div>
+          <div className="productDetail__body">
+              <div className="productDetail__label " style={{width:"50px",height:"35px"}}>
+                <Skeleton/>
+              
+              </div>
+              <h2 className="productDetail__productName" style={{width:"400px",height:"30px"}}><Skeleton/></h2>
+              <h3 className="productdetail__productPrice" style={{width:"200px",height:"30px"}}>
+              <Skeleton />
+              </h3>
+              <div className="productDetail__productRating" style={{width:"300px",height:"30px"}}>
+                <Skeleton/>
+              </div>
+             
+              <p style={{width:"400px",height:"50px"}}><Skeleton/></p>
+              <div className="productDetail__option">
+               
+              </div>
+              <div className="size"  className="btn1"style={{width:"30px",height:"30px"}}><Skeleton/></div><br/>
+              <div className="productDetail__btns flex flex-jc-sb flex-ai-c">
+                <div className="btn1"style={{width:"200px",height:"35px"}}><Skeleton/></div>
+                <div className="btn2" style={{width:"200px",height:"35px"}}><Skeleton/></div>
+              </div>
+            </div>
+          </div>
+          </div>
+    </div>
+    )
+  }
   return (
     <div className="productDetail flex">
       <div className="container">
@@ -77,7 +123,7 @@ function ProductDetail(props) {
                 const imageURL = `https://laxmipujapasal.tk/Products/${image.image}`;
                 return (
                   <div className="image-container">
-                    <img src={imageURL} alt="" />
+                    <img src={imageURL} alt="" style={{ width: "100%", objectFit: "cover" }} />
                   </div>
                 );
               })}
@@ -96,15 +142,17 @@ function ProductDetail(props) {
                 const imageURL = `https://laxmipujapasal.tk/Products/${image.image}`;
                 return (
                   <div className="" style={{ width: "152px" }}>
-                    <img src={imageURL} alt="" style={{ width: "100%", objectFit: "contain" }} />
+                    <img
+                      src={imageURL}
+                      alt=""
+                      style={{ width: "100%", objectFit: "cover", height: " 80px" }}
+                    />
                   </div>
                 );
               })}
             </Slider>
           </div>
-          {loading === true ? (
-            <Skeleton />
-          ) : (
+       
             <div className="productDetail__body">
               <div className="productDetail__label">
                 <span>New</span>
@@ -136,8 +184,8 @@ function ProductDetail(props) {
                     QTY: <input type="number" className="input" style={{ width: "90px" }} />
                   </div>
                   &nbsp;
-                  <button className="cart primary-btn">
-                    <FaShoppingCart />
+                  <button className="cart primary-btn ">
+                    <FaShoppingCart /> &nbsp;
                     Add to cart
                   </button>
                 </div>
@@ -157,8 +205,7 @@ function ProductDetail(props) {
                 </div>
               </div>
             </div>
-          )}
-          <div className="productDetail__tab">
+            <div className="productDetail__tab">
             <ul className="productDetail__tabHeader flex flex-ai-c">
               <li className="active">
                 <span onClick={() => setTab("des")}>Description</span>

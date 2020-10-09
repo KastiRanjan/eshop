@@ -6,7 +6,7 @@ import StarRating from "../StarRating";
 export default function Card({ loading, img, price, view, oldPrice, rating, name, button }) {
   if (loading === true) {
     return (
-      <div className="card" style={{ width: "100%", height: "391px" }}>
+      <div className="box"style={{height:"340px"}} >
         <Skeleton />
       </div>
     );

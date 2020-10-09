@@ -48,7 +48,7 @@ const NewArrival = (props) => {
                           onClick={() => getSingleProduct(product.id)}
                         >
                           <FaSearchPlus />
-                          Quick View
+                          &nbsp; Quick View
                         </button>
                       </>
                     }
@@ -63,11 +63,10 @@ const NewArrival = (props) => {
                         </button>
                         &nbsp;
                         <button
-                          className="card__addToCart primary-btn"
+                          className="card__addToCart primary-btn flex"
                           onClick={() => addToBasket(product)}
                         >
-                          <FaShoppingCart />
-                          Add to Cart
+                          <FaShoppingCart /> &nbsp; Add to Cart
                         </button>
                       </>
                     }

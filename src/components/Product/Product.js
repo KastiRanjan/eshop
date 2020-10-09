@@ -38,9 +38,7 @@ export default function Product() {
   };
 
   //filter and sort product
-  const productSort = (e) => {
-    filterProduct({ e, allProductState })(productFilterDispatch);
-  };
+
   const filterByBrand = (name) => {
     productFilterDispatch({
       type: "FILTER_BY_BRAND",
@@ -53,49 +51,16 @@ export default function Product() {
       payload: { name: name, products: products },
     });
   };
-  const filterByColor = (name) => {
-    productFilterDispatch({
-      type: "FILTER_BY_COLOR",
-      payload: { name: name, products: products },
-    });
-  };
+
   const arry = products.map((product) => product.colors.map((color) => color.code));
   const newArray = Array.prototype.concat(...arry);
   let unique = [...new Set(newArray)];
-  console.log(unique);
-
-  // if (error) {
-  //   return (
-  //     <div>
-  //       <h1 style={{ textAlign: "center" }}>{error}</h1>
-  //     </div>
-  //   );
-  // }
 
   return (
     <div className="product flex">
       <div className="container ">
         <div className="product__grid">
           <div className="product__item aside">
-            <div className="aside">
-              <h3 className="aside-title">filter by price</h3>
-            </div>
-            <div className="aside">
-              <h3 className="aside-title">filter by color</h3>
-              <ul className="flex">
-                {unique.map((color) => (
-                  <li
-                    style={{ marginRight: "5px", cursor: "pointer" }}
-                    onClick={() => filterByColor(color)}
-                  >
-                    <div
-                      className="box"
-                      style={{ width: "20px", height: "20px", background: color }}
-                    ></div>
-                  </li>
-                ))}
-              </ul>
-            </div>
             <div className="aside">
               <h3 className="aside-title">filter by size</h3>
               <ul>
@@ -121,18 +86,15 @@ export default function Product() {
             </div>
           </div>
           <div className="product__item product__list">
-            <div className="list-mid product__store ">
-              <ProductList currentProducts={currentProducts} loading={loading} />
-            </div>
-            <div className="list-bottom  flex  flex-jc-sb">
+            <ProductList currentProducts={currentProducts} loading={loading} />
+            {currentProducts.length > 0 && (
               <StoreFilter
                 currentPage={currentPage}
                 currentProducts={currentProducts}
                 handlePageChange={handlePageChange}
                 itemPerPage={itemPerPage}
-                productSort={productSort}
               />
-            </div>
+            )}
           </div>
         </div>
       </div>
@@ -147,30 +109,27 @@ const StoreFilter = ({
   itemPerPage,
   productSort,
 }) => (
-  <>
-    <div className="left flex flex-ai-c"></div>
-    <div className="right flex  flex-ai-c ">
-      <div className="page-filter ">
-        <span>Show : </span>
-        <select class="input" onClick={(e) => itemPerPage(e)}>
-          <option value="9">9</option>
-          <option value="6">6</option>
-          <option value="3">3</option>
-        </select>
-      </div>
-      &nbsp;&nbsp;&nbsp;
-      <div className="page-stores">
-        Page:
-        <Pagination
-          activePage={currentPage}
-          itemsCountPerPage={currentProducts.length}
-          totalItemsCount={48}
-          pageRangeDisplayed={3}
-          onChange={handlePageChange}
-          hideFirstLastPages={true}
-          hideDisabled={true}
-        />
-      </div>
+  <div className="product__paginator flex  flex-ai-c ">
+    <div className="page-filter ">
+      <span>Show : </span>
+      <select class="input" onClick={(e) => itemPerPage(e)}>
+        <option value="9">9</option>
+        <option value="6">6</option>
+        <option value="3">3</option>
+      </select>
     </div>
-  </>
+    &nbsp;&nbsp;&nbsp;
+    <div className="page-stores">
+      Page:
+      <Pagination
+        activePage={currentPage}
+        itemsCountPerPage={currentProducts.length}
+        totalItemsCount={48}
+        pageRangeDisplayed={3}
+        onChange={handlePageChange}
+        hideFirstLastPages={true}
+        hideDisabled={true}
+      />
+    </div>
+  </div>
 );

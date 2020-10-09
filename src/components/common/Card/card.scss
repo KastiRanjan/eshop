@@ -7,7 +7,8 @@
 
     img {
       width: 100%;
-      height: 250px;
+      height: 300px;
+      display: block;
       object-fit: cover;
       object-position: center;
     }
@@ -27,6 +28,8 @@
   }
   &__quickView {
     position: absolute;
+    display: flex;
+    align-items: center;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -39,7 +42,7 @@
     box-shadow: 0px 0px 0px 1px #f8694a inset, 0px 0px 0px 0px #f8694a;
   }
   &__body {
-    padding: 15px;
+    padding: 10px;
   }
   &__des {
   }

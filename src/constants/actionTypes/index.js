@@ -34,8 +34,7 @@ export const REGISTER_FAILED = "REGISTER_FAILED";
 
 //filter products
 export const FILTER_BY_PRICE = "FILTER_BY_PRICE";
-export const FILTER_BY_PRICE_RANGE = "FILTER_BY_PRICE__RANGE";
-export const FILTER_BY_COLOR = "FILTER_BY_COLOR";
+
 export const FILTER_BY_SIZE = "FILTER_BY_SIZE";
 export const FILTER_BY_BRAND = "FILTER_BY_BRAND";
 export const FILTER_BY_POSITION = "FILTER_BY_POSITION";

@@ -29,7 +29,7 @@ export default function Slider() {
                 <img src={imageUrl} alt="" />
                 <div className="caption">
                   <h1>
-                    HOT DEAL <br /> <span> Up to {offer.discount} off</span>
+                    {offer.name} <br /> <span> Up to {offer.discount} off</span>
                   </h1>
                   <button className="primary-btn">Shop Now</button>
                 </div>

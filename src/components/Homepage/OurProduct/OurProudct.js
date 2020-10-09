@@ -97,7 +97,7 @@ const OurProduct = (props) => {
                           className="card__addToCart primary-btn"
                           onClick={() => addToBasket(product)}
                         >
-                          <FaShoppingCart />
+                          <FaShoppingCart />&nbsp;
                           Add to Cart
                         </button>
                       </>
