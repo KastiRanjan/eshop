@@ -14,4 +14,11 @@
 @import "../components/Homepage/NewArrival/newArrrival.scss";
 @import "../components/Homepage/OurProduct/ourProduct.scss";
 @import "../components/Homepage/HotDeal/hotDeal.scss";
-@import "../components/skeleton.scss";
+@import "../components/Skeleton/skeleton.scss";
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import TopHeader from "./TopHeader";
 import logo from "../../img/logo.png";
 import {
   FaSearch,
@@ -34,8 +33,7 @@ const Header = ({ history }) => {
   };
 
   return (
-    <header>
-       <div className="header flex">
+    <header className="header flex">
         <div className="container flex flex-jc-sb ">
           <div className="header__left flex ">
             <Link to="/" className="header__logo">
@@ -82,7 +80,7 @@ const Header = ({ history }) => {
             </div>
           </div>
         </div>
-      </div>
+    
     </header>
   );
 };

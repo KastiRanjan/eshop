@@ -1,5 +1,6 @@
-header {
-  //styles for top header
+.header {
+  padding-top: 15px;
+  padding-bottom: 15px;
   .container {
     flex-direction: column;
     @include breakpoint-up(large) {
@@ -7,161 +8,117 @@ header {
       align-items: center;
     }
   }
-  .topHeader {
-    padding: 5px 0px;
-    border-bottom: 1px solid #dadada;
-
-    &__links {
-      margin: 0px;
-      padding: 0px;
-      margin: 0px;
-      padding: 0px;
-      li:nth-child(2) {
-        margin-left: 15px;
-      }
-      li:nth-child(3) {
-        margin-left: 15px;
-      }
-      li:nth-child(4) {
-        margin-left: 15px;
-      }
-      li:last-child {
-        margin-left: 15px;
-      }
-    }
-
-    &__item {
-      a {
-        color: #30323a;
-        text-transform: uppercase;
-        transition: 0.3s all;
-      }
+  &__left {
+    align-items: center;
+    @include breakpoint-down(small) {
+      flex-direction: column;
     }
   }
-  ///styles for header
-  .header {
-    padding-top: 15px;
-    padding-bottom: 15px;
-
-    &__left {
-      align-items: center;
-      @include breakpoint-down(small) {
-        flex-direction: column;
-      }
-    }
-    &__logo {
-      margin-right: 15px;
-      width: 50px;
-      img {
-        width: 100%;
-      }
-    }
-    &__form {
-      position: relative;
-    }
-    &__searchBar {
-      display: inline-block;
-      padding: 15px 0px;
+  &__logo {
+    margin-right: 15px;
+    width: 50px;
+    img {
       width: 100%;
-
-      @include breakpoint-up(large) {
-        width: 555px;
-        margin-left: 100px;
-      }
-
-      .input {
-        width: 100%;
-        background-color: #f5f5f5;
-        border-radius: 2px;
-        border: none !important;
-      }
     }
-
-    &__searchBtn {
-      position: absolute;
-      top: 0px;
-      right: 0px;
+  }
+  &__form {
+    position: relative;
+  }
+  &__searchBar {
+    display: inline-block;
+    padding: 15px 0px;
+    width: 100%;
+    @include breakpoint-up(large) {
+      width: 520px;
+      margin-left: 100px;
+    }
+  }
+  &__searchInput {
+    width: 100%;
+    background-color: #f5f5f5;
+    border-radius: 2px;
+    border: none !important;
+  }
+  &__searchBtn {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 40px;
+    height: 40px;
+    color: #fff;
+    background-color: #f57224;
+    border: none;
+    border-radius: 0px 2px 2px 0px;
+  }
+  &__right {
+    @include breakpoint-down(medium) {
+      margin-top: 10px;
+    }
+  }
+  &__btns {
+    .icon-btn {
       width: 40px;
       height: 40px;
-      color: #fff;
-      background-color: #f8694a;
-      border: none;
-      border-radius: 0px 2px 2px 0px;
-      @include breakpoint-down(small) {
-        right: 20px;
-      }
-    }
-
-    &__right {
-      @include breakpoint-down(medium) {
-        margin-top: 10px;
-      }
-    }
-    &__btns {
-      .icon-btn {
-        width: 40px;
-        height: 40px;
-        line-height: 40px;
-        text-align: center;
-        padding: 0px;
-        border: none;
-        background-color: #fff;
-        border: 1px solid #dadada;
-      }
-    }
-    &__loginBtn {
-      a {
-        font-weight: normal !important;
-        color: #30323a;
-      }
-      .login:hover {
-        color: #f8694a;
-      }
-      .join:hover {
-        color: #f8694a;
-      }
-    }
-
-    &__loginBtn,
-    &__priceTag {
-      position: absolute;
-      top: 20px;
-      left: 50px;
-    }
-    &__cartDropdown,
-    &__menuBtn {
-      margin-left: 10px;
-      position: relative;
-    }
-    &__iconBtn {
-      margin-right: 10px;
-    }
-    &__accountDropdown {
-      .dropdown-icon {
-        margin-right: 15px;
-      }
-    }
-    &__accountDropdown,
-    &__cartDropdown {
-      a {
-        text-transform: uppercase;
-        font-weight: 700;
-      }
-    }
-
-    &__badge {
-      position: absolute;
-      right: 70px;
-      top: -10px;
-      width: 18px;
-      height: 18px;
-      line-height: 18px;
+      line-height: 40px;
       text-align: center;
-      font-size: 10px;
-      background: #f8694a;
-      color: #fff;
-      border-radius: 50%;
-      z-index: 99;
+      padding: 0px;
+      border: none;
+      background-color: #fff;
+      border: 1px solid #dadada;
     }
+  }
+  &__loginBtn {
+    a {
+      font-weight: normal !important;
+      color: #30323a;
+    }
+    .login:hover {
+      color: #f8694a;
+    }
+    .join:hover {
+      color: #f8694a;
+    }
+  }
+
+  &__loginBtn,
+  &__priceTag {
+    position: absolute;
+    top: 20px;
+    left: 50px;
+  }
+  &__cartDropdown,
+  &__menuBtn {
+    margin-left: 10px;
+    position: relative;
+  }
+  &__iconBtn {
+    margin-right: 10px;
+  }
+  &__accountDropdown {
+    .dropdown-icon {
+      margin-right: 15px;
+    }
+  }
+  &__accountDropdown,
+  &__cartDropdown {
+    a {
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+  }
+
+  &__badge {
+    position: absolute;
+    right: 70px;
+    top: -10px;
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+    text-align: center;
+    font-size: 10px;
+    background: #f57224;
+    color: #fff;
+    border-radius: 50%;
+    z-index: 99;
   }
 }

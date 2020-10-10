@@ -1,14 +1,10 @@
 import React, { useContext } from "react";
 import Slide from "react-slick";
 import { GlobalContext } from "../../../context/Provider";
-import banner1 from "../../../img/banner01.jpg";
-import banner2 from "../../../img/banner02.jpg";
-import banner3 from "../../../img/banner03.jpg";
-
 export default function Slider() {
   const { productState } = useContext(GlobalContext);
   const offers = productState.offers;
-  console.log(offers);
+ const {loading}=productState
   const settings = {
     dots: false,
     infinite: true,
@@ -18,6 +14,7 @@ export default function Slider() {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
+
   return (
     <div className="slider flex">
       <div className="container ">

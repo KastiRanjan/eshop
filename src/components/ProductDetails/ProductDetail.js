@@ -1,10 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import Slider from "react-slick";
 import { GlobalContext } from "../../context/Provider";
-import img4 from "../../img/main-product04.jpg";
-import img3 from "../../img/main-product03.jpg";
-import img2 from "../../img/main-product02.jpg";
-import img1 from "../../img/thumb-product01.jpg";
 import { FaExchangeAlt, FaHeart, FaShareAlt, FaShoppingCart } from "react-icons/fa";
 import Color from "./Color";
 import Size from "./Size";
@@ -12,7 +8,9 @@ import StarRating from "../common/StarRating";
 import { withRouter } from "react-router";
 import MostPopular from "../Homepage/MostPopular/MostPopular";
 import getProductDetail from "../../context/actions/product/getProductDetail";
-import Skeleton from "../Skeleton";
+import Skeleton from "../Skeleton/Skeleton";
+
+
 
 function ProductDetail(props) {
   const [tab, setTab] = useState("des");
@@ -123,7 +121,7 @@ function ProductDetail(props) {
                 const imageURL = `https://laxmipujapasal.tk/Products/${image.image}`;
                 return (
                   <div className="image-container">
-                    <img src={imageURL} alt="" style={{ width: "100%", objectFit: "cover" }} />
+                    <img src={imageURL} alt=""  />
                   </div>
                 );
               })}
