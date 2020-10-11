@@ -12,9 +12,7 @@ import getProduct from "./context/actions/product/getProduct";
 import ScrollToTop from "./ScrollToTop";
 
 function App() {
-  const { productState, productDispatch } = useContext(GlobalContext);
-
-  const { error } = productState;
+  const { productDispatch } = useContext(GlobalContext);
   useEffect(() => {
     getProduct()(productDispatch);
   }, [productDispatch]);

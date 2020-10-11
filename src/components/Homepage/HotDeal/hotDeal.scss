@@ -1,7 +1,6 @@
 .hotDeal {
   background: #f6f7f8;
   padding: 30px 0px;
-
   &__grid {
     @include breakpoint-up(large) {
       display: grid;
@@ -24,26 +23,24 @@
   }
   &__item {
     position: relative;
-
-    .caption {
-      position: absolute;
-      top: 20px;
-      text-align: center;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      h2 {
-        color: #fff;
-        // font-size: 46px;
-        text-transform: uppercase;
-        span {
-          font-weight: 400;
-        }
+  }
+  &__img {
+    width: 100%;
+  }
+  &__caption {
+    position: absolute;
+    top: 20px;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    h2 {
+      color: #fff;
+      // font-size: 46px;
+      text-transform: uppercase;
+      span {
+        font-weight: 400;
       }
     }
-  }
-
-  img {
-    width: 100%;
   }
 }

@@ -26,7 +26,7 @@ const NewArrival = (props) => {
     <div className="newArrival flex">
       {/* <Modal /> */}
       <div className="container ">
-        <div className="newArrival__title">
+        <div className="newArrival__title section-title">
           <h2 className="title">Latest Product</h2>
         </div>
         <div className="newArrival__grid">

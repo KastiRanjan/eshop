@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import Slider from "react-slick";
-import banner from "../../../img/banner14.jpg";
 import { FaExchangeAlt, FaHeart, FaSearchPlus, FaShoppingCart } from "react-icons/fa";
 import { withRouter } from "react-router";
 import { GlobalContext } from "../../../context/Provider";
@@ -9,9 +8,7 @@ import Card from "../../common/Card/Card";
 import getProductDetail from "../../../context/actions/product/getProductDetail";
 const OurProduct = (props) => {
   const { cartDispatch: dispatch, productState, productDetailDispatch } = useContext(GlobalContext);
-  const { loading } = productState;
   const ourProduct = productState.products.mostPopular;
-  // const { error } = productState;
   const addToBasket = (product) => {
     console.log(product);
     dispatch({
@@ -56,10 +53,10 @@ const OurProduct = (props) => {
   return (
     <div className="ourProduct flex">
       <div className="container ">
-        <div className="ourProduct__title">
+        <div className="ourProduct__title section-title">
           <h2 className="title">Our Product</h2>
         </div>
-        <div className="ourProduct">
+     
           <Slider {...settings}>
             {ourProduct !== undefined &&
               ourProduct.map((product) => {
@@ -108,7 +105,6 @@ const OurProduct = (props) => {
           </Slider>
         </div>
       </div>
-    </div>
   );
 };
 

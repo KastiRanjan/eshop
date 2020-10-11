@@ -1,4 +1,3 @@
-import React from "react";
 import Cart from "./components/Cart/Cart";
 import Category from "./components/Category/Category";
 import Checkout from "./components/Checkout/Checkout";
@@ -38,7 +37,7 @@ export const routes = [
     component: Product,
   },
   {
-    path: "/categories",
+    path: "/:categoryName/:id",
     exact: false,
     component: Category,
   },

@@ -193,7 +193,6 @@ ul {
   display: flex;
   align-items: center;
 }
-
 .primary-btn:hover {
   background-color: #30323a;
 }
@@ -209,4 +208,30 @@ ul {
 
 .slick-prev:before {
   content: "←";
+}
+
+//title
+.section-title {
+  position: relative;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  border-bottom: 1px solid #dadada;
+  .title {
+    display: inline-block;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  h2 {
+    font-size: 26px;
+  }
+}
+.section-title:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1.5px;
+  height: 3px;
+  width: 60px;
+  background-color: #f8694a;
 }

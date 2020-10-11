@@ -1,7 +1,5 @@
-import React, { createContext, useEffect, useReducer } from "react";
-// import cart from "./reducers/cart";
+import React, { createContext, useReducer } from "react";
 import product from "./reducers/products";
-// import cartInitialState from "./initialstates/cartInitialState";
 import allProductInitialState from "./initialstates/allProductInitialState";
 import allProduct from "./reducers/allProduct";
 import productInitialState from "./initialstates/productInitialState";
@@ -10,18 +8,20 @@ import productDetailInitialState from "./initialstates/productDetailInitialState
 import searchProduct from "./reducers/searchProduct";
 import searchProductInitialState from "./initialstates/searchProductInitialState";
 import { productFilter } from "./reducers/productFilter";
+import categoryProduct from "./reducers/categoryProuct";
 
 export const GlobalContext = createContext();
 
-const initialState = {
-  products: [],
-};
-
 export const GlobalProvider = ({ children }) => {
-  // const [cartState, cartDispatch] = useReducer(cart, cartInitialState);
   const [allProductState, allProductDispatch] = useReducer(allProduct, allProductInitialState);
   const [productState, productDispatch] = useReducer(product, productInitialState);
   const [productFilterState, productFilterDispatch] = useReducer(productFilter, []);
+  console.log(productFilterState);
+  const [categoryProductState, categoryProductDispatch] = useReducer(categoryProduct, {
+    loading: false,
+    data: [],
+    meta: {},
+  });
   const [productDetailState, productDetailDispatch] = useReducer(
     productDetail,
     productDetailInitialState
@@ -36,8 +36,6 @@ export const GlobalProvider = ({ children }) => {
       value={{
         productState,
         productDispatch,
-        // cartState,
-        // cartDispatch,
         allProductState,
         allProductDispatch,
         productDetailState,
@@ -46,6 +44,8 @@ export const GlobalProvider = ({ children }) => {
         searchProductDispatch,
         productFilterState,
         productFilterDispatch,
+        categoryProductState,
+        categoryProductDispatch,
       }}
     >
       {children}

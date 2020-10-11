@@ -1,13 +1,14 @@
 .card {
   transition: 0.3s all;
-
+  border-radius: 2px;
+  overflow: hidden;
   &__img {
     width: 100%;
     position: relative;
 
     img {
       width: 100%;
-      height: 300px;
+      height: 255px;
       display: block;
       object-fit: cover;
       object-position: center;
@@ -49,6 +50,7 @@
   &__rating {
   }
   &__title {
+    font-size: 16px;
   }
   &__btns {
     margin-top: 20px;

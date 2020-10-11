@@ -8,17 +8,16 @@ import { GlobalContext } from "../../../context/Provider";
 import Card from "../../common/Card/Card";
 const MostPopular = ({ history }) => {
   const { productState, productDetailDispatch } = useContext(GlobalContext);
-  const mostPopular = productState.products == [] ? [] : productState.products.mostPopular;
+  const mostPopular = productState.products === [] ? [] : productState.products.mostPopular;
 
   const getSingleProduct = (id) => {
-    console.log(id);
     getProductDetail(id)(productDetailDispatch);
-    history.push(`/product/${id}`);
+    // history.push(`/product/${id}`);
   };
   return (
     <div className="mostPopular flex">
       <div className="container ">
-        <div className="mostPopular__title">
+        <div className="mostPopular__title section-title">
           <h2 className="title">Most Popular</h2>
         </div>
         <div className="mostPopular__grid">
@@ -57,7 +56,7 @@ const MostPopular = ({ history }) => {
                         &nbsp;
                         <button className="card__addToCart primary-btn">
                           <FaShoppingCart />
-                         &nbsp; Add to Cart
+                          &nbsp; Add to Cart
                         </button>
                       </>
                     }

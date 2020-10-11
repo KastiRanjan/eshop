@@ -4,7 +4,6 @@ import { GlobalContext } from "../../../context/Provider";
 export default function Slider() {
   const { productState } = useContext(GlobalContext);
   const offers = productState.offers;
- const {loading}=productState
   const settings = {
     dots: false,
     infinite: true,
@@ -22,9 +21,9 @@ export default function Slider() {
           {offers.map((offer) => {
             const imageUrl = `https://laxmipujapasal.tk/Offers/${offer.imageUrl}`;
             return (
-              <div className="banner">
-                <img src={imageUrl} alt="" />
-                <div className="caption">
+              <div className="slider__banner" key={offer.id}>
+                <img className="slider__bannerImg" src={imageUrl} alt="" />
+                <div className="slider__bannerCaption">
                   <h1>
                     {offer.name} <br /> <span> Up to {offer.discount} off</span>
                   </h1>

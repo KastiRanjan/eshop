@@ -1,16 +1,11 @@
 import React from "react";
 import { useContext } from "react";
 import { GlobalContext } from "../../../context/Provider";
-import banner from "../../../img/banner11.jpg";
-import banner1 from "../../../img/banner12.jpg";
-import banner2 from "../../../img/banner13.jpg";
+
 export default function HotDeal() {
   const { productState } = useContext(GlobalContext);
   const offers = productState.offers;
-
   const newOffer = offers.concat(offer);
-
-  console.log(newOffer);
 
   return (
     <div className="hotDeal flex">
@@ -21,8 +16,8 @@ export default function HotDeal() {
               const imageUrl = `https://laxmipujapasal.tk/Offers/${offer.imageUrl}`;
               return (
                 <div className="hotDeal__item " key={offer.id}>
-                  <img src={imageUrl} alt="" />
-                  <div className="caption">
+                  <img className="hotDeal__img" src={imageUrl} alt="" />
+                  <div className="hotDeal__caption">
                     <h2>
                       {offer.name} <br />
                       <span>up to {offer.discount} &#37; Off</span>

@@ -5,7 +5,7 @@ import getProductDetail from "../../context/actions/product/getProductDetail";
 import { GlobalContext } from "../../context/Provider";
 import Card from "../common/Card/Card";
 
-const ProductList = ({ currentProducts, history,loading  }) => {
+const ProductList = ({ currentProducts, history, loading }) => {
   const { productDetailDispatch } = useContext(GlobalContext);
 
   const getSingleProduct = (id) => {
@@ -17,7 +17,7 @@ const ProductList = ({ currentProducts, history,loading  }) => {
   for (let i = 0; i < 9; i++) {
     loadingProduct.push(<Card loading={true} key={i} />);
   }
-  if (loading == true) {
+  if (loading === true) {
     return <div className="product__store">{loadingProduct}</div>;
   }
   return (

@@ -14,7 +14,11 @@ const Dropdown = ({ value, options, onChange, className, button, link }) => {
 
   return (
     <li ref={dropdownRef} className={`${className} dropdown `}>
-      <a className="dropdown__toggler flex" onClick={(e) => setIsActive(!isActive)}>
+      <a
+        className="dropdown__toggler flex"
+        onMouseEnter={(e) => setIsActive(true)}
+        onMouseLeave={(e) => setIsActive(false)}
+      >
         {button} {value}
         <span>
           <FaCaretDown className="dropdown__icon" />
@@ -22,14 +26,32 @@ const Dropdown = ({ value, options, onChange, className, button, link }) => {
       </a>
       {link}
 
-      <ul className={isActive ? "dropdown__menu open" : "dropdown__menu"}>
-        {options.map((opt, index) => (
-          <li className="dropdown__menuItem" key={index} onClick={(e) => handleChange(opt.short)}>
-            <Link to={opt.url} className="dropdown__link">
-              {opt.icon} {opt.name}
-            </Link>
-          </li>
-        ))}
+      <ul
+        className={isActive ? "dropdown__menu open" : "dropdown__menu"}
+        onMouseEnter={(e) => setIsActive(true)}
+        onMouseLeave={(e) => setIsActive(false)}
+      >
+        {options.map((opt, index) => {
+          return (
+            <div className="tab" key={index}>
+              <div className="menu-header">
+                <li
+                  className="dropdown__menuItem"
+                  key={index}
+                  onClick={(e) => handleChange(opt.short)}
+                >
+                  <Link to={opt.url} className="dropdown__link">
+                    {opt.icon} {opt.name}
+                  </Link>
+                </li>
+              </div>
+              <div className="sub">
+                {opt.hasOwnProperty("subCategories") &&
+                  opt.subCategories.map((pro) => <div key={pro.id}>{pro.name}</div>)}
+              </div>
+            </div>
+          );
+        })}
       </ul>
     </li>
   );

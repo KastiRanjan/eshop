@@ -8,7 +8,7 @@ import {
   FaTwitter,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import logo from "../../img/logo.png";
+
 
 export default function Footer() {
   // const handleInputChange = (e) => {

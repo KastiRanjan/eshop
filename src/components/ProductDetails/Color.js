@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function Color({ colors }) {
-  console.log(colors);
   return (
     <div>
       {colors.map((color) => (

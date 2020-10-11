@@ -20,7 +20,7 @@ import { HeaderContext } from "../../context/HeaderProvider";
 
 const Header = ({ history }) => {
   const [keyword, setKeyword] = useState("");
-  const { cartState, searchProductDispatch } = useContext(GlobalContext);
+  const { searchProductDispatch } = useContext(GlobalContext);
   const { navigationDispatch: dispatch } = useContext(HeaderContext);
   const handleSearch = (e) => {
     setKeyword(e.target.value);
@@ -34,77 +34,74 @@ const Header = ({ history }) => {
 
   return (
     <header className="header flex">
-        <div className="container flex flex-jc-sb ">
-          <div className="header__left flex ">
-            <Link to="/" className="header__logo">
-              <img src={logo} alt="" />
-            </Link>
-            <div className="header__searchBar">
-              <form className="header__form" onSubmit={(e) => handleSubmit(e)}>
-                <input
-                  className=" header__searchInput input "
-                  type="text"
-                  placeholder="Enter your keyword"
-                  onChange={(e) => handleSearch(e)}
-                />
-                <button className="header__searchBtn">
-                  <FaSearch />
-                </button>
-              </form>
-            </div>
-          </div>
-          <div className="header__right">
-            <div className="header__btns flex">
-              <Dropdown
-                value="My Account"
-                options={accountOptions}
-                className="header__accountDropdown "
-                button={accountButton()}
-                link={link1()}
+      <div className="container flex flex-jc-sb ">
+        <div className="header__left flex ">
+          <Link to="/" className="header__logo">
+            <img className="header__logoImage" src={logo} alt="" />
+          </Link>
+          <div className="header__searchBar">
+            <form className="header__form" onSubmit={(e) => handleSubmit(e)}>
+              <input
+                className=" header__searchInput input "
+                type="text"
+                placeholder="Enter your keyword"
+                onChange={(e) => handleSearch(e)}
               />
-
-              <Dropdown
-                value="My Cart"
-                options={cartItems}
-                className="header__cartDropdown"
-                button={cartButton()}
-                link={<span className="header__priceTag">35.20$</span>}
-              />
-
-              <button
-                className="header__menuBtn  menu-btn icon-btn hide-for-desktop"
-                onClick={() => dispatch({ type: "OPEN_NAVIGATION" })}
-              >
-                <FaBars />
+              <button className="header__searchBtn">
+                <FaSearch strokeWidth="1" fontSize="15" />
               </button>
-            </div>
+            </form>
           </div>
         </div>
-    
+        <div className="header__right">
+          <div className="header__btns flex">
+            <Dropdown
+              value="My Account"
+              options={accountOptions}
+              className="header__accountDropdown "
+              button={accountButton()}
+              link={link1()}
+            />
+            <Dropdown
+              value="My Cart"
+              options={cartItems}
+              className="header__cartDropdown"
+              button={cartButton()}
+              link={<span className="header__priceTag">35.20$</span>}
+            />
+            <button
+              className="header__menuBtn   icon-btn hide-for-desktop"
+              onClick={() => dispatch({ type: "OPEN_NAVIGATION" })}
+            >
+              <FaBars />
+            </button>
+          </div>
+        </div>
+      </div>
     </header>
   );
 };
 export default withRouter(Header);
 const accountButton = () => (
-  <button className="header__iconBtn icon-btn">
+  <button className="header__iconBtn main-btn icon-btn">
     <FaRegUser />
   </button>
 );
 const cartButton = () => (
   <>
     <span className="header__badge">0</span>
-    <button className="header__iconBtn icon-btn">
+    <button className="header__iconBtn main-btn icon-btn">
       <FaShoppingCart />
     </button>
   </>
 );
 const link1 = () => (
   <span className="header__loginBtn">
-    <Link to="/login" className="login">
+    <Link to="/login" className="header__loginLink">
       Login
     </Link>
     /
-    <Link to="/signup" className="join">
+    <Link to="/signup" className="header__joinLink">
       Join
     </Link>
   </span>

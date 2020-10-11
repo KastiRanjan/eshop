@@ -1,15 +1,9 @@
-import {
-  FILTER_BY_BRAND,
-  FILTER_BY_COLOR,
-  FILTER_BY_POSITION,
-  FILTER_BY_PRICE,
-  FILTER_BY_RATING,
-  FILTER_BY_SIZE,
-} from "../../constants/actionTypes";
+import { findAllByDisplayValue } from "@testing-library/react";
+import { FILTER_BY_BRAND, FILTER_BY_PRICE, FILTER_BY_SIZE } from "../../constants/actionTypes";
 
 export const productFilter = (state, { payload, type }) => {
-  const { name, products } = payload;
-
+  const { brandId, products, sizeId } = payload;
+  console.log(sizeId);
   switch (type) {
     case FILTER_BY_PRICE:
       return {
@@ -18,19 +12,21 @@ export const productFilter = (state, { payload, type }) => {
       };
 
     case FILTER_BY_SIZE:
-      console.log("size");
+      console.log("sizes");
+      products.map((product) => product.productSizes.map((data) => console.log(data.sizeId)));
+
       return {
         ...state,
         products: products.filter(
-          (product) => name.value == product.productSizes.map((data) => data.size.value)
+          (product) => sizeId == product.productSizes.map((data) => data.sizeId)
         ),
       };
 
     case FILTER_BY_BRAND:
-      console.log("brend");
+      console.log(products);
       return {
         ...state,
-        products: products.filter((product) => product.brand.name === name),
+        products: products.filter((product) => product.brandId === brandId),
       };
     default:
       return state;

@@ -5,7 +5,7 @@ import StarRating from "../StarRating";
 export default function Card({ loading, img, price, view, oldPrice, rating, name, button }) {
   if (loading === true) {
     return (
-      <div className="box"style={{height:"340px"}} >
+      <div className="box" style={{ height: "340px" }}>
         <Skeleton />
       </div>
     );
@@ -13,9 +13,9 @@ export default function Card({ loading, img, price, view, oldPrice, rating, name
   return (
     <div className="card">
       <div className="card__img">
-        <div className="card__label">
+        {/* <div className="card__label">
           <span>new</span>
-        </div>
+        </div> */}
         <img src={img} alt="" />
         {view}
       </div>

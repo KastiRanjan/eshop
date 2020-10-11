@@ -1,13 +1,15 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { FaList } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { HeaderContext } from "../../context/HeaderProvider";
+import { GlobalContext } from "../../context/Provider";
 
 import Dropdown from "../Dropdown/Dropdown";
 export default function Navigation() {
   const { navigationState, navigationDispatch: dispatch } = useContext(HeaderContext);
+  const { productState } = useContext(GlobalContext);
   const open = navigationState.openNavigation;
-
+  const { categories } = productState;
   return (
     <div
       className={open ? "navigation shadow " : "navigation flex"}
@@ -26,9 +28,11 @@ export default function Navigation() {
             <li className="navigation__item">
               <Link to="/products">Shop</Link>
             </li>
-            <li className="navigation__item">
-              <Link to="/categories">Categories</Link>
-            </li>
+            <Dropdown
+              value="Categories"
+              options={categories}
+              className="navigation__item navigation_pages navigation__categories"
+            />
             <Dropdown
               value="Pages"
               options={[
