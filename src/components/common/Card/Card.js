@@ -1,5 +1,5 @@
 import React from "react";
-import Skeleton from "../../Skeleton/Skeleton";
+import Skeleton from "../Skeleton/Skeleton";
 import StarRating from "../StarRating";
 
 export default function Card({ loading, img, price, view, oldPrice, rating, name, button }) {

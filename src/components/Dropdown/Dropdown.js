@@ -1,9 +1,9 @@
 import React, { useRef } from "react";
 import { FaCaretDown } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { useDetectOutsideClick } from "../../hooks/useDetectOutsideClick";
 
-const Dropdown = ({ value, options, onChange, className, button, link }) => {
+const Dropdown = ({ history, value, options, onChange, className, button, link }) => {
   const dropdownRef = useRef();
   const [isActive, setIsActive] = useDetectOutsideClick(dropdownRef, false);
 
@@ -12,6 +12,10 @@ const Dropdown = ({ value, options, onChange, className, button, link }) => {
     setIsActive(false);
   };
 
+  const openCategory = (id) => {
+    console.log(id);
+    history.push("/login");
+  };
   return (
     <li ref={dropdownRef} className={`${className} dropdown `}>
       <a
@@ -32,6 +36,7 @@ const Dropdown = ({ value, options, onChange, className, button, link }) => {
         onMouseLeave={(e) => setIsActive(false)}
       >
         {options.map((opt, index) => {
+          const imageURL = `https://laxmipujapasal.tk/Categories/${opt.imageUrl}`;
           return (
             <div className="tab" key={index}>
               <div className="menu-header">
@@ -47,8 +52,23 @@ const Dropdown = ({ value, options, onChange, className, button, link }) => {
               </div>
               <div className="sub">
                 {opt.hasOwnProperty("subCategories") &&
-                  opt.subCategories.map((pro) => <div key={pro.id}>{pro.name}</div>)}
+                  opt.subCategories.map((pro) => (
+                    <div key={pro.id}>
+                      <Link
+                        onClick={() => openCategory(pro.id)}
+                        style={{ color: "#000", padding: "0px" }}
+                      >
+                        {pro.name}
+                      </Link>
+                    </div>
+                  ))}
               </div>
+
+              {opt.hasOwnProperty("subCategories") && (
+                <div>
+                  <img style={{ width: "100px", height: "100px" }} src={imageURL} alt="" />
+                </div>
+              )}
             </div>
           );
         })}
@@ -57,4 +77,4 @@ const Dropdown = ({ value, options, onChange, className, button, link }) => {
   );
 };
 
-export default Dropdown;
+export default withRouter(Dropdown);

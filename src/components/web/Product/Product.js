@@ -1,31 +1,26 @@
 import React, { useState, useEffect, useContext } from "react";
+import ProductList from "./ProductList";
 import Pagination from "react-js-pagination";
-import { withRouter } from "react-router";
-import getAllProduct from "../../../context/actions/product/getAllProduct";
-import getProductByCategory from "../../../context/actions/product/getProductByCategory";
+import ProductFilter from "./ProductFilter";
 import { GlobalContext } from "../../../context/Provider";
-import ProductFilter from "../Product/ProductFilter";
-import ProductList from "../Product/ProductList";
-const Category = (props) => {
+import getAllProduct from "../../../context/actions/product/getAllProduct";
+
+export default function Product() {
   const {
     allProductState,
-    allProductDispatch,
-    categoryProductState,
-    categoryProductDispatch,
     productFilterState,
+    allProductDispatch,
+    productFilterDispatch,
   } = useContext(GlobalContext);
-  const { brands, sizes } = allProductState;
 
+  const { products, loading, brands, sizes } = allProductState;
+  const finalProduct = productFilterState.length === 0 ? products : productFilterState.products;
+  console.log(sizes);
   useEffect(() => {
     getAllProduct()(allProductDispatch);
   }, [allProductDispatch]);
-  const { data, loading, meta } = categoryProductState;
-
-  let id = props.match.params.id;
-  useEffect(() => {
-    getProductByCategory(id)(categoryProductDispatch);
-  }, [id]);
-  const finalProduct = productFilterState.length === 0 ? data : productFilterState.products;
+  console.log(productFilterState);
+  //pagination
   const [currentPage, setCurrentPage] = useState(1);
   const [productPerPage, setProductPerpage] = useState(9);
   const indexOfLastPost = currentPage * productPerPage;
@@ -44,14 +39,9 @@ const Category = (props) => {
       <div className="container ">
         <div className="product__grid">
           <div className="product__item aside">
-            <ProductFilter products={data} sizes={sizes} brands={brands} />
+            <ProductFilter sizes={sizes} brands={brands} products={products} />
           </div>
           <div className="product__item product__list">
-            <div>
-              <h3>{meta.message}</h3>
-              <hr />
-            </div>
-
             <ProductList currentProducts={currentProducts} loading={loading} />
             {currentProducts.length > 0 && (
               <StoreFilter
@@ -66,9 +56,15 @@ const Category = (props) => {
       </div>
     </div>
   );
-};
-export default withRouter(Category);
-const StoreFilter = ({ currentPage, currentProducts, handlePageChange, itemPerPage }) => (
+}
+
+const StoreFilter = ({
+  currentPage,
+  currentProducts,
+  handlePageChange,
+  itemPerPage,
+  productSort,
+}) => (
   <div className="product__paginator flex  flex-ai-c ">
     <div className="page-filter ">
       <span>Show : </span>

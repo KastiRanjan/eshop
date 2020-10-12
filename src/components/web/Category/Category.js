@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import Pagination from "react-js-pagination";
 import { withRouter } from "react-router";
-import getAllProduct from "../../../context/actions/product/getAllProduct";
-import getProductByCategory from "../../../context/actions/product/getProductByCategory";
 import { GlobalContext } from "../../../context/Provider";
+import getProductByCategory from "../../../context/actions/product/getProductByCategory";
+import getAllProduct from "../../../context/actions/product/getAllProduct";
 import ProductFilter from "../Product/ProductFilter";
 import ProductList from "../Product/ProductList";
+
 const Category = (props) => {
   const {
     allProductState,
