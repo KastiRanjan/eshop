@@ -1,18 +1,10 @@
-import React, { useContext } from "react";
-import { FaExchangeAlt, FaHeart, FaSearchPlus, FaShoppingCart } from "react-icons/fa";
+import React from "react";
+
 import { withRouter } from "react-router";
-import getProductDetail from "../../../context/actions/product/getProductDetail";
-import { GlobalContext } from "../../../context/Provider";
+
 import Card from "../../common/Card/Card";
 
-const ProductList = ({ currentProducts, history, loading }) => {
-  const { productDetailDispatch } = useContext(GlobalContext);
-
-  const getSingleProduct = (id) => {
-    getProductDetail(id)(productDetailDispatch);
-    history.push(`/product/${id}`);
-  };
-
+const ProductList = ({ currentProducts, loading }) => {
   let loadingProduct = [];
   for (let i = 0; i < 9; i++) {
     loadingProduct.push(<Card loading={true} key={i} />);
@@ -33,38 +25,12 @@ const ProductList = ({ currentProducts, history, loading }) => {
             return (
               <Card
                 key={product.id}
+                id={product.id}
                 name={product.name}
                 img={imageURL}
                 price={product.price}
                 discount={product.discount}
                 rating={product.averageRating}
-                view={
-                  <>
-                    <button
-                      className="card__quickView main-btn flex flex-ai-c fex-jc-c"
-                      onClick={() => getSingleProduct(product.id)}
-                    >
-                      <FaSearchPlus />
-                      Quick View
-                    </button>
-                  </>
-                }
-                button={
-                  <>
-                    <button className="favou main-btn icon-btn">
-                      <FaHeart />
-                    </button>
-                    &nbsp;
-                    <button className="card__exchange main-btn icon-btn">
-                      <FaExchangeAlt />
-                    </button>
-                    &nbsp;
-                    <button className="card__addToCart primary-btn">
-                      <FaShoppingCart />
-                      Add to Cart
-                    </button>
-                  </>
-                }
               />
             );
           })}

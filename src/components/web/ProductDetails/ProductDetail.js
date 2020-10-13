@@ -17,6 +17,7 @@ function ProductDetail(props) {
   const sizes = productDetail.length == 0 ? [] : productDetail.productSizes;
   const productImage = productDetail == 0 ? [] : productDetail.productImages;
   const id = props.match.params.id;
+
   useEffect(() => {
     getProductDetail(id)(productDetailDispatch);
   }, [id, productDetailDispatch]);

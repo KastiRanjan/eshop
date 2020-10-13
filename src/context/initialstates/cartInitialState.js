@@ -1,5 +1,5 @@
-const cartInitialState = {
-  cartItem: localStorage.getItem("cartItem") ? JSON.parse(localStorage.getItem("cartItem")) : [],
+export default {
+  cart: 0,
+  cartPrice: 0,
+  products: {},
 };
-
-export default cartInitialState;

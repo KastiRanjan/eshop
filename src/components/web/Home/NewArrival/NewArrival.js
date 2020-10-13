@@ -6,20 +6,8 @@ import { GlobalContext } from "../../../../context/Provider";
 import getProductDetail from "../../../../context/actions/product/getProductDetail";
 
 const NewArrival = (props) => {
-  const { productState, productDetailDispatch } = useContext(GlobalContext);
+  const { productState } = useContext(GlobalContext);
   const newArrival = productState.products.newArrivals;
-
-  const addToBasket = (product) => {
-    // dispatch({
-    //   type: "ADD_TO_BASKET",
-    //   payload: product,
-    // });
-  };
-
-  const getSingleProduct = (id) => {
-    getProductDetail(id)(productDetailDispatch);
-    props.history.push(`/product/${id}`);
-  };
 
   return (
     <div className="newArrival flex">
@@ -35,40 +23,12 @@ const NewArrival = (props) => {
               return (
                 <div className="newArrival__item" key={product.id}>
                   <Card
+                    id={product.id}
                     name={product.name}
                     img={imageURL}
                     price={product.price}
                     discount={product.discount}
                     rating={product.averageRating}
-                    view={
-                      <>
-                        <button
-                          className="card__quickView main-btn flex flex-ai-c fex-jc-c"
-                          onClick={() => getSingleProduct(product.id)}
-                        >
-                          <FaSearchPlus />
-                          &nbsp; Quick View
-                        </button>
-                      </>
-                    }
-                    button={
-                      <>
-                        <button className="favou main-btn icon-btn">
-                          <FaHeart />
-                        </button>
-                        &nbsp;
-                        <button className="card__exchange main-btn icon-btn">
-                          <FaExchangeAlt />
-                        </button>
-                        &nbsp;
-                        <button
-                          className="card__addToCart primary-btn flex"
-                          onClick={() => addToBasket(product)}
-                        >
-                          <FaShoppingCart /> &nbsp; Add to Cart
-                        </button>
-                      </>
-                    }
                   />
                 </div>
               );
@@ -79,4 +39,4 @@ const NewArrival = (props) => {
   );
 };
 
-export default withRouter(NewArrival);
+export default NewArrival;

@@ -9,12 +9,15 @@ import searchProduct from "./reducers/searchProduct";
 import searchProductInitialState from "./initialstates/searchProductInitialState";
 import { productFilter } from "./reducers/productFilter";
 import categoryProduct from "./reducers/categoryProuct";
+import cart from "./reducers/cart";
+import cartInitialState from "./initialstates/cartInitialState";
 
 export const GlobalContext = createContext();
 
 export const GlobalProvider = ({ children }) => {
   const [allProductState, allProductDispatch] = useReducer(allProduct, allProductInitialState);
   const [productState, productDispatch] = useReducer(product, productInitialState);
+  const [cartState, cartDispatch] = useReducer(cart, cartInitialState);
   const [productFilterState, productFilterDispatch] = useReducer(productFilter, []);
   console.log(productFilterState);
   const [categoryProductState, categoryProductDispatch] = useReducer(categoryProduct, {
@@ -46,6 +49,8 @@ export const GlobalProvider = ({ children }) => {
         productFilterDispatch,
         categoryProductState,
         categoryProductDispatch,
+        cartState,
+        cartDispatch,
       }}
     >
       {children}

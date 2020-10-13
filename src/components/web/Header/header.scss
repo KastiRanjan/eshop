@@ -1,6 +1,7 @@
 .header {
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #fff;
   .container {
     flex-direction: column;
     @include breakpoint-up(large) {
