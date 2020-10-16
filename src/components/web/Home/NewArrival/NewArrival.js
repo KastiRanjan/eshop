@@ -1,11 +1,8 @@
 import React, { useContext } from "react";
-import { withRouter } from "react-router";
 import Card from "../../../common/Card/Card";
-import { FaExchangeAlt, FaHeart, FaSearchPlus, FaShoppingCart } from "react-icons/fa";
 import { GlobalContext } from "../../../../context/Provider";
-import getProductDetail from "../../../../context/actions/product/getProductDetail";
 
-const NewArrival = (props) => {
+const NewArrival = () => {
   const { productState } = useContext(GlobalContext);
   const newArrival = productState.products.newArrivals;
 

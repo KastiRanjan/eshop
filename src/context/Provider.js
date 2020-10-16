@@ -19,7 +19,6 @@ export const GlobalProvider = ({ children }) => {
   const [productState, productDispatch] = useReducer(product, productInitialState);
   const [cartState, cartDispatch] = useReducer(cart, cartInitialState);
   const [productFilterState, productFilterDispatch] = useReducer(productFilter, []);
-  console.log(productFilterState);
   const [categoryProductState, categoryProductDispatch] = useReducer(categoryProduct, {
     loading: false,
     data: [],

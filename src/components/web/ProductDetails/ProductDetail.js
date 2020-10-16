@@ -12,15 +12,16 @@ import MostPopular from "../Home/MostPopular/MostPopular";
 
 function ProductDetail(props) {
   const { productDetailState, productDetailDispatch } = useContext(GlobalContext);
-  const { productDetail, loading } = productDetailState;
-  const color = productDetail.length == 0 ? [] : productDetail.colors;
-  const sizes = productDetail.length == 0 ? [] : productDetail.productSizes;
-  const productImage = productDetail == 0 ? [] : productDetail.productImages;
+  const { productDetail, loading, error } = productDetailState;
+  const color = productDetail.length === 0 ? [] : productDetail.colors;
+  const sizes = productDetail.length === 0 ? [] : productDetail.productSizes;
+  const images = productDetail.productImages == undefined ? [] : productDetail.productImages;
+  console.log(images);
   const id = props.match.params.id;
 
   useEffect(() => {
     getProductDetail(id)(productDetailDispatch);
-  }, [id, productDetailDispatch]);
+  }, []);
 
   const [nav1, setNav1] = useState(null);
   const [nav2, setNav2] = useState(null);
@@ -36,7 +37,7 @@ function ProductDetail(props) {
     dots: false,
     className: "center product-view",
     centerMode: true,
-    infinite: true,
+    infinite: images.length > 3,
     centerPadding: "50px",
     slidesToShow: 3,
     focusOnSelect: true,
@@ -131,6 +132,9 @@ function ProductDetail(props) {
       </div>
     );
   }
+  if (error) {
+    return <div className="container">{error.message}</div>;
+  }
 
   return (
     <div className="productDetail flex">
@@ -140,7 +144,7 @@ function ProductDetail(props) {
             <div className="productDetail__left">
               <div className="productDetail__mainView">
                 <Slider {...setting2} asNavFor={nav2} ref={(slider) => (slider1 = slider)}>
-                  {productImage.map((image, i) => {
+                  {images.map((image, i) => {
                     const imageURL = `https://laxmipujapasal.tk/Products/${image.image}`;
                     return (
                       <div className="productDetail__image" style={{ width: "200px" }} key={i}>
@@ -148,7 +152,7 @@ function ProductDetail(props) {
                           src={imageURL}
                           alt=""
                           key={i}
-                          style={{ width: "100%", height: "455px" }}
+                          style={{ width: "100%", height: "380px" }}
                         />
                       </div>
                     );
@@ -157,15 +161,15 @@ function ProductDetail(props) {
               </div>
               <div className="productDetail__view">
                 <Slider {...setting1} asNavFor={nav1} ref={(slider) => (slider2 = slider)}>
-                  {productImage.map((image, i) => {
+                  {images.map((image, i) => {
                     const imageURL = `https://laxmipujapasal.tk/Products/${image.image}`;
                     return (
-                      <div className="productDetail__image" style={{ width: "200px" }} key={i}>
+                      <div className="productDetail__image" style={{ width: "250px" }} key={i}>
                         <img
                           src={imageURL}
                           alt=""
                           key={i}
-                          style={{ width: "100%", height: "100px" }}
+                          style={{ width: "100%", height: "80px" }}
                         />
                       </div>
                     );
@@ -230,7 +234,7 @@ function ProductDetail(props) {
           <ul className="productDetail__tabHeader flex flex-ai-c">
             {state.links.map((link) => (
               <li
-                className={link.id == state.activeLink ? "active" : ""}
+                className={link.id === state.activeLink ? "active" : ""}
                 onClick={() => setstate({ ...state, activeLink: link.id })}
               >
                 <span>{link.name}</span>

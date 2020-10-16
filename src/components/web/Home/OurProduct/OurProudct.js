@@ -5,7 +5,7 @@ import Card from "../../../common/Card/Card";
 import { GlobalContext } from "../../../../context/Provider";
 
 const OurProduct = (props) => {
-  const { cartDispatch: dispatch, productState } = useContext(GlobalContext);
+  const { productState } = useContext(GlobalContext);
   const ourProduct = productState.products.mostPopular;
 
   var settings = {
@@ -46,6 +46,7 @@ const OurProduct = (props) => {
         <Slider {...settings}>
           {ourProduct !== undefined &&
             ourProduct.map((product) => {
+              console.log(product.id);
               const imageURL = `https://laxmipujapasal.tk/Products/${product.image}`;
               return (
                 <Card

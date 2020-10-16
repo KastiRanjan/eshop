@@ -1,7 +1,5 @@
 import React, { useContext } from "react";
-import { FaExchangeAlt, FaHeart, FaSearchPlus, FaShoppingCart } from "react-icons/fa";
 import { withRouter } from "react-router";
-import getProductDetail from "../../../../context/actions/product/getProductDetail";
 import { GlobalContext } from "../../../../context/Provider";
 import Card from "../../../common/Card/Card";
 

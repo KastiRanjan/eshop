@@ -18,7 +18,6 @@ const Card = ({ loading, id, name, img, price, discount, rating, history }) => {
   const addProductToCart = ({ name, img, price, discount }) => {
     addToCart({ name, img, price, discount })(cartDispatch);
   };
-  console.log(cartState);
   if (loading === true) {
     return (
       <div className="box" style={{ height: "340px" }}>

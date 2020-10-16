@@ -1,10 +1,9 @@
-import React, { useContext } from "react";
-import { GlobalContext } from "../../../context/Provider";
+import React from "react";
 
 export default function Cart() {
-  const { cartState } = useContext(GlobalContext);
-  const { cart, cartPrice, products } = cartState;
-  console.log(products);
+  // const { cartState } = useContext(GlobalContext);
+  // // const { cart, cartPrice, products } = cartState;
+  // console.log(products);
   return (
     <div className="cart">
       <div className="container">

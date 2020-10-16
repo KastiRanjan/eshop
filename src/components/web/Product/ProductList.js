@@ -1,10 +1,8 @@
 import React from "react";
-
 import { withRouter } from "react-router";
-
 import Card from "../../common/Card/Card";
 
-const ProductList = ({ currentProducts, loading }) => {
+const ProductList = ({ currentProducts, loading, error }) => {
   let loadingProduct = [];
   for (let i = 0; i < 9; i++) {
     loadingProduct.push(<Card loading={true} key={i} />);
@@ -12,6 +10,7 @@ const ProductList = ({ currentProducts, loading }) => {
   if (loading === true) {
     return <div className="product__store">{loadingProduct}</div>;
   }
+
   return (
     <>
       {currentProducts.length === 0 ? (

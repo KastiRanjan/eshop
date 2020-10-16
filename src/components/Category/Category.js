@@ -24,7 +24,8 @@ const Category = (props) => {
   let id = props.match.params.id;
   useEffect(() => {
     getProductByCategory(id)(categoryProductDispatch);
-  }, [id]);
+  }, [categoryProductDispatch]);
+
   const finalProduct = productFilterState.length === 0 ? data : productFilterState.products;
   const [currentPage, setCurrentPage] = useState(1);
   const [productPerPage, setProductPerpage] = useState(9);

@@ -1,9 +1,7 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import "./styles/style.scss";
 import { Route, Switch } from "react-router";
 import { BrowserRouter } from "react-router-dom";
-import { GlobalContext } from "./context/Provider";
-import getProduct from "./context/actions/product/getProduct";
 import ScrollToTop from "./ScrollToTop";
 import PagenotFound from "./components/nomatch/PagenotFound";
 import Main from "./components/web";

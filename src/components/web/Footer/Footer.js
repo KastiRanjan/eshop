@@ -7,6 +7,7 @@ import {
   FaPinterest,
   FaTwitter,
 } from "react-icons/fa";
+import logo from "../../../img/logo.png";
 import { Link } from "react-router-dom";
 
 export default function Footer() {
@@ -18,7 +19,7 @@ export default function Footer() {
       <div className="container">
         <div className="footer">
           <Link to="/" className="footer__logo">
-            {/*<img src={logo} alt="" />*/}
+            <img src={logo} alt="" />
           </Link>
           <div className="footer__social">
             <p>
@@ -43,9 +44,7 @@ export default function Footer() {
           </div>
           <div className="footer__links col1">
             <h3>My Account</h3>
-            <Link to="/">
-              <FaAngleRight /> My Account
-            </Link>
+            <Link to="/">My Account</Link>
             <Link to="/"> My Wishlist</Link>
             <Link to="/"> Compare</Link>
             <Link to="/"> Checkout</Link>

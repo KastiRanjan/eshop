@@ -16,6 +16,9 @@
   }
 
   &__categories {
+    .sub-list:hover > .sub-item {
+      color: #f57224;
+    }
     ul {
       width: max-content;
       display: grid;
@@ -28,6 +31,7 @@
     .tab {
       display: grid;
       grid-template-columns: auto;
+      grid-template-rows: 40% 60%;
     }
     .menu-header {
       a {

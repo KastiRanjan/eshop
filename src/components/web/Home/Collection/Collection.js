@@ -8,6 +8,7 @@ const Collection = ({ history }) => {
   const categories = productState.categories;
 
   const openCategory = (category) => {
+    console.log(category);
     getProductByCategory(category.id)(categoryProductDispatch);
     history.push(`/${category.name}/${category.id}`);
   };

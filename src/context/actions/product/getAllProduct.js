@@ -5,6 +5,7 @@ import {
   PRODUCT_LOAD_ERROR,
 } from "../../../constants/actionTypes";
 export default () => (dispatch) => {
+  console.log("hello");
   dispatch({
     type: PRODUCT_LOADING,
   });

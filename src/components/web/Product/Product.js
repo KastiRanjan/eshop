@@ -12,14 +12,13 @@ export default function Product() {
     allProductDispatch,
     productFilterDispatch,
   } = useContext(GlobalContext);
-
-  const { products, loading, brands, sizes } = allProductState;
+  const { products, loading, brands, sizes, error } = allProductState;
   const finalProduct = productFilterState.length === 0 ? products : productFilterState.products;
-  console.log(sizes);
+  console.log(productFilterState);
+
   useEffect(() => {
     getAllProduct()(allProductDispatch);
   }, [allProductDispatch]);
-  console.log(productFilterState);
   //pagination
   const [currentPage, setCurrentPage] = useState(1);
   const [productPerPage, setProductPerpage] = useState(9);
@@ -33,13 +32,21 @@ export default function Product() {
   const itemPerPage = (e) => {
     setProductPerpage(e.target.value);
   };
-
+  if (error) {
+    return <div className="container">{error}</div>;
+  }
   return (
     <div className="product flex">
       <div className="container ">
         <div className="product__grid">
           <div className="product__item aside">
-            <ProductFilter sizes={sizes} brands={brands} products={products} />
+            <ProductFilter
+              loading={loading}
+              sizes={sizes}
+              brands={brands}
+              products={products}
+              error={error}
+            />
           </div>
           <div className="product__item product__list">
             <ProductList currentProducts={currentProducts} loading={loading} />

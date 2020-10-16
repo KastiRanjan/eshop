@@ -5,6 +5,7 @@ import {
   PRODUCTDETAIL_LOADING,
 } from "../../../constants/actionTypes";
 export default (id) => (dispatch) => {
+  console.log(typeof id);
   dispatch({
     type: PRODUCTDETAIL_LOADING,
   });

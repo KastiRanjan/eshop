@@ -9,7 +9,7 @@ const categoryProduct = (state, { payload, type }) => {
   switch (type) {
     case PRODUCT_LOADING:
       return { ...state, loading: true };
-      break;
+
     case PRODUCT_LOAD_SUCCESS:
       return {
         ...state,
@@ -17,10 +17,9 @@ const categoryProduct = (state, { payload, type }) => {
         data: payload.data.products,
         meta: payload.meta,
       };
-      break;
+
     case PRODUCT_LOAD_ERROR:
       return { ...state, loading: false, error: payload };
-      break;
 
     default:
       return state;

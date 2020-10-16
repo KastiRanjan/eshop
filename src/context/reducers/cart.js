@@ -6,7 +6,6 @@ import {
 } from "../../constants/actionTypes";
 
 const cart = (state, { payload, type }) => {
-  let productSelected = "";
   switch (type) {
     case ADD_TO_CART:
       return {

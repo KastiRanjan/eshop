@@ -1,6 +1,8 @@
-import React, { useRef } from "react";
+import React, { useContext, useRef } from "react";
 import { FaCaretDown } from "react-icons/fa";
 import { Link, withRouter } from "react-router-dom";
+import getProductByCategory from "../../context/actions/product/getProductByCategory";
+import { GlobalContext } from "../../context/Provider";
 import { useDetectOutsideClick } from "../../hooks/useDetectOutsideClick";
 
 const Dropdown = ({ history, value, options, onChange, className, button, link }) => {
@@ -11,11 +13,9 @@ const Dropdown = ({ history, value, options, onChange, className, button, link }
     selectedValue !== undefined && onChange(selectedValue);
     setIsActive(false);
   };
+  const { productState, categoryProductDispatch } = useContext(GlobalContext);
+  const categories = productState.categories;
 
-  const openCategory = (id) => {
-    console.log(id);
-    history.push("/login");
-  };
   return (
     <li ref={dropdownRef} className={`${className} dropdown `}>
       <a
@@ -36,7 +36,6 @@ const Dropdown = ({ history, value, options, onChange, className, button, link }
         onMouseLeave={(e) => setIsActive(false)}
       >
         {options.map((opt, index) => {
-          const imageURL = `https://laxmipujapasal.tk/Categories/${opt.imageUrl}`;
           return (
             <div className="tab" key={index}>
               <div className="menu-header">
@@ -53,22 +52,13 @@ const Dropdown = ({ history, value, options, onChange, className, button, link }
               <div className="sub">
                 {opt.hasOwnProperty("subCategories") &&
                   opt.subCategories.map((pro) => (
-                    <div key={pro.id}>
-                      <Link
-                        onClick={() => openCategory(pro.id)}
-                        style={{ color: "#000", padding: "0px" }}
-                      >
+                    <div key={pro.id} className="sub-list">
+                      <Link className="sub-item" style={{ color: "#000", padding: "0px" }}>
                         {pro.name}
                       </Link>
                     </div>
                   ))}
               </div>
-
-              {opt.hasOwnProperty("subCategories") && (
-                <div>
-                  <img style={{ width: "100px", height: "100px" }} src={imageURL} alt="" />
-                </div>
-              )}
             </div>
           );
         })}
